@@ -35,3 +35,33 @@ TP53 is a critical tumor suppressor gene frequently mutated in human cancers. De
 - Evidence supports evolutionary constraint within the DNA-binding domain
 
 ## Repository Structure
+- data/ → raw FASTA sequences
+- msa/ → alignment outputs
+- results/ → processed datasets
+- figures/ → publication figures
+- code/ → analysis scripts
+- manuscript/ → full research manuscript
+
+  
+## Reproducibility
+All analyses are implemented using transparent and reproducible workflows. The repository includes input data, scripts, and outputs required to replicate the study.
+
+## Limitations
+This study is based on sequence-level analysis. Functional implications require structural modeling and experimental validation.
+
+## Future Directions
+- Structural modeling of TP53 variants
+- Molecular dynamics simulations
+- Transcriptomic validation of retrogene expression
+- Expansion to additional large mammals
+
+## Author
+Ritika Rajendra Rawat  
+MSc Bioinformatics  
+Mumbai, India
+
+## Citation
+If you use this work, please cite the associated manuscript.
+
+## License
+This project is licensed under the MIT License.
