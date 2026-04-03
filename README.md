@@ -1,38 +1,37 @@
-# Elephant TP53 Hotspot Mapping (EleProtect Framework)
+# Elephant TP53 Hotspot Mapping
 
 ## Overview
-This project presents a comparative in-silico analysis of TP53 mutation hotspots across human and elephant canonical and retrogene sequences.
+This repository presents a reproducible computational framework for analyzing evolutionary conservation of TP53 mutation hotspots across human and elephant genomes.
 
-The study investigates evolutionary conservation patterns and introduces a composite scoring framework (EleProtect) to prioritise mutation hotspots.
+## Scientific Context
+TP53 is a critical tumor suppressor gene frequently mutated in human cancers. Despite increased body mass and lifespan, elephants exhibit reduced cancer incidence (Peto’s paradox). This study investigates whether canonical TP53 mutation hotspots are evolutionarily conserved and how retrogene copies contribute to sequence variability.
 
-## Biological Context
-Elephants exhibit unusually low cancer incidence despite large body size (Peto’s paradox). This project explores whether TP53 mutation hotspots are evolutionarily conserved in elephant genomes.
+## Research Objectives
+- Map canonical human TP53 mutation hotspots (R175, G245, R248, R249, R273, R282)
+- Evaluate conservation across elephant canonical sequences
+- Assess variability across TP53 retrogenes
+- Develop a composite scoring framework for hotspot prioritization
 
-## Methods
-- Data retrieval from NCBI and UniProt
-- Sequence preprocessing and quality control
-- Multiple Sequence Alignment (MAFFT)
-- Hotspot residue mapping
-- Composite scoring (HMF + CSC + RVI)
-- Phylogenetic analysis (MEGA)
+## Methodological Framework
+### Data Acquisition
+- UniProt (P04637 – Human TP53)
+- NCBI protein database (elephant TP53 sequences)
+
+### Computational Pipeline
+1. Sequence preprocessing and quality control
+2. Multiple sequence alignment (MAFFT)
+3. Residue-level hotspot mapping
+4. Conservation analysis
+5. Composite scoring model:
+   - Human Mutation Frequency (HMF)
+   - Cross-Species Conservation (CSC)
+   - Retrogene Variability Index (RVI)
+6. Phylogenetic analysis (MEGA)
 
 ## Key Findings
-- Strong conservation of TP53 hotspot residues in canonical sequences
-- Variability observed in retrogene copies
-- High-priority residues: R175, G245, R248, R273
+- Canonical TP53 hotspot residues are strongly conserved across elephant species
+- Retrogene copies exhibit position-specific variability
+- High-priority residues identified: R175, G245, R248, R273
+- Evidence supports evolutionary constraint within the DNA-binding domain
 
-## Figures
-- TP53 copy number expansion (Fig 1)
-- Preprocessing workflow (Fig 2)
-- Computational pipeline (Fig 3)
-- MSA visualization (Fig 4)
-- Hotspot mapping (Fig 5)
-- Phylogenetic tree (Fig 6)
-- Composite scoring (Fig 7)
-
-## Reproducibility
-All data and scripts are provided for transparent and reproducible analysis.
-
-## Author
-Ritika Rajendra Rawat  
-MSc Bioinformatics
+## Repository Structure
