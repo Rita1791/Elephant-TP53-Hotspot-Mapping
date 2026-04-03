@@ -1,0 +1,42 @@
+CLUSTAL O(1.2.4) multiple sequence alignment
+
+
+Elephant_TP53_RTG9          ------------------------------------------------------------	0
+Human_TP53                  MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGP	60
+Elephant_P53_Canonical      MEEKQSDPSMEPPLSQQTFSDLEKLLPENELMPEIPQVM-KD---LNDDEMTWFTEDSGP	56
+                                                                                        
+
+Elephant_TP53_RTG9          ------------------------------------------------------------	0
+Human_TP53                  DEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAK	120
+Elephant_P53_Canonical      SEAPRLPEAAP-VA-----PTPAAPAP-STWPLSSSVPSQKTYSQ-SAFRLGFLHSGTAK	108
+                                                                                        
+
+Elephant_TP53_RTG9          -----MSP-------------------SAKKRPKNRVASKIQDEDLYDLKQHSVSKVV--	34
+Human_TP53                  SVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGT----RVRAMAIYKQSQHMTEVVRRC	176
+Elephant_P53_Canonical      SVSCNYSPALHFNF-KLAKTCPVQLWVDSTPPPGT----RVRAMAIYKKSQHMTETVRRC	163
+                                  **                   .:.  * .    :::   :*. .** .. *   
+
+Elephant_TP53_RTG9          -------------ERNRLKLVMKNLSLL------------------KLLKSSNTRIQELY	63
+Human_TP53                  PHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNY	236
+Elephant_P53_Canonical      PHHERCSDSDGLAPPQHLQRVEGNLRVEYLDNDNTFRHSVVVPYEPPEVGSDMTTLHYNY	223
+                                           ::*  *  ** :                     : *. * ::  *
+
+Elephant_TP53_RTG9          NLAKRCWNSLLIVPRVLHIS--SGNNNICYKAKENKKELQEAGCPKERL--ESKKLESTE	119
+Human_TP53                  MCNSSCMGGMNRRPILTIITLEDSSGNL---LGRNSFEVRVCACPGRDRRTEEENLRKKG	293
+Elephant_P53_Canonical      MCTSSCMGGMNRRPILTIITLEDSSGNL---LGRNSFEVRVCTCPGRDRRTEEENLRKKG	280
+                               . * ..:   * :  *:  ....*:     .*. *:: . ** .    *.::*... 
+
+Elephant_TP53_RTG9          EPKEMKPKKSK-LKVGSGVRDKAKRSPEAISQKEEQVKLEVPRTSRG------HGLLTFP	172
+Human_TP53                  EPHHELPPGSTKRALPNNTS--SSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELK	351
+Elephant_P53_Canonical      DPHHELPQ-STKRALPTNTS--SSTQPKKKPLDGEYFTLQIRGGDRFELERELNEALELK	337
+                            :*:.  *  *.   : ...   :. .*:    . * ..*::   .*       :  * : 
+
+Elephant_TP53_RTG9          GTQGSQVVVGEPQVVFLKTYHLKASTGDVKQRDGADQWIWFEGLPHRIHLPGPRVRCRSS	232
+Human_TP53                  DAQAG----KEPGGSRAHSSHLKSKKGQSTSRHK---KLMF-------KTEGPDSD----	393
+Elephant_P53_Canonical      DAQAG----KEPGGSSAHS-SLKSKKGQSTSRHR---KLMY-------KTQGPDND----	378
+                            .:*..     **     ::  **:..*: ..*.     : :       :  **       
+
+Elephant_TP53_RTG9          TLRLVKRCCTRYCSATL	249
+Human_TP53                  -----------------	393
+Elephant_P53_Canonical      -----------------	378
+                                             
