@@ -1,0 +1,46 @@
+DATA PROVENANCE LOG
+Project: Elephant TP53 Comparative Analysis
+Researcher: Ritika Rawat
+Degree: MSc Bioinformatics
+
+=========================================
+HUMAN DATA
+=========================================
+Dataset name: Human TP53 protein (canonical)
+Database: UniProt
+UniProt ID: P04637
+Species: Homo sapiens
+Sequence type: Protein FASTA (.fasta)
+Download method: UniProt → Sequence → FASTA (canonical)
+Download date: <08-11-2025>
+Local file: data/raw/human_tp53.fasta
+Source URL: https://www.uniprot.org/uniprotkb/P04637/entry
+
+Notes:
+- Used as query for BLAST search in elephant proteome
+- Reference for alignment and hotspot residue mapping
+
+=========================================
+ELEPHANT DATA
+=========================================
+Dataset name: Asian Elephant Proteome
+Database: NCBI Assembly
+Assembly Accession: GCA_024166365.1   (mEleMax1 primary haplotype)
+Species: Elephas maximus indicus
+Sequence type: Protein FASTA (all proteins)
+Download method: NCBI → Proteins → FASTA download
+Download date: <10-11-2025>
+Local file: data/raw/elephant_proteome.fasta
+Source URL: https://www.ncbi.nlm.nih.gov/assembly/13211691
+
+Notes:
+- Used as target database for BLAST to extract TP53 gene copies
+- Source for identifying functional retrogenes
+
+=========================================
+Future Entries (To be filled later)
+=========================================
+- Elephant TP53 retrogenes (identified via BLAST)
+- Domain annotations (InterPro/Pfam)
+- Structural models (PDB from SWISS-MODEL/AlphaFold)
+- Scoring results (functional prioritization)
