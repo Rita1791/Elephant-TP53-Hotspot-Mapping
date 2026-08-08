@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+
+title: "Comparative In-Silico Analysis of TP53 Mutation Hotspots Between Humans and Elephants"
+
+message: "If you use this repository, methodology, figures, or research framework, please cite the associated published work."
+
+type: software
+
+authors:
+  - family-names: Rawat
+    given-names: Ritika Rajendra
+  - family-names: Nadar
+    given-names: Sermarani
+  - family-names: Uppal
+    given-names: Gursimran Kaur
+
+date-released: 2026-03-01
+
+repository-code: "https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping"
+
+url: "https://doi.org/10.25215/9141002199"
+
+license: MIT
+
+keywords:
+  - TP53
+  - comparative genomics
+  - cancer biology
+  - evolutionary bioinformatics
+  - elephant
+  - Peto's paradox
+  - mutation hotspots
+  - bioinformatics
+  - cancer research
+  - computational biology
