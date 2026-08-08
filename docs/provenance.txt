@@ -1,0 +1,75 @@
+TP53 Project — Data Provenance Record
+Updated: 21-11-2025
+Researcher: Ritika Rawat
+
+=====================================================
+1️⃣ Human TP53 Protein Sequence
+-----------------------------------------------------
+Source: UniProt (Swiss-Prot reviewed)
+Accession: P04637
+Organism: Homo sapiens
+URL: https://www.uniprot.org/uniprotkb/P04637/entry
+File: data/raw/human_tp53.fasta
+Purpose: Reference TP53 for all alignments & BLAST
+=====================================================
+
+2️⃣ Elephant Canonical TP53 Protein Sequence
+-----------------------------------------------------
+Source: NCBI Genome Assembly
+Accession: GCF_024166365.1 (mEleMax1 primary haplotype)
+Organism: Elephas maximus indicus
+URL: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_024166365.1/
+File: data/raw/elephant_tp53_canonical.fasta
+Purpose: Ortholog comparison & baseline functional conservation
+=====================================================
+
+3️⃣ Elephant Proteome (All Predicted Proteins)
+-----------------------------------------------------
+Source: NCBI Genome Assembly Download Package
+Accession: GCF_024166365.1
+File: data/raw/elephant_proteome.fasta
+Purpose: BLAST search to discover TP53 retrogenes/paralogs
+=====================================================
+
+4️⃣ Elephant Genome Assembly Metadata
+-----------------------------------------------------
+Source: NCBI Genome Assembly Download Package
+File: data/raw/elephant_assembly_data_report.jsonl
+Purpose: Assembly documentation & reproducibility support
+=====================================================
+
+5️⃣ TP53 Retrogene 9 (RTG9) — Protein Translation
+-----------------------------------------------------
+Source: NCBI Nucleotide Database
+Accession: KF715863.1
+Organism: Loxodonta africana
+URL: https://www.ncbi.nlm.nih.gov/nuccore/KF715863.1
+File: data/raw/elephant_tp53_RTG9.fasta
+Purpose: TP53 retrogene functional alignment
+=====================================================
+
+6️⃣ Multiple Sequence Alignment Results (Human + Elephant)
+-----------------------------------------------------
+Tool: Clustal Omega — EMBL-EBI
+MSA Image Viewer: JalView
+URL: https://www.ebi.ac.uk/Tools/msa/clustalo/
+Files:
+- results/MSA/combined_tp53_2seq.fasta
+- results/MSA/combined_tp53_3seq.fasta
+Purpose: Conservation analysis, thesis Figures 1–2
+=====================================================
+
+Summary
+-----------------------------------------------------
+Total input sequences: 3
+(1 Human, 2 Elephant — canonical + RTG9)
+Total datasets: 5
+MSA analyses completed: 2 (2-seq & 3-seq)
+Next step: BLAST paralog discovery + phylogeny (Figure 3)
+=====================================================
+
+Publication Reference
+-----------------------------------------------------
+Abegglen et al., 2015. Cancer resistance in elephants.
+JAMA 314(17):1850–1860. https://doi.org/10.1001/jama.2015.13134
+=====================================================
