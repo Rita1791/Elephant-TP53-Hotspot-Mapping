@@ -1,0 +1,7 @@
+id,species,gene_type,length,identity_to_human,GC_content,has_DNA_binding_domain,has_tetramer_domain,hotspot_R175,hotspot_R248,hotspot_R273,predicted_function_score,cluster,notes
+P04637,Homo sapiens,canonical,393,100,,yes,yes,conserved,conserved,conserved,,C0,Human reference TP53
+XP_049714738.1,Elephas maximus,retrogene,?,83.33,,yes,yes,?, ?, ?, ,C1,High similarity RTG
+XP_003416950.3,Loxodonta africana,retrogene,?,83.33,,yes,yes,?, ?, ?, ,C1,African elephant RTG
+XP_049733659.1,Elephas maximus,retrogene,?,59.54,,partial,partial,?, ?, ?, ,C2,Moderate similarity RTG
+XP_010591460.2,Elephas maximus,retrogene,?,59.54,,partial,no,?, ?, ?, ,C2,Moderate similarity RTG
+RTG9_African,Loxodonta africana,retrogene,?,??,,yes,?, ?, ?, ?, ,C3,Published cancer resistance RTG9

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "P04637",
+    "species": "Homo sapiens",
+    "gene_type": "canonical",
+    "length": 393,
+    "identity_to_human": 100,
+    "has_DNA_binding_domain": true,
+    "has_tetramer_domain": true,
+    "hotspot_R175": "conserved",
+    "hotspot_R248": "conserved",
+    "hotspot_R273": "conserved"
+  },
+  ...
+]
