@@ -1,172 +1,105 @@
-#!/usr/bin/env python3
+from pathlib import Path
 
+code = r'''#!/usr/bin/env python3
 """
 TP53 Comparative Analysis
 =========================
 
-Comparative sequence analysis of human and elephant TP53-related sequences.
+Reproducible comparative sequence analysis of human and elephant
+TP53-related protein sequences.
 
-Workflow
---------
-1. Locate repository root
-2. Load TP53_clean.fasta from data/processed/
-3. Validate and clean protein sequences
-4. Identify human TP53 reference
-5. Calculate sequence lengths and amino-acid composition
-6. Calculate pairwise global identity to human TP53
-7. Map human TP53 hotspot positions using alignment-aware coordinates
-8. Calculate hotspot conservation
-9. Generate sequence-level feature table
-10. Generate exploratory clustering
-11. Save reproducible CSV outputs
-12. Save hotspot mapping and summary tables
+This workflow:
+1. Locates the repository root.
+2. Loads data/processed/TP53_clean.fasta.
+3. Validates and normalizes protein sequences.
+4. Identifies the human TP53 reference (UniProt P04637).
+5. Calculates sequence length and amino-acid composition.
+6. Calculates global pairwise amino-acid identity to human TP53.
+7. Maps predefined human TP53 hotspot coordinates through global alignments.
+8. Separates exact residue identity from broader biological interpretation.
+9. Calculates comparative hotspot identity statistics excluding the human reference.
+10. Classifies sequences using accession/description metadata.
+11. Performs optional exploratory K-means clustering on sequence-level features.
+12. Generates publication-ready PNG figures.
+13. Writes CSV and JSON outputs documenting the analysis.
 
-Important
----------
+Important scientific scope
+--------------------------
 This is an exploratory comparative bioinformatics workflow.
 
-It does NOT provide:
-- clinical predictions
-- cancer-risk predictions
-- diagnostic predictions
-- proof of elephant cancer resistance
-- causal biological inference
+It does NOT establish:
+- clinical utility,
+- diagnostic or prognostic value,
+- individual cancer risk,
+- causal mechanisms of elephant cancer resistance,
+- proof of Peto's paradox,
+- functional equivalence of elephant TP53-related sequences,
+- or experimental validation.
 
-The six predefined TP53 hotspots are:
-R175, G245, R248, R249, R273 and R282.
+"Hotspot conservation" in this repository means EXACT AMINO-ACID
+IDENTITY at an alignment-mapped human TP53 hotspot position. It is
+not a substitute for a formal evolutionary conservation score.
 
-Input
------
+Human TP53 hotspots used:
+R175, G245, R248, R249, R273, R282.
+
+Primary input
+-------------
 data/processed/TP53_clean.fasta
 
-Optional input:
-data/processed/TP53_all_sequences.fasta
-
-Outputs
--------
+Primary outputs
+--------------
 results/tp53_sequence_features.csv
 results/tp53_hotspot_mapping.csv
+results/tp53_hotspot_identity_summary.csv
 results/tp53_comparative_features.csv
+results/tp53_comparative_features_clustered.csv
+results/tp53_excluded_sequences.csv
 results/tp53_summary.json
 
+Figures
+-------
 figures/tp53_identity_to_human.png
 figures/tp53_hotspot_conservation.png
 figures/tp53_feature_clustering.png
+
+Run
+---
+python scripts/TP53_Comparative_Analysis.py
 """
 
-# ============================================================
-# 1. STANDARD LIBRARY
-# ============================================================
+from __future__ import annotations
 
 from pathlib import Path
 import json
+import re
 import sys
-import warnings
+from datetime import datetime, timezone
 
-warnings.filterwarnings("ignore")
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-
-# ============================================================
-# 2. THIRD-PARTY LIBRARIES
-# ============================================================
-
-try:
-    import numpy as np
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-
-    from Bio import SeqIO
-    from Bio.Align import PairwiseAligner
-
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.cluster import KMeans
-    from sklearn.metrics import silhouette_score
-
-except ImportError as exc:
-    print("\nERROR: Missing required Python package.")
-    print(f"Details: {exc}")
-    print("\nInstall dependencies with:")
-    print("pip install biopython numpy pandas matplotlib seaborn scikit-learn")
-    sys.exit(1)
+from Bio import SeqIO
+from Bio.Align import PairwiseAligner
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from sklearn.preprocessing import StandardScaler
 
 
 # ============================================================
-# 3. REPOSITORY PATHS
+# 1. CONFIGURATION
 # ============================================================
 
-def find_repository_root():
-    """
-    Locate the repository root.
+PROJECT_NAME = "Elephant TP53 Hotspot Mapping"
+ANALYSIS_NAME = "TP53 Comparative Sequence Analysis"
 
-    The script is expected to live in:
+# Human canonical TP53 protein: UniProt P04637, 393 aa.
+HUMAN_REFERENCE_ACCESSION = "P04637"
+EXPECTED_HUMAN_LENGTH = 393
 
-        repository/scripts/TP53_Comparative_Analysis.py
-
-    Therefore the repository root is normally the parent directory
-    of the scripts directory.
-    """
-
-    script_path = Path(__file__).resolve()
-
-    candidates = [
-        script_path.parent.parent,
-        Path.cwd().resolve(),
-        Path.cwd().resolve().parent,
-    ]
-
-    for candidate in candidates:
-
-        if (
-            (candidate / "data").exists()
-            and (
-                (candidate / ".git").exists()
-                or (candidate / "README.md").exists()
-                or (candidate / "notebooks").exists()
-                or (candidate / "scripts").exists()
-            )
-        ):
-            return candidate
-
-    # Fallback
-    return script_path.parent.parent
-
-
-ROOT = find_repository_root()
-
-DATA_DIR = ROOT / "data"
-PROCESSED_DIR = DATA_DIR / "processed"
-DATABASE_DIR = DATA_DIR / "Database"
-
-RESULTS_DIR = ROOT / "results"
-FIGURES_DIR = ROOT / "figures"
-
-RESULTS_DIR.mkdir(
-    parents=True,
-    exist_ok=True
-)
-
-FIGURES_DIR.mkdir(
-    parents=True,
-    exist_ok=True
-)
-
-
-# ============================================================
-# 4. INPUT FILES
-# ============================================================
-
-CLEAN_FASTA = PROCESSED_DIR / "TP53_clean.fasta"
-ALL_FASTA = PROCESSED_DIR / "TP53_all_sequences.fasta"
-
-# Existing processed pair files are optional.
-PAIR_FASTA = PROCESSED_DIR / "human_elephant_tp53_pair.fasta"
-
-
-# ============================================================
-# 5. TP53 HOTSPOTS
-# ============================================================
-
+# Human TP53 cancer hotspot positions used by this project.
 HOTSPOTS = {
     175: "R175",
     245: "G245",
@@ -176,665 +109,149 @@ HOTSPOTS = {
     282: "R282",
 }
 
+VALID_AMINO_ACIDS = set("ACDEFGHIKLMNPQRSTVWY")
 
-# ============================================================
-# 6. VALID AMINO ACIDS
-# ============================================================
+# Alignment parameters are explicit so the workflow is reproducible.
+ALIGNMENT_MATCH_SCORE = 1.0
+ALIGNMENT_MISMATCH_SCORE = -1.0
+ALIGNMENT_GAP_OPEN_SCORE = -2.0
+ALIGNMENT_GAP_EXTEND_SCORE = -0.5
 
-VALID_AMINO_ACIDS = set(
-    "ACDEFGHIKLMNPQRSTVWY"
-)
-
-
-# ============================================================
-# 7. PRINT HEADER
-# ============================================================
-
-print("=" * 70)
-print("TP53 COMPARATIVE ANALYSIS")
-print("=" * 70)
-
-print(f"\nRepository root:")
-print(ROOT)
-
-print("\nInput directory:")
-print(PROCESSED_DIR)
-
-print("\nOutput directory:")
-print(RESULTS_DIR)
+# Exploratory clustering settings.
+CLUSTER_RANDOM_STATE = 42
+CLUSTER_MAX_K = 4
+MIN_CLUSTER_OBSERVATIONS = 4
 
 
 # ============================================================
-# 8. CHECK INPUT
+# 2. REPOSITORY PATHS
 # ============================================================
 
-if not CLEAN_FASTA.exists():
+def find_repository_root() -> Path:
+    """Locate the repository root from the script location or CWD."""
+    script_path = Path(__file__).resolve()
 
-    print("\nERROR: Required input file was not found:")
-    print(CLEAN_FASTA)
-
-    print("\nExpected repository structure:")
-    print("data/")
-    print("└── processed/")
-    print("    └── TP53_clean.fasta")
-
-    print(
-        "\nThe 41 MB elephant_proteome.fasta is NOT required "
-        "for this analysis."
-    )
-
-    sys.exit(1)
-
-
-# ============================================================
-# 9. FASTA LOADING
-# ============================================================
-
-def load_fasta(path):
-    """
-    Load FASTA records and verify that records exist.
-    """
-
-    records = list(
-        SeqIO.parse(
-            path,
-            "fasta"
-        )
-    )
-
-    if not records:
-        raise ValueError(
-            f"No FASTA records found in: {path}"
-        )
-
-    return records
-
-
-records = load_fasta(
-    CLEAN_FASTA
-)
-
-print(
-    f"\nLoaded sequences: {len(records)}"
-)
-
-
-# ============================================================
-# 10. CLEAN SEQUENCES
-# ============================================================
-
-def clean_sequence(sequence):
-    """
-    Normalize a protein sequence.
-
-    - uppercase
-    - remove whitespace
-    """
-
-    sequence = str(sequence)
-    sequence = sequence.upper()
-    sequence = "".join(sequence.split())
-
-    return sequence
-
-
-cleaned_records = []
-
-invalid_records = []
-
-seen_ids = set()
-
-seen_sequences = set()
-
-
-for record in records:
-
-    sequence = clean_sequence(
-        record.seq
-    )
-
-    # --------------------------------------------------------
-    # Validate sequence
-    # --------------------------------------------------------
-
-    invalid_characters = sorted(
-        set(sequence) - VALID_AMINO_ACIDS
-    )
-
-    if invalid_characters:
-
-        invalid_records.append(
-            {
-                "id": record.id,
-                "invalid_characters": ",".join(
-                    invalid_characters
-                )
-            }
-        )
-
-        continue
-
-    # --------------------------------------------------------
-    # Normalize ID
-    # --------------------------------------------------------
-
-    clean_id = (
-        record.id
-        .replace("|", "_")
-        .replace(" ", "_")
-    )
-
-    # Keep original ID uniqueness
-    if clean_id in seen_ids:
-        continue
-
-    # Avoid exact duplicate sequences
-    if sequence in seen_sequences:
-        continue
-
-    seen_ids.add(clean_id)
-    seen_sequences.add(sequence)
-
-    cleaned_records.append(
-        {
-            "id": clean_id,
-            "description": record.description,
-            "sequence": sequence
-        }
-    )
-
-
-print(
-    f"Valid unique sequences retained: "
-    f"{len(cleaned_records)}"
-)
-
-print(
-    f"Sequences excluded: "
-    f"{len(invalid_records)}"
-)
-
-
-# ============================================================
-# 11. HUMAN TP53 REFERENCE DETECTION
-# ============================================================
-
-def identify_human_reference(sequence_records):
-    """
-    Identify the human TP53 reference.
-
-    The previous workflow identified the UniProt P04637 record as:
-
-        sp_P04637_P53_HUMAN
-
-    Several fallback patterns are included.
-    """
-
-    preferred_patterns = [
-        "P04637",
-        "P53_HUMAN",
-        "TP53_HUMAN",
-        "HUMAN_TP53",
-        "HUMAN"
+    candidates = [
+        script_path.parent.parent,
+        Path.cwd().resolve(),
+        Path.cwd().resolve().parent,
     ]
 
-    for pattern in preferred_patterns:
-
-        for record in sequence_records:
-
-            searchable = (
-                record["id"] + " " +
-                record["description"]
-            ).upper()
-
-            if pattern.upper() in searchable:
-
-                return record
-
-    return None
-
-
-human_record = identify_human_reference(
-    cleaned_records
-)
-
-
-if human_record is None:
-
-    print(
-        "\nERROR: Human TP53 reference could not "
-        "be identified automatically."
-    )
-
-    print("\nAvailable sequence IDs:")
-
-    for record in cleaned_records:
-        print(" -", record["id"])
-
-    print(
-        "\nThe script will not guess a human reference."
-    )
-
-    sys.exit(1)
-
-
-human_id = human_record["id"]
-human_sequence = human_record["sequence"]
-
-
-print("\nHuman TP53 reference:")
-print("ID:", human_id)
-print("Length:", len(human_sequence))
-
-
-# ============================================================
-# 12. VERIFY HUMAN TP53 LENGTH
-# ============================================================
-
-EXPECTED_HUMAN_LENGTH = 393
-
-if len(human_sequence) != EXPECTED_HUMAN_LENGTH:
-
-    print(
-        "\nWARNING:"
-        "\nThe detected human TP53 sequence has length "
-        f"{len(human_sequence)}, not the expected "
-        f"{EXPECTED_HUMAN_LENGTH} residues."
-    )
-
-    print(
-        "Verify the human reference before interpreting "
-        "hotspot coordinates."
-    )
-
-else:
-
-    print(
-        "\nHuman TP53 length check: PASS "
-        f"({EXPECTED_HUMAN_LENGTH} aa)"
-    )
-
-
-# ============================================================
-# 13. VERIFY HUMAN HOTSPOTS
-# ============================================================
-
-print("\nHuman TP53 hotspot reference residues:")
-
-for position, label in HOTSPOTS.items():
-
-    if position > len(human_sequence):
-
-        print(
-            f"{label}: ERROR — position outside sequence"
-        )
-
-        continue
-
-    residue = human_sequence[
-        position - 1
-    ]
-
-    expected_residue = label[0]
-
-    status = (
-        "PASS"
-        if residue == expected_residue
-        else "WARNING"
-    )
-
-    print(
-        f"{label}: "
-        f"reference={residue} "
-        f"expected={expected_residue} "
-        f"[{status}]"
-    )
-
-
-# ============================================================
-# 14. SEQUENCE SUMMARY
-# ============================================================
-
-def amino_acid_composition(sequence):
-
-    length = len(sequence)
-
-    composition = {}
-
-    for amino_acid in sorted(
-        VALID_AMINO_ACIDS
-    ):
-
-        count = sequence.count(
-            amino_acid
-        )
-
-        composition[
-            f"frac_{amino_acid}"
-        ] = (
-            count / length
-            if length > 0
-            else 0.0
-        )
-
-    return composition
-
-
-sequence_rows = []
-
-for record in cleaned_records:
-
-    sequence = record["sequence"]
-
-    row = {
-        "id": record["id"],
-        "length": len(sequence),
-        "is_human_reference": (
-            record["id"] == human_id
-        )
-    }
-
-    row.update(
-        amino_acid_composition(
-            sequence
-        )
-    )
-
-    sequence_rows.append(row)
-
-
-sequence_df = pd.DataFrame(
-    sequence_rows
-)
-
-
-# ============================================================
-# 15. PAIRWISE ALIGNER
-# ============================================================
-
-aligner = PairwiseAligner()
-
-aligner.mode = "global"
-
-# Identity-oriented scoring.
-# This is used to calculate positional correspondence
-# and exact residue identity.
-aligner.match_score = 1.0
-aligner.mismatch_score = 0.0
-
-aligner.open_gap_score = -1.0
-aligner.extend_gap_score = -0.1
-
-
-# ============================================================
-# 16. ALIGNMENT-AWARE IDENTITY
-# ============================================================
-
-def calculate_pairwise_identity(
-    reference,
-    query
-):
-    """
-    Calculate exact amino-acid identity after global alignment.
-
-    Identity =
-        identical aligned residues /
-        aligned non-gap residue pairs
-    """
-
-    alignment = aligner.align(
-        reference,
-        query
-    )[0]
-
-    aligned_reference = alignment[0]
-    aligned_query = alignment[1]
-
-    matches = 0
-    comparable_positions = 0
-
-    for ref_residue, query_residue in zip(
-        aligned_reference,
-        aligned_query
-    ):
-
+    for candidate in candidates:
         if (
-            ref_residue != "-"
-            and query_residue != "-"
-        ):
-
-            comparable_positions += 1
-
-            if (
-                ref_residue
-                == query_residue
-            ):
-
-                matches += 1
-
-    if comparable_positions == 0:
-
-        return np.nan
-
-    return (
-        matches
-        / comparable_positions
-    )
-
-
-# ============================================================
-# 17. MAP HUMAN REFERENCE POSITION
-# ============================================================
-
-def map_reference_position(
-    reference,
-    query,
-    reference_position
-):
-    """
-    Map a human-reference residue position onto
-    a query sequence using a global alignment.
-
-    The reference counter advances only when a
-    non-gap residue occurs in the aligned reference.
-
-    This prevents direct indexing errors caused
-    by alignment gaps.
-    """
-
-    alignment = aligner.align(
-        reference,
-        query
-    )[0]
-
-    aligned_reference = alignment[0]
-    aligned_query = alignment[1]
-
-    reference_counter = 0
-
-    for (
-        ref_residue,
-        query_residue
-    ) in zip(
-        aligned_reference,
-        aligned_query
-    ):
-
-        if ref_residue != "-":
-
-            reference_counter += 1
-
-        if (
-            reference_counter
-            == reference_position
-        ):
-
-            return query_residue
-
-    return None
-
-
-# ============================================================
-# 18. CALCULATE SEQUENCE IDENTITIES
-# ============================================================
-
-similarity_rows = []
-
-print(
-    "\nCalculating pairwise identity "
-    "relative to human TP53..."
-)
-
-
-for record in cleaned_records:
-
-    identity = calculate_pairwise_identity(
-        human_sequence,
-        record["sequence"]
-    )
-
-    similarity_rows.append(
-        {
-            "id": record["id"],
-            "identity_to_human": identity,
-            "identity_to_human_percent": (
-                identity * 100
-                if not np.isnan(identity)
-                else np.nan
+            (candidate / "data").is_dir()
+            and (
+                (candidate / ".git").exists()
+                or (candidate / "README.md").exists()
+                or (candidate / "scripts").is_dir()
             )
-        }
+        ):
+            return candidate
+
+    raise RuntimeError(
+        "Could not identify the repository root. "
+        "Run this script from the repository or place it in scripts/."
     )
 
 
-similarity_df = pd.DataFrame(
-    similarity_rows
-)
+ROOT = find_repository_root()
+
+DATA_DIR = ROOT / "data"
+PROCESSED_DIR = DATA_DIR / "processed"
+
+RESULTS_DIR = ROOT / "results"
+FIGURES_DIR = ROOT / "figures"
+
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+
+CLEAN_FASTA = PROCESSED_DIR / "TP53_clean.fasta"
 
 
 # ============================================================
-# 19. HOTSPOT MAPPING
+# 3. OUTPUT PATHS
 # ============================================================
 
-hotspot_rows = []
+SEQUENCE_FEATURES_OUTPUT = RESULTS_DIR / "tp53_sequence_features.csv"
+HOTSPOT_OUTPUT = RESULTS_DIR / "tp53_hotspot_mapping.csv"
+HOTSPOT_SUMMARY_OUTPUT = RESULTS_DIR / "tp53_hotspot_identity_summary.csv"
+COMPARATIVE_OUTPUT = RESULTS_DIR / "tp53_comparative_features.csv"
+CLUSTER_OUTPUT = RESULTS_DIR / "tp53_comparative_features_clustered.csv"
+EXCLUDED_OUTPUT = RESULTS_DIR / "tp53_excluded_sequences.csv"
+SUMMARY_OUTPUT = RESULTS_DIR / "tp53_summary.json"
 
-print(
-    "\nMapping TP53 hotspots..."
-)
+IDENTITY_FIGURE = FIGURES_DIR / "tp53_identity_to_human.png"
+HOTSPOT_FIGURE = FIGURES_DIR / "tp53_hotspot_conservation.png"
+CLUSTER_FIGURE = FIGURES_DIR / "tp53_feature_clustering.png"
 
 
-for record in cleaned_records:
+# ============================================================
+# 4. UTILITY FUNCTIONS
+# ============================================================
 
-    sequence = record["sequence"]
+def print_header(title: str) -> None:
+    """Print a consistent terminal section header."""
+    print("\n" + "=" * 72)
+    print(title)
+    print("=" * 72)
 
-    row = {
-        "id": record["id"]
+
+def relative_path(path: Path) -> str:
+    """Return a repository-relative path when possible."""
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
+def clean_sequence(sequence: str) -> str:
+    """Normalize a protein sequence to uppercase without whitespace."""
+    return "".join(str(sequence).upper().split())
+
+
+def extract_accession(record_id: str) -> str | None:
+    """
+    Extract a common accession-like token from a FASTA identifier.
+
+    Examples:
+        sp_P04637_P53_HUMAN -> P04637
+        XP_049714738.1       -> XP_049714738.1
+    """
+    match = re.search(
+        r"(?:sp_)?([A-Z]{1,4}_?\d+(?:\.\d+)?)",
+        record_id.upper(),
+    )
+    return match.group(1) if match else None
+
+
+def amino_acid_composition(sequence: str) -> dict[str, float]:
+    """Calculate amino-acid fractions for the 20 standard residues."""
+    length = len(sequence)
+    return {
+        f"frac_{aa}": (
+            sequence.count(aa) / length if length else np.nan
+        )
+        for aa in sorted(VALID_AMINO_ACIDS)
     }
 
-    conserved_values = []
 
-    for position, label in HOTSPOTS.items():
+def classify_sequence(record: dict) -> str:
+    """
+    Assign a broad sequence category from accession/description metadata.
 
-        query_residue = map_reference_position(
-            human_sequence,
-            sequence,
-            position
-        )
-
-        human_residue = human_sequence[
-            position - 1
-        ]
-
-        conserved = (
-            query_residue is not None
-            and query_residue
-            == human_residue
-        )
-
-        row[
-            f"{label}_human"
-        ] = human_residue
-
-        row[
-            f"{label}_query"
-        ] = (
-            query_residue
-            if query_residue is not None
-            else "-"
-        )
-
-        row[
-            f"{label}_conserved"
-        ] = bool(conserved)
-
-        conserved_values.append(
-            int(conserved)
-        )
-
-    row[
-        "hotspot_conservation_fraction"
-    ] = (
-        np.mean(
-            conserved_values
-        )
-        if conserved_values
-        else np.nan
-    )
-
-    row[
-        "hotspot_conservation_percent"
-    ] = (
-        row[
-            "hotspot_conservation_fraction"
-        ] * 100
-    )
-
-    hotspot_rows.append(
-        row
-    )
-
-
-hotspot_df = pd.DataFrame(
-    hotspot_rows
-)
-
-
-# ============================================================
-# 20. MERGE FEATURES
-# ============================================================
-
-feature_df = (
-    sequence_df
-    .merge(
-        similarity_df,
-        on="id",
-        how="left"
-    )
-    .merge(
-        hotspot_df,
-        on="id",
-        how="left"
-    )
-)
-
-
-# ============================================================
-# 21. ADD SEQUENCE CATEGORY
-# ============================================================
-
-def classify_sequence(record):
-
+    Classification is metadata-based and should not be interpreted as
+    an independently verified taxonomic annotation.
+    """
     text = (
-        record["id"]
-        + " "
-        + record["description"]
+        f'{record["id"]} {record["description"]}'
     ).lower()
 
     if (
-        "human" in text
+        "p04637" in text
         or "p53_human" in text
-        or "p04637" in text
+        or "tp53_human" in text
+        or "human tp53" in text
     ):
-
         return "Human"
 
     if (
@@ -842,725 +259,1262 @@ def classify_sequence(record):
         or "retro" in text
         or "rtg" in text
     ):
-
         return "Elephant_retrogene"
 
     if (
-        "elephas" in text
-        or "elephant" in text
+        "loxodonta" in text
+        or "african elephant" in text
     ):
+        return "African_elephant"
 
-        if (
-            "african" in text
-            or "loxodonta" in text
-        ):
+    if (
+        "elephas" in text
+        or "asian elephant" in text
+    ):
+        return "Asian_elephant"
 
-            return "African_elephant"
-
-        if (
-            "asian" in text
-            or "maximus" in text
-        ):
-
-            return "Asian_elephant"
-
+    if "elephant" in text:
         return "Elephant"
 
     return "Other"
 
 
-classification_lookup = {}
+# ============================================================
+# 5. FASTA VALIDATION AND LOADING
+# ============================================================
 
-for record in cleaned_records:
+def load_and_validate_fasta(path: Path) -> tuple[list[dict], list[dict], dict]:
+    """
+    Load FASTA records.
 
-    classification_lookup[
-        record["id"]
-    ] = classify_sequence(
-        record
-    )
+    Records with invalid amino-acid symbols are excluded and documented.
+    Duplicate sequence IDs are excluded because they are ambiguous.
+    Exact duplicate sequences with different IDs are retained because
+    they may represent distinct biological records/accessions.
+    """
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Required input file was not found: {path}"
+        )
 
+    raw_records = list(SeqIO.parse(path, "fasta"))
 
-feature_df["sequence_category"] = (
-    feature_df["id"]
-    .map(classification_lookup)
-)
+    if not raw_records:
+        raise ValueError(f"No FASTA records found in: {path}")
+
+    cleaned_records: list[dict] = []
+    excluded_records: list[dict] = []
+    seen_ids: set[str] = set()
+
+    for record in raw_records:
+        sequence = clean_sequence(record.seq)
+
+        invalid = sorted(set(sequence) - VALID_AMINO_ACIDS)
+
+        clean_id = (
+            record.id
+            .replace("|", "_")
+            .replace(" ", "_")
+        )
+
+        if clean_id in seen_ids:
+            excluded_records.append(
+                {
+                    "id": clean_id,
+                    "reason": "duplicate_sequence_id",
+                    "details": "A record with the same normalized ID was already retained.",
+                }
+            )
+            continue
+
+        seen_ids.add(clean_id)
+
+        if invalid:
+            excluded_records.append(
+                {
+                    "id": clean_id,
+                    "reason": "invalid_amino_acid_symbols",
+                    "details": ",".join(invalid),
+                }
+            )
+            continue
+
+        if not sequence:
+            excluded_records.append(
+                {
+                    "id": clean_id,
+                    "reason": "empty_sequence",
+                    "details": "Sequence contained no residues.",
+                }
+            )
+            continue
+
+        cleaned_records.append(
+            {
+                "id": clean_id,
+                "description": record.description,
+                "sequence": sequence,
+            }
+        )
+
+    metadata = {
+        "input_records": len(raw_records),
+        "retained_records": len(cleaned_records),
+        "excluded_records": len(excluded_records),
+    }
+
+    return cleaned_records, excluded_records, metadata
 
 
 # ============================================================
-# 22. SORT BY HUMAN IDENTITY
+# 6. HUMAN REFERENCE IDENTIFICATION
 # ============================================================
 
-feature_df = feature_df.sort_values(
-    by="identity_to_human",
-    ascending=False
-).reset_index(
-    drop=True
-)
+def identify_human_reference(records: list[dict]) -> dict:
+    """
+    Identify the canonical human TP53 reference.
 
+    P04637 is required as the preferred identifier. A conservative
+    fallback checks explicit human TP53 naming rather than the broad
+    word 'human' alone.
+    """
+    preferred_patterns = [
+        "P04637",
+        "sp_P04637_P53_HUMAN",
+        "P53_HUMAN",
+        "TP53_HUMAN",
+    ]
 
-# ============================================================
-# 23. SAVE BASIC SEQUENCE FEATURES
-# ============================================================
-
-sequence_features_output = (
-    RESULTS_DIR
-    / "tp53_sequence_features.csv"
-)
-
-sequence_df.to_csv(
-    sequence_features_output,
-    index=False
-)
-
-
-# ============================================================
-# 24. SAVE HOTSPOT MAPPING
-# ============================================================
-
-hotspot_output = (
-    RESULTS_DIR
-    / "tp53_hotspot_mapping.csv"
-)
-
-hotspot_df.to_csv(
-    hotspot_output,
-    index=False
-)
-
-
-# ============================================================
-# 25. SAVE COMPLETE COMPARATIVE FEATURES
-# ============================================================
-
-comparative_output = (
-    RESULTS_DIR
-    / "tp53_comparative_features.csv"
-)
-
-feature_df.to_csv(
-    comparative_output,
-    index=False
-)
-
-
-print("\nSaved tables:")
-print(" -", sequence_features_output)
-print(" -", hotspot_output)
-print(" -", comparative_output)
-
-
-# ============================================================
-# 26. PRINT HOTSPOT SUMMARY
-# ============================================================
-
-print("\n" + "=" * 70)
-print("HOTSPOT CONSERVATION SUMMARY")
-print("=" * 70)
-
-for position, label in HOTSPOTS.items():
-
-    column = (
-        f"{label}_conserved"
-    )
-
-    if column not in hotspot_df.columns:
-        continue
-
-    conservation_rate = (
-        hotspot_df[column]
-        .mean()
-        * 100
-    )
-
-    print(
-        f"{label}: "
-        f"{conservation_rate:.2f}% "
-        f"of analyzed sequences conserved"
-    )
-
-
-# ============================================================
-# 27. PRINT SEQUENCE IDENTITY SUMMARY
-# ============================================================
-
-print("\n" + "=" * 70)
-print("SEQUENCE IDENTITY SUMMARY")
-print("=" * 70)
-
-identity_summary = (
-    feature_df[
-        [
-            "id",
-            "sequence_category",
-            "length",
-            "identity_to_human_percent",
-            "hotspot_conservation_percent"
+    for pattern in preferred_patterns:
+        matches = [
+            record
+            for record in records
+            if pattern.lower() in (
+                f'{record["id"]} {record["description"]}'
+            ).lower()
         ]
-    ]
-)
 
-print(
-    identity_summary.to_string(
-        index=False
+        if matches:
+            return matches[0]
+
+    raise RuntimeError(
+        "Canonical human TP53 reference P04637 could not be identified. "
+        "The script will not silently guess another human sequence."
     )
-)
 
 
 # ============================================================
-# 28. EXPLORATORY CLUSTERING
+# 7. HUMAN REFERENCE VALIDATION
 # ============================================================
 
-CLUSTER_FEATURES = [
-    "length",
-    "identity_to_human",
-    "hotspot_conservation_fraction"
-]
+def validate_human_reference(human_record: dict) -> dict:
+    """Validate expected human TP53 length and hotspot residues."""
+    sequence = human_record["sequence"]
+
+    validation = {
+        "accession": HUMAN_REFERENCE_ACCESSION,
+        "sequence_id": human_record["id"],
+        "length": len(sequence),
+        "expected_length": EXPECTED_HUMAN_LENGTH,
+        "length_pass": len(sequence) == EXPECTED_HUMAN_LENGTH,
+        "hotspots": {},
+    }
+
+    for position, label in HOTSPOTS.items():
+        if position > len(sequence):
+            validation["hotspots"][label] = {
+                "position": position,
+                "observed": None,
+                "expected": label[0],
+                "pass": False,
+                "status": "outside_sequence",
+            }
+            continue
+
+        observed = sequence[position - 1]
+        expected = label[0]
+
+        validation["hotspots"][label] = {
+            "position": position,
+            "observed": observed,
+            "expected": expected,
+            "pass": observed == expected,
+            "status": "PASS" if observed == expected else "WARNING",
+        }
+
+    return validation
 
 
-cluster_df = feature_df.copy()
+# ============================================================
+# 8. GLOBAL ALIGNMENT
+# ============================================================
 
-available_cluster_features = [
-    column
-    for column in CLUSTER_FEATURES
-    if column in cluster_df.columns
-]
+def create_aligner() -> PairwiseAligner:
+    """Create the explicit global alignment configuration."""
+    aligner = PairwiseAligner()
+    aligner.mode = "global"
+    aligner.match_score = ALIGNMENT_MATCH_SCORE
+    aligner.mismatch_score = ALIGNMENT_MISMATCH_SCORE
+    aligner.open_gap_score = ALIGNMENT_GAP_OPEN_SCORE
+    aligner.extend_gap_score = ALIGNMENT_GAP_EXTEND_SCORE
+    return aligner
 
 
-cluster_data = (
-    cluster_df[
-        available_cluster_features
-    ]
-    .replace(
-        [np.inf, -np.inf],
-        np.nan
+ALIGNER = create_aligner()
+
+
+def get_best_alignment(reference: str, query: str):
+    """Return the highest-scoring global alignment."""
+    return ALIGNER.align(reference, query)[0]
+
+
+def calculate_pairwise_identity(
+    reference: str,
+    query: str,
+) -> tuple[float, int, int]:
+    """
+    Calculate exact amino-acid identity after global alignment.
+
+    Denominator:
+        aligned positions where neither sequence contains a gap.
+
+    Returns:
+        identity_fraction, identical_positions, comparable_positions
+    """
+    alignment = get_best_alignment(reference, query)
+
+    aligned_reference = alignment[0]
+    aligned_query = alignment[1]
+
+    matches = 0
+    comparable = 0
+
+    for ref_residue, query_residue in zip(
+        aligned_reference,
+        aligned_query,
+    ):
+        if ref_residue == "-" or query_residue == "-":
+            continue
+
+        comparable += 1
+
+        if ref_residue == query_residue:
+            matches += 1
+
+    if comparable == 0:
+        return np.nan, 0, 0
+
+    return matches / comparable, matches, comparable
+
+
+def map_reference_position(
+    reference: str,
+    query: str,
+    reference_position: int,
+) -> dict:
+    """
+    Map a 1-based human TP53 residue position through a global alignment.
+
+    Returns a structured result distinguishing:
+        mapped residue,
+        alignment gap,
+        and unmapped coordinate.
+    """
+    alignment = get_best_alignment(reference, query)
+
+    aligned_reference = alignment[0]
+    aligned_query = alignment[1]
+
+    reference_counter = 0
+
+    for ref_residue, query_residue in zip(
+        aligned_reference,
+        aligned_query,
+    ):
+        if ref_residue != "-":
+            reference_counter += 1
+
+            if reference_counter == reference_position:
+                if query_residue == "-":
+                    return {
+                        "status": "gap",
+                        "residue": "-",
+                    }
+
+                return {
+                    "status": "mapped",
+                    "residue": query_residue,
+                }
+
+    return {
+        "status": "unmapped",
+        "residue": None,
+    }
+
+
+# ============================================================
+# 9. SEQUENCE-LEVEL FEATURES
+# ============================================================
+
+def build_sequence_features(
+    records: list[dict],
+    human_id: str,
+) -> pd.DataFrame:
+    """Build sequence length and amino-acid composition features."""
+    rows = []
+
+    for record in records:
+        sequence = record["sequence"]
+
+        row = {
+            "id": record["id"],
+            "accession": extract_accession(record["id"]),
+            "length": len(sequence),
+            "is_human_reference": record["id"] == human_id,
+            "sequence_category": classify_sequence(record),
+        }
+
+        row.update(amino_acid_composition(sequence))
+        rows.append(row)
+
+    return pd.DataFrame(rows)
+
+
+# ============================================================
+# 10. PAIRWISE IDENTITY FEATURES
+# ============================================================
+
+def build_identity_features(
+    records: list[dict],
+    human_sequence: str,
+) -> pd.DataFrame:
+    """Calculate global identity of every sequence to human TP53."""
+    rows = []
+
+    for record in records:
+        identity, matches, comparable = calculate_pairwise_identity(
+            human_sequence,
+            record["sequence"],
+        )
+
+        rows.append(
+            {
+                "id": record["id"],
+                "identity_to_human": identity,
+                "identity_to_human_percent": (
+                    identity * 100
+                    if not np.isnan(identity)
+                    else np.nan
+                ),
+                "identical_aligned_residues": matches,
+                "comparable_aligned_residues": comparable,
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
+# ============================================================
+# 11. HOTSPOT MAPPING
+# ============================================================
+
+def build_hotspot_mapping(
+    records: list[dict],
+    human_id: str,
+    human_sequence: str,
+) -> pd.DataFrame:
+    """
+    Map all predefined human TP53 hotspots onto every sequence.
+
+    Exact residue identity is recorded independently from mapping status.
+    """
+    rows = []
+
+    for record in records:
+        sequence = record["sequence"]
+
+        row = {
+            "id": record["id"],
+            "is_human_reference": record["id"] == human_id,
+        }
+
+        conserved_flags = []
+        evaluable_flags = []
+
+        for position, label in HOTSPOTS.items():
+            human_residue = human_sequence[position - 1]
+
+            mapped = map_reference_position(
+                human_sequence,
+                sequence,
+                position,
+            )
+
+            query_residue = mapped["residue"]
+            status = mapped["status"]
+
+            is_conserved = (
+                status == "mapped"
+                and query_residue == human_residue
+            )
+
+            is_evaluable = status == "mapped"
+
+            row[f"{label}_human"] = human_residue
+            row[f"{label}_query"] = (
+                query_residue if query_residue is not None else "-"
+            )
+            row[f"{label}_status"] = status
+            row[f"{label}_conserved"] = bool(is_conserved)
+
+            conserved_flags.append(int(is_conserved))
+            evaluable_flags.append(int(is_evaluable))
+
+        evaluable_count = int(sum(evaluable_flags))
+        conserved_count = int(sum(conserved_flags))
+
+        row["hotspots_total"] = len(HOTSPOTS)
+        row["hotspots_evaluable"] = evaluable_count
+        row["hotspots_conserved"] = conserved_count
+        row["hotspot_conservation_fraction"] = (
+            conserved_count / evaluable_count
+            if evaluable_count
+            else np.nan
+        )
+        row["hotspot_conservation_percent"] = (
+            row["hotspot_conservation_fraction"] * 100
+            if not np.isnan(row["hotspot_conservation_fraction"])
+            else np.nan
+        )
+
+        rows.append(row)
+
+    return pd.DataFrame(rows)
+
+
+# ============================================================
+# 12. COMPARATIVE HOTSPOT SUMMARY
+# ============================================================
+
+def build_hotspot_identity_summary(
+    hotspot_df: pd.DataFrame,
+    human_id: str,
+    human_sequence: str,
+) -> pd.DataFrame:
+    """
+    Summarize hotspot identity across comparative sequences.
+
+    The human reference is explicitly excluded from the denominator.
+    Gaps and unmapped positions are not counted as exact residue identity.
+    """
+    comparative_df = hotspot_df[
+        hotspot_df["id"] != human_id
+    ].copy()
+
+    rows = []
+
+    for position, label in HOTSPOTS.items():
+        residue_column = f"{label}_query"
+        status_column = f"{label}_status"
+        conserved_column = f"{label}_conserved"
+
+        mapped_mask = comparative_df[status_column] == "mapped"
+        gap_mask = comparative_df[status_column] == "gap"
+        unmapped_mask = comparative_df[status_column] == "unmapped"
+
+        mapped_count = int(mapped_mask.sum())
+        conserved_count = int(
+            comparative_df.loc[
+                mapped_mask,
+                conserved_column,
+            ].sum()
+        )
+
+        substituted_count = mapped_count - conserved_count
+
+        gap_count = int(gap_mask.sum())
+        unmapped_count = int(unmapped_mask.sum())
+
+        rows.append(
+            {
+                "hotspot": label,
+                "human_position": position,
+                "human_residue": human_sequence[position - 1],
+                "comparative_sequences": len(comparative_df),
+                "mapped": mapped_count,
+                "conserved": conserved_count,
+                "substituted": substituted_count,
+                "gaps": gap_count,
+                "unmapped": unmapped_count,
+                "exact_residue_identity_percent": (
+                    round(
+                        conserved_count / mapped_count * 100,
+                        2,
+                    )
+                    if mapped_count
+                    else np.nan
+                ),
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
+# ============================================================
+# 13. MERGE COMPLETE FEATURE TABLE
+# ============================================================
+
+def build_complete_feature_table(
+    sequence_df: pd.DataFrame,
+    identity_df: pd.DataFrame,
+    hotspot_df: pd.DataFrame,
+) -> pd.DataFrame:
+    """Merge all sequence-level, identity, and hotspot features."""
+    feature_df = (
+        sequence_df
+        .merge(identity_df, on="id", how="left")
+        .merge(hotspot_df, on=["id"], how="left")
     )
-)
+
+    return feature_df.sort_values(
+        by="identity_to_human",
+        ascending=False,
+        na_position="last",
+    ).reset_index(drop=True)
 
 
-# Remove rows with incomplete
-# clustering features.
+# ============================================================
+# 14. EXPLORATORY CLUSTERING
+# ============================================================
 
-valid_cluster_rows = (
-    cluster_data
-    .dropna()
-)
+def exploratory_clustering(
+    feature_df: pd.DataFrame,
+) -> tuple[pd.DataFrame, dict]:
+    """
+    Perform exploratory K-means clustering on comparative sequences.
 
+    The human reference is excluded from clustering because it is the
+    reference anchor and would otherwise be treated as another biological
+    observation.
 
-if len(valid_cluster_rows) >= 3:
+    Features:
+        length
+        identity_to_human
+        hotspot_conservation_fraction
+
+    Clustering is descriptive/exploratory and is not a predictive model.
+    """
+    result = feature_df.copy()
+
+    result["cluster"] = pd.Series(
+        pd.NA,
+        index=result.index,
+        dtype="Int64",
+    )
+    result["silhouette_score"] = np.nan
+
+    comparative_mask = ~result["is_human_reference"].astype(bool)
+
+    cluster_features = [
+        "length",
+        "identity_to_human",
+        "hotspot_conservation_fraction",
+    ]
+
+    valid = (
+        result.loc[
+            comparative_mask,
+            cluster_features,
+        ]
+        .replace([np.inf, -np.inf], np.nan)
+        .dropna()
+    )
+
+    metadata = {
+        "performed": False,
+        "features": cluster_features,
+        "observations": int(len(valid)),
+        "selected_k": None,
+        "silhouette_score": None,
+    }
+
+    if len(valid) < MIN_CLUSTER_OBSERVATIONS:
+        return result, metadata
+
+    max_k = min(CLUSTER_MAX_K, len(valid) - 1)
+
+    if max_k < 2:
+        return result, metadata
 
     scaler = StandardScaler()
-
-    X_scaled = scaler.fit_transform(
-        valid_cluster_rows
-    )
-
-    # --------------------------------------------------------
-    # Determine a conservative cluster count.
-    # --------------------------------------------------------
-
-    max_k = min(
-        4,
-        len(valid_cluster_rows) - 1
-    )
+    X_scaled = scaler.fit_transform(valid)
 
     best_k = None
     best_score = -np.inf
 
-    for k in range(
-        2,
-        max_k + 1
-    ):
-
+    for k in range(2, max_k + 1):
         model = KMeans(
             n_clusters=k,
-            random_state=42,
-            n_init=20
+            random_state=CLUSTER_RANDOM_STATE,
+            n_init=20,
         )
 
-        labels = model.fit_predict(
-            X_scaled
-        )
+        labels = model.fit_predict(X_scaled)
 
-        # Silhouette requires at least
-        # two unique clusters.
-
-        if len(
-            np.unique(labels)
-        ) < 2:
-
+        if len(np.unique(labels)) < 2:
             continue
 
-        score = silhouette_score(
-            X_scaled,
-            labels
-        )
+        score = silhouette_score(X_scaled, labels)
 
         if score > best_score:
-
             best_score = score
             best_k = k
 
-    if best_k is not None:
+    if best_k is None:
+        return result, metadata
 
-        final_model = KMeans(
-            n_clusters=best_k,
-            random_state=42,
-            n_init=20
-        )
+    final_model = KMeans(
+        n_clusters=best_k,
+        random_state=CLUSTER_RANDOM_STATE,
+        n_init=20,
+    )
 
-        final_labels = (
-            final_model
-            .fit_predict(X_scaled)
-        )
+    final_labels = final_model.fit_predict(X_scaled)
 
-        cluster_df.loc[
-            valid_cluster_rows.index,
-            "cluster"
-        ] = final_labels
+    result.loc[
+        valid.index,
+        "cluster",
+    ] = final_labels
 
-        cluster_df[
-            "cluster"
-        ] = cluster_df[
-            "cluster"
-        ].astype(
-            "Int64"
-        )
+    result.loc[
+        valid.index,
+        "silhouette_score",
+    ] = best_score
 
-        cluster_df[
-            "silhouette_score"
-        ] = np.nan
+    result["cluster"] = result["cluster"].astype("Int64")
 
-        cluster_df.loc[
-            valid_cluster_rows.index,
-            "silhouette_score"
-        ] = best_score
+    metadata.update(
+        {
+            "performed": True,
+            "selected_k": int(best_k),
+            "silhouette_score": float(best_score),
+        }
+    )
 
-        print(
-            "\nExploratory clustering:"
-        )
+    return result, metadata
 
-        print(
-            f"Selected clusters: {best_k}"
-        )
 
-        print(
-            f"Silhouette score: "
-            f"{best_score:.4f}"
-        )
+# ============================================================
+# 15. FIGURES
+# ============================================================
 
-    else:
-
-        print(
-            "\nClustering skipped: "
-            "no valid cluster solution."
-        )
-
-else:
-
-    cluster_df["cluster"] = pd.NA
-
-    cluster_df[
-        "silhouette_score"
-    ] = np.nan
-
-    print(
-        "\nClustering skipped: "
-        "insufficient valid observations."
+def configure_plot_style() -> None:
+    """Apply a clean, consistent figure style."""
+    sns.set_theme(
+        style="whitegrid",
+        context="notebook",
     )
 
 
-# ============================================================
-# 29. SAVE CLUSTERED DATASET
-# ============================================================
-
-cluster_output = (
-    RESULTS_DIR
-    / "tp53_comparative_features_clustered.csv"
-)
-
-cluster_df.to_csv(
-    cluster_output,
-    index=False
-)
-
-print(
-    "\nSaved clustered dataset:"
-)
-
-print(
-    cluster_output
-)
-
-
-# ============================================================
-# 30. FIGURE 1 — HUMAN IDENTITY
-# ============================================================
-
-plot_df = feature_df.copy()
-
-plot_df = plot_df.sort_values(
-    "identity_to_human_percent",
-    ascending=True
-)
-
-
-plt.figure(
-    figsize=(
-        10,
-        max(
-            5,
-            len(plot_df) * 0.35
-        )
+def plot_identity(feature_df: pd.DataFrame) -> None:
+    """Plot global sequence identity relative to human TP53."""
+    plot_df = feature_df.sort_values(
+        "identity_to_human_percent",
+        ascending=True,
     )
-)
 
-plt.barh(
-    plot_df["id"],
-    plot_df[
-        "identity_to_human_percent"
+    height = max(5, len(plot_df) * 0.35)
+
+    plt.figure(figsize=(10, height))
+
+    sns.barplot(
+        data=plot_df,
+        x="identity_to_human_percent",
+        y="id",
+        hue="sequence_category",
+        dodge=False,
+        legend=True,
+    )
+
+    plt.xlabel("Global amino-acid identity to human TP53 (%)")
+    plt.ylabel("Sequence")
+    plt.title(
+        "TP53 Sequence Identity Relative to Human Reference"
+    )
+    plt.xlim(0, 100)
+    plt.tight_layout()
+
+    plt.savefig(
+        IDENTITY_FIGURE,
+        dpi=300,
+        bbox_inches="tight",
+    )
+    plt.close()
+
+
+def plot_hotspot_conservation(
+    hotspot_df: pd.DataFrame,
+    human_id: str,
+) -> None:
+    """Plot exact residue identity at mapped TP53 hotspots."""
+    comparative_df = hotspot_df[
+        hotspot_df["id"] != human_id
+    ].copy()
+
+    if comparative_df.empty:
+        return
+
+    conservation_columns = [
+        f"{label}_conserved"
+        for label in HOTSPOTS.values()
     ]
-)
 
-plt.xlabel(
-    "Identity to human TP53 (%)"
-)
-
-plt.ylabel(
-    "Sequence"
-)
-
-plt.title(
-    "Sequence Identity Relative to Human TP53"
-)
-
-plt.tight_layout()
-
-identity_figure = (
-    FIGURES_DIR
-    / "tp53_identity_to_human.png"
-)
-
-plt.savefig(
-    identity_figure,
-    dpi=300,
-    bbox_inches="tight"
-)
-
-plt.close()
-
-
-# ============================================================
-# 31. FIGURE 2 — HOTSPOT CONSERVATION
-# ============================================================
-
-conservation_columns = [
-    f"{label}_conserved"
-    for label in HOTSPOTS.values()
-]
-
-
-heatmap_data = (
-    hotspot_df[
-        [
-            "id"
+    heatmap_data = (
+        comparative_df[
+            ["id"] + conservation_columns
         ]
-        + conservation_columns
-    ]
-    .set_index("id")
-    .astype(int)
-)
-
-
-heatmap_data.columns = [
-    label
-    for label in HOTSPOTS.values()
-]
-
-
-plt.figure(
-    figsize=(
-        10,
-        max(
-            5,
-            len(heatmap_data) * 0.35
-        )
+        .set_index("id")
+        .astype(int)
     )
-)
 
-sns.heatmap(
-    heatmap_data,
-    vmin=0,
-    vmax=1,
-    annot=True,
-    fmt="d",
-    linewidths=0.5,
-    cbar_kws={
-        "label": "Conserved"
-    }
-)
-
-plt.xlabel(
-    "Human TP53 hotspot"
-)
-
-plt.ylabel(
-    "Sequence"
-)
-
-plt.title(
-    "TP53 Hotspot Conservation"
-)
-
-plt.tight_layout()
-
-hotspot_figure = (
-    FIGURES_DIR
-    / "tp53_hotspot_conservation.png"
-)
-
-plt.savefig(
-    hotspot_figure,
-    dpi=300,
-    bbox_inches="tight"
-)
-
-plt.close()
-
-
-# ============================================================
-# 32. FIGURE 3 — EXPLORATORY CLUSTERING
-# ============================================================
-
-if (
-    "cluster" in cluster_df.columns
-    and
-    cluster_df["cluster"].notna().sum() >= 2
-):
+    heatmap_data.columns = list(HOTSPOTS.values())
 
     plt.figure(
-        figsize=(9, 6)
+        figsize=(
+            10,
+            max(5, len(heatmap_data) * 0.35),
+        )
     )
 
+    sns.heatmap(
+        heatmap_data,
+        vmin=0,
+        vmax=1,
+        annot=True,
+        fmt="d",
+        linewidths=0.5,
+        cbar_kws={"label": "Exact residue identity"},
+    )
+
+    plt.xlabel("Human TP53 hotspot")
+    plt.ylabel("Comparative sequence")
+    plt.title(
+        "Exact Amino-Acid Identity at Human TP53 Hotspots"
+    )
+    plt.tight_layout()
+
+    plt.savefig(
+        HOTSPOT_FIGURE,
+        dpi=300,
+        bbox_inches="tight",
+    )
+    plt.close()
+
+
+def plot_clusters(cluster_df: pd.DataFrame) -> None:
+    """Plot exploratory clustering of comparative sequences."""
+    if "cluster" not in cluster_df.columns:
+        return
+
+    plot_df = cluster_df[
+        (~cluster_df["is_human_reference"].astype(bool))
+        & cluster_df["cluster"].notna()
+    ].copy()
+
+    if len(plot_df) < 2:
+        return
+
+    plt.figure(figsize=(9, 6))
+
     sns.scatterplot(
-        data=cluster_df,
+        data=plot_df,
         x="identity_to_human_percent",
         y="hotspot_conservation_percent",
         hue="cluster",
         style="sequence_category",
-        s=100
+        s=100,
     )
 
-    plt.xlabel(
-        "Identity to human TP53 (%)"
-    )
-
-    plt.ylabel(
-        "Hotspot conservation (%)"
-    )
-
+    plt.xlabel("Global identity to human TP53 (%)")
+    plt.ylabel("Exact hotspot residue identity (%)")
     plt.title(
-        "Exploratory TP53 Sequence Clustering"
+        "Exploratory Clustering of TP53-Related Sequences"
     )
-
     plt.tight_layout()
 
-    cluster_figure = (
-        FIGURES_DIR
-        / "tp53_feature_clustering.png"
-    )
-
     plt.savefig(
-        cluster_figure,
+        CLUSTER_FIGURE,
         dpi=300,
-        bbox_inches="tight"
+        bbox_inches="tight",
     )
-
     plt.close()
 
-else:
-
-    print(
-        "\nClustering figure skipped."
-    )
-
 
 # ============================================================
-# 33. SUMMARY JSON
+# 16. JSON-SAFE SUMMARY
 # ============================================================
 
-summary = {
+def clean_for_json(value):
+    """Convert NumPy/Pandas values to JSON-compatible Python values."""
+    if isinstance(value, dict):
+        return {
+            str(k): clean_for_json(v)
+            for k, v in value.items()
+        }
 
-    "project": (
-        "Elephant TP53 Hotspot Mapping"
-    ),
+    if isinstance(value, list):
+        return [clean_for_json(v) for v in value]
 
-    "analysis": (
-        "TP53 Comparative Sequence Analysis"
-    ),
+    if isinstance(value, (np.integer,)):
+        return int(value)
 
-    "input_file": str(
-        CLEAN_FASTA.relative_to(ROOT)
-    ),
-
-    "number_of_input_records": len(
-        records
-    ),
-
-    "number_of_valid_unique_sequences": len(
-        cleaned_records
-    ),
-
-    "number_of_excluded_sequences": len(
-        invalid_records
-    ),
-
-    "human_reference": human_id,
-
-    "human_reference_length": len(
-        human_sequence
-    ),
-
-    "expected_human_reference_length": (
-        EXPECTED_HUMAN_LENGTH
-    ),
-
-    "hotspots": {
-        str(position): label
-        for position, label
-        in HOTSPOTS.items()
-    },
-
-    "hotspot_conservation": {},
-
-    "outputs": {
-        "sequence_features": str(
-            sequence_features_output.relative_to(
-                ROOT
-            )
-        ),
-        "hotspot_mapping": str(
-            hotspot_output.relative_to(
-                ROOT
-            )
-        ),
-        "comparative_features": str(
-            comparative_output.relative_to(
-                ROOT
-            )
-        ),
-        "clustered_features": str(
-            cluster_output.relative_to(
-                ROOT
-            )
-        )
-    },
-
-    "interpretation": (
-        "Exploratory comparative sequence analysis; "
-        "not a clinical or validated predictive model."
-    )
-}
-
-
-for position, label in HOTSPOTS.items():
-
-    column = (
-        f"{label}_conserved"
-    )
-
-    if column in hotspot_df.columns:
-
-        summary[
-            "hotspot_conservation"
-        ][label] = (
-            float(
-                hotspot_df[column].mean()
-            )
+    if isinstance(value, (np.floating,)):
+        return (
+            None
+            if np.isnan(value)
+            else float(value)
         )
 
+    if isinstance(value, (np.bool_,)):
+        return bool(value)
 
-summary_output = (
-    RESULTS_DIR
-    / "tp53_summary.json"
-)
+    return value
 
 
-with open(
-    summary_output,
-    "w",
-    encoding="utf-8"
-) as handle:
+def build_summary(
+    input_metadata: dict,
+    human_record: dict,
+    human_validation: dict,
+    hotspot_summary_df: pd.DataFrame,
+    clustering_metadata: dict,
+    excluded_records: list[dict],
+) -> dict:
+    """Build a machine-readable run summary."""
+    hotspot_summary = {}
 
-    json.dump(
-        summary,
-        handle,
-        indent=2
+    for _, row in hotspot_summary_df.iterrows():
+        hotspot_summary[row["hotspot"]] = {
+            "human_position": int(row["human_position"]),
+            "human_residue": row["human_residue"],
+            "comparative_sequences": int(
+                row["comparative_sequences"]
+            ),
+            "mapped": int(row["mapped"]),
+            "conserved": int(row["conserved"]),
+            "substituted": int(row["substituted"]),
+            "gaps": int(row["gaps"]),
+            "unmapped": int(row["unmapped"]),
+            "exact_residue_identity_percent": (
+                None
+                if pd.isna(
+                    row["exact_residue_identity_percent"]
+                )
+                else float(
+                    row["exact_residue_identity_percent"]
+                )
+            ),
+        }
+
+    summary = {
+        "project": PROJECT_NAME,
+        "analysis": ANALYSIS_NAME,
+        "analysis_timestamp_utc": datetime.now(
+            timezone.utc
+        ).isoformat(),
+        "input": {
+            "file": relative_path(CLEAN_FASTA),
+            **input_metadata,
+        },
+        "reference": {
+            "accession": HUMAN_REFERENCE_ACCESSION,
+            "sequence_id": human_record["id"],
+            "length": len(human_record["sequence"]),
+            "expected_length": EXPECTED_HUMAN_LENGTH,
+            "validation": human_validation,
+        },
+        "hotspots": {
+            str(position): label
+            for position, label in HOTSPOTS.items()
+        },
+        "hotspot_identity_summary": hotspot_summary,
+        "clustering": clustering_metadata,
+        "excluded_records": excluded_records,
+        "outputs": {
+            "sequence_features": relative_path(
+                SEQUENCE_FEATURES_OUTPUT
+            ),
+            "hotspot_mapping": relative_path(
+                HOTSPOT_OUTPUT
+            ),
+            "hotspot_identity_summary": relative_path(
+                HOTSPOT_SUMMARY_OUTPUT
+            ),
+            "comparative_features": relative_path(
+                COMPARATIVE_OUTPUT
+            ),
+            "clustered_features": relative_path(
+                CLUSTER_OUTPUT
+            ),
+            "excluded_sequences": relative_path(
+                EXCLUDED_OUTPUT
+            ),
+            "summary": relative_path(
+                SUMMARY_OUTPUT
+            ),
+        },
+        "figures": {
+            "identity": relative_path(IDENTITY_FIGURE),
+            "hotspot_identity": relative_path(HOTSPOT_FIGURE),
+            "clustering": relative_path(CLUSTER_FIGURE),
+        },
+        "interpretation": {
+            "hotspot_metric": (
+                "Exact amino-acid identity at an "
+                "alignment-mapped human TP53 hotspot position."
+            ),
+            "comparative_denominator": (
+                "Human TP53 reference is excluded; "
+                "only mapped comparative residues contribute."
+            ),
+            "scope": (
+                "Exploratory comparative sequence analysis; "
+                "not a clinical or validated predictive model."
+            ),
+        },
+    }
+
+    return clean_for_json(summary)
+
+
+# ============================================================
+# 17. MAIN WORKFLOW
+# ============================================================
+
+def main() -> int:
+    print_header("TP53 COMPARATIVE ANALYSIS")
+
+    print(f"Repository root : {ROOT}")
+    print(f"Input           : {relative_path(CLEAN_FASTA)}")
+    print(f"Results         : {relative_path(RESULTS_DIR)}")
+    print(f"Figures         : {relative_path(FIGURES_DIR)}")
+
+    # --------------------------------------------------------
+    # Load and validate input
+    # --------------------------------------------------------
+    print_header("1. INPUT VALIDATION")
+
+    records, excluded_records, input_metadata = (
+        load_and_validate_fasta(CLEAN_FASTA)
     )
 
-
-# ============================================================
-# 34. FINAL REPORT
-# ============================================================
-
-print("\n" + "=" * 70)
-print("ANALYSIS COMPLETED")
-print("=" * 70)
-
-print("\nInput:")
-print(
-    CLEAN_FASTA.relative_to(ROOT)
-)
-
-print("\nReference:")
-print(human_id)
-
-print(
-    f"Human TP53 length: "
-    f"{len(human_sequence)} aa"
-)
-
-print(
-    f"Sequences analyzed: "
-    f"{len(cleaned_records)}"
-)
-
-print("\nResults:")
-print(
-    sequence_features_output.relative_to(ROOT)
-)
-
-print(
-    hotspot_output.relative_to(ROOT)
-)
-
-print(
-    comparative_output.relative_to(ROOT)
-)
-
-print(
-    cluster_output.relative_to(ROOT)
-)
-
-print(
-    summary_output.relative_to(ROOT)
-)
-
-print("\nFigures:")
-print(
-    identity_figure.relative_to(ROOT)
-)
-
-print(
-    hotspot_figure.relative_to(ROOT)
-)
-
-if (
-    "cluster_figure" in locals()
-):
     print(
-        cluster_figure.relative_to(ROOT)
+        f"Input records          : "
+        f"{input_metadata['input_records']}"
+    )
+    print(
+        f"Valid records retained : "
+        f"{input_metadata['retained_records']}"
+    )
+    print(
+        f"Records excluded       : "
+        f"{input_metadata['excluded_records']}"
     )
 
-print("\n" + "=" * 70)
-print("DONE")
-print("=" * 70)
+    if not records:
+        raise RuntimeError(
+            "No valid protein sequences remain after validation."
+        )
+
+    # Save exclusions even when empty for auditability.
+    pd.DataFrame(
+        excluded_records,
+        columns=["id", "reason", "details"],
+    ).to_csv(
+        EXCLUDED_OUTPUT,
+        index=False,
+    )
+
+    # --------------------------------------------------------
+    # Human reference
+    # --------------------------------------------------------
+    print_header("2. HUMAN TP53 REFERENCE")
+
+    human_record = identify_human_reference(records)
+    human_id = human_record["id"]
+    human_sequence = human_record["sequence"]
+
+    print(f"Reference ID : {human_id}")
+    print(f"Length       : {len(human_sequence)} aa")
+
+    human_validation = validate_human_reference(
+        human_record
+    )
+
+    if not human_validation["length_pass"]:
+        raise RuntimeError(
+            "The detected P04637 sequence is not 393 aa. "
+            "Verify data/processed/TP53_clean.fasta before "
+            "interpreting hotspot coordinates."
+        )
+
+    for label, details in human_validation["hotspots"].items():
+        print(
+            f"{label}: observed={details['observed']} "
+            f"expected={details['expected']} "
+            f"[{details['status']}]"
+        )
+
+        if not details["pass"]:
+            raise RuntimeError(
+                f"Human TP53 hotspot validation failed for {label}. "
+                "Do not proceed with hotspot interpretation."
+            )
+
+    # --------------------------------------------------------
+    # Sequence features
+    # --------------------------------------------------------
+    print_header("3. SEQUENCE FEATURES")
+
+    sequence_df = build_sequence_features(
+        records,
+        human_id,
+    )
+
+    print(
+        f"Sequence feature rows: {len(sequence_df)}"
+    )
+
+    # --------------------------------------------------------
+    # Pairwise identity
+    # --------------------------------------------------------
+    print_header("4. GLOBAL PAIRWISE IDENTITY")
+
+    identity_df = build_identity_features(
+        records,
+        human_sequence,
+    )
+
+    # --------------------------------------------------------
+    # Hotspot mapping
+    # --------------------------------------------------------
+    print_header("5. HOTSPOT MAPPING")
+
+    hotspot_df = build_hotspot_mapping(
+        records,
+        human_id,
+        human_sequence,
+    )
+
+    # --------------------------------------------------------
+    # Comparative hotspot statistics
+    # --------------------------------------------------------
+    print_header(
+        "6. COMPARATIVE HOTSPOT IDENTITY"
+    )
+
+    hotspot_summary_df = build_hotspot_identity_summary(
+        hotspot_df,
+        human_id,
+        human_sequence,
+    )
+
+    print(
+        hotspot_summary_df.to_string(index=False)
+    )
+
+    # --------------------------------------------------------
+    # Complete feature table
+    # --------------------------------------------------------
+    print_header("7. COMPLETE FEATURE TABLE")
+
+    feature_df = build_complete_feature_table(
+        sequence_df,
+        identity_df,
+        hotspot_df,
+    )
+
+    # --------------------------------------------------------
+    # Save primary tables
+    # --------------------------------------------------------
+    print_header("8. SAVE RESULTS")
+
+    sequence_df.to_csv(
+        SEQUENCE_FEATURES_OUTPUT,
+        index=False,
+    )
+
+    hotspot_df.to_csv(
+        HOTSPOT_OUTPUT,
+        index=False,
+    )
+
+    hotspot_summary_df.to_csv(
+        HOTSPOT_SUMMARY_OUTPUT,
+        index=False,
+    )
+
+    feature_df.to_csv(
+        COMPARATIVE_OUTPUT,
+        index=False,
+    )
+
+    print("Saved:")
+    print(f" - {relative_path(SEQUENCE_FEATURES_OUTPUT)}")
+    print(f" - {relative_path(HOTSPOT_OUTPUT)}")
+    print(f" - {relative_path(HOTSPOT_SUMMARY_OUTPUT)}")
+    print(f" - {relative_path(COMPARATIVE_OUTPUT)}")
+    print(f" - {relative_path(EXCLUDED_OUTPUT)}")
+
+    # --------------------------------------------------------
+    # Exploratory clustering
+    # --------------------------------------------------------
+    print_header("9. EXPLORATORY CLUSTERING")
+
+    cluster_df, clustering_metadata = (
+        exploratory_clustering(feature_df)
+    )
+
+    cluster_df.to_csv(
+        CLUSTER_OUTPUT,
+        index=False,
+    )
+
+    if clustering_metadata["performed"]:
+        print(
+            f"Selected k          : "
+            f"{clustering_metadata['selected_k']}"
+        )
+        print(
+            f"Silhouette score     : "
+            f"{clustering_metadata['silhouette_score']:.4f}"
+        )
+        print(
+            "Human reference      : excluded from clustering"
+        )
+    else:
+        print(
+            "Clustering was not performed because the "
+            "comparative dataset was insufficient."
+        )
+
+    # --------------------------------------------------------
+    # Figures
+    # --------------------------------------------------------
+    print_header("10. FIGURES")
+
+    configure_plot_style()
+
+    plot_identity(feature_df)
+    plot_hotspot_conservation(
+        hotspot_df,
+        human_id,
+    )
+    plot_clusters(cluster_df)
+
+    print(f" - {relative_path(IDENTITY_FIGURE)}")
+    print(f" - {relative_path(HOTSPOT_FIGURE)}")
+
+    if CLUSTER_FIGURE.exists():
+        print(f" - {relative_path(CLUSTER_FIGURE)}")
+
+    # --------------------------------------------------------
+    # Machine-readable summary
+    # --------------------------------------------------------
+    print_header("11. RUN SUMMARY")
+
+    summary = build_summary(
+        input_metadata=input_metadata,
+        human_record=human_record,
+        human_validation=human_validation,
+        hotspot_summary_df=hotspot_summary_df,
+        clustering_metadata=clustering_metadata,
+        excluded_records=excluded_records,
+    )
+
+    SUMMARY_OUTPUT.write_text(
+        json.dumps(
+            summary,
+            indent=2,
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+
+    print(
+        f"Summary JSON: {relative_path(SUMMARY_OUTPUT)}"
+    )
+
+    # --------------------------------------------------------
+    # Final report
+    # --------------------------------------------------------
+    print_header("ANALYSIS COMPLETED")
+
+    print(
+        f"Human reference        : {human_id}"
+    )
+    print(
+        f"Human TP53 length      : {len(human_sequence)} aa"
+    )
+    print(
+        f"Valid sequences         : {len(records)}"
+    )
+    print(
+        f"Comparative sequences   : "
+        f"{len(records) - 1}"
+    )
+    print(
+        "Hotspot metric          : "
+        "exact alignment-mapped residue identity"
+    )
+    print(
+        "Human reference in hotspot denominator: NO"
+    )
+
+    print("\nPrimary outputs:")
+    for path in [
+        SEQUENCE_FEATURES_OUTPUT,
+        HOTSPOT_OUTPUT,
+        HOTSPOT_SUMMARY_OUTPUT,
+        COMPARATIVE_OUTPUT,
+        CLUSTER_OUTPUT,
+        EXCLUDED_OUTPUT,
+        SUMMARY_OUTPUT,
+    ]:
+        print(f" - {relative_path(path)}")
+
+    print("\nFigures:")
+    for path in [
+        IDENTITY_FIGURE,
+        HOTSPOT_FIGURE,
+        CLUSTER_FIGURE,
+    ]:
+        if path.exists():
+            print(f" - {relative_path(path)}")
+
+    print("\nDONE.")
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except KeyboardInterrupt:
+        print("\nAnalysis interrupted by user.")
+        raise SystemExit(130)
+    except Exception as exc:
+        print("\nERROR")
+        print("=" * 72)
+        print(str(exc))
+        print("=" * 72)
+        raise SystemExit(1)
+'''
+
+out = Path("/mnt/data/TP53_Comparative_Analysis_improved.py")
+out.write_text(code, encoding="utf-8")
+
+# Syntax validation without executing the biological workflow.
+compile(code, str(out), "exec")
+
+print(f"Created: {out}")
+print(f"Lines: {len(code.splitlines())}")
+print("Syntax check: PASSED")
