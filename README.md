@@ -788,7 +788,7 @@ Detailed discussion is available at:
 ### Academic Affiliation
 
 **Department of Bioinformatics**
-**Guru Nanak Khalsa College**
+**Guru Nanak Khalsa College of Arts, Commerce and Science**
 **University of Mumbai**
 
 ### Publication
@@ -799,33 +799,14 @@ Detailed discussion is available at:
 
 [https://doi.org/10.25215/9141002199](https://doi.org/10.25215/9141002199)
 
-### ResearchGate Publication
-
-[https://www.researchgate.net/publication/403581357_COMPARATIVE_IN-SILICO_MAPPING_OF_TP53_MUTATION_HOTSPOTS_IN_ELEPHANTS_A_RESPONSIBLE_BIOINFORMATICS_INNOVATION_CONTRIBUTING_TO_CANCER_RESEARCH](https://www.researchgate.net/publication/403581357_COMPARATIVE_IN-SILICO_MAPPING_OF_TP53_MUTATION_HOTSPOTS_IN_ELEPHANTS_A_RESPONSIBLE_BIOINFORMATICS_INNOVATION_CONTRIBUTING_TO_CANCER_RESEARCH)
-
-This publication represents the focused research direction underlying the
-human–elephant TP53 comparative analysis documented in this repository.
-
 ---
-
-# 📄 Research Square
-
-## *Evolutionary Conservation and Functional Constraint of TP53 Mutation Hotspots Across Mammalian Species*
-
-The research direction has been extended from the focused human–elephant
-comparison toward a broader **mammalian comparative TP53 framework**.
-
-The broader research investigates evolutionary conservation and functional
-constraint surrounding recurrent TP53 mutation-associated hotspots across
-mammalian species.
-
-### Research Square
-
-[https://doi.org/10.21203/rs.3.rs-9299199/v1](https://doi.org/10.21203/rs.3.rs-9299199/v1)
 
 ### ResearchGate
 
 [https://www.researchgate.net/profile/Ritika-Rawat-10](https://www.researchgate.net/profile/Ritika-Rawat-10)
+
+This publication represents the focused research direction underlying the
+human–elephant TP53 comparative analysis documented in this repository.
 
 This work represents an extension of the research trajectory from:
 
@@ -1085,7 +1066,7 @@ tumour-suppressor genes and comparative genomics.
 
 ## 📧 Research / Academic Email
 
-**[ritikarvl2627@gmail.com](mailto:ritikarvl2627@gmail.com)**
+**[ritika.rawat27@outlook.com](mailto:ritika.rawat27@outlook.com)**
 
 For academic discussions, research collaboration and enquiries regarding this
 project.
