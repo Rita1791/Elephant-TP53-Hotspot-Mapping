@@ -1,6 +1,3 @@
-Yes. Below is the **complete root `README.md` as one single Markdown file**. Copy everything inside the code block directly into the repository's **root `README.md`**.
-
-````markdown
 # 🧬 Elephant TP53 Hotspot Mapping
 
 ## Comparative In-Silico Analysis of TP53 Mutation Hotspots Between Humans and Elephants
