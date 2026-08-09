@@ -1,1 +1,22 @@
+project:
+  name: "Elephant TP53 Hotspot Mapping"
+  analysis: "Comparative TP53 sequence analysis"
 
+reference:
+  accession: "P04637"
+  expected_length: 393
+
+hotspots:
+  R175: 175
+  G245: 245
+  R248: 248
+  R249: 249
+  R273: 273
+  R282: 282
+
+alignment:
+  mode: "global"
+
+clustering:
+  random_state: 42
+  maximum_k: 4
