@@ -1,44 +1,117 @@
-# Research Documentation
+# 🔬 Research Documentation
 
-This directory contains the supporting documentation for the research project **Comparative In-Silico Analysis of TP53 Mutation Between Humans and Elephants**.
+<p align="center">
 
-The documentation is intended to provide methodological context, dataset provenance, reproducibility information, research scope, and interpretation boundaries for the computational analyses contained in this repository.
+## Comparative In-Silico Analysis of TP53 Mutation Between Humans and Elephants
+
+<b>Research documentation • Methodology • Reproducibility • Data provenance • Scientific interpretation</b>
+
+</p>
+
+<p align="center">
+
+🧬 Comparative Genomics &nbsp; • &nbsp;
+🧪 In-Silico Biology &nbsp; • &nbsp;
+🧬 TP53 &nbsp; • &nbsp;
+🐘 Elephant Genomics &nbsp; • &nbsp;
+🌍 Evolutionary Biology &nbsp; • &nbsp;
+💻 Computational Biology
+
+</p>
 
 ---
 
-## 📚 Documentation
+## 🧭 Documentation Hub
+
+This directory contains the detailed scientific documentation supporting the
+**Elephant TP53 Hotspot Mapping** project.
+
+The documentation is designed to answer four questions:
+
+> **What was analysed?**
+
+> **How was it analysed?**
+
+> **Where did the data come from?**
+
+> **What can — and cannot — be concluded from the computational results?**
+
+---
+
+## 📚 Documentation Map
 
 | Document | Description |
 |---|---|
-| [Methodology](methodology.md) | Computational workflow and analytical methodology |
-| [Reproducibility](reproducibility.md) | Organization of datasets, notebooks, scripts, and computational outputs |
-| [Interpretation and Limitations](interpretation_and_limitations.md) | Scientific interpretation, assumptions, limitations, and scope |
-| [Research Proposal](Research_Proposal.pdf) | Original research proposal associated with the project |
-| [Data Provenance](provenance.txt) | Dataset sources, accession information, download records, and provenance |
+| 🧬 [`methodology.md`](methodology.md) | Detailed computational methodology and analytical workflow |
+| 🔁 [`reproducibility.md`](reproducibility.md) | Data-to-result traceability and reproduction framework |
+| 🧠 [`interpretation_and_limitations.md`](interpretation_and_limitations.md) | Scientific interpretation, limitations, and evidence boundaries |
+| 🗂️ [`provenance.md`](provenance.md) | Dataset sources, accession information, retrieval records, and provenance |
+| 📄 [`Research_Proposal.pdf`](Research_Proposal.pdf) | Research proposal associated with the project |
 
 ---
 
-## 🧬 Research Project
+# 🧬 1. Research Context
 
-### Comparative In-Silico Analysis of TP53 Mutation Between Humans and Elephants
+The project investigates TP53 sequence characteristics using a comparative
+in-silico framework involving human and elephant TP53-related sequences.
 
-The project investigates TP53 at the sequence and comparative evolutionary level using publicly available genomic and protein resources.
+The analysis integrates sequence retrieval, preprocessing, similarity-based
+identification, multiple sequence alignment, mutation-associated position
+mapping, phylogenetic analysis, sequence-derived feature extraction, and
+exploratory computational modelling.
 
-The computational workflow integrates sequence retrieval, preprocessing, similarity-based identification, multiple sequence alignment, conservation analysis, hotspot-associated residue mapping, phylogenetic analysis, and exploratory computational feature analysis.
+The central computational question is:
 
-The objective is to investigate patterns of TP53 conservation and divergence between humans and elephants and to identify computationally interesting regions for further biological investigation.
+> **How do TP53-related sequences in humans and elephants compare with respect to
+> sequence conservation, divergence, evolutionary relationships, and
+> mutation-associated regions?**
+
+The project is intended to generate **comparative computational evidence and
+biological hypotheses**, rather than directly establish experimental mechanisms.
 
 ---
 
-## 🔬 Analytical Components
-
-The repository contains the following major analytical components:
-
-### 1. Sequence and Dataset Preparation
-
-Reference and comparative sequences are organized under:
+# 🔬 2. Analytical Framework
 
 ```text
-data/raw/
-data/processed/
-data/Database/
+                 ┌────────────────────────┐
+                 │  Reference Sequences   │
+                 └────────────┬───────────┘
+                              │
+                              ▼
+                 ┌────────────────────────┐
+                 │ Sequence Retrieval &   │
+                 │ Preprocessing          │
+                 └────────────┬───────────┘
+                              │
+                              ▼
+                 ┌────────────────────────┐
+                 │ Similarity-Based       │
+                 │ Sequence Analysis      │
+                 └────────────┬───────────┘
+                              │
+                              ▼
+                 ┌────────────────────────┐
+                 │ Multiple Sequence      │
+                 │ Alignment              │
+                 └────────────┬───────────┘
+                              │
+                ┌─────────────┴─────────────┐
+                ▼                           ▼
+       ┌─────────────────┐         ┌─────────────────┐
+       │ Hotspot Mapping │         │ Phylogenetic    │
+       │                 │         │ Analysis        │
+       └────────┬────────┘         └────────┬────────┘
+                │                           │
+                └─────────────┬─────────────┘
+                              ▼
+                 ┌────────────────────────┐
+                 │ Feature Extraction &   │
+                 │ Exploratory Modelling  │
+                 └────────────┬───────────┘
+                              │
+                              ▼
+                 ┌────────────────────────┐
+                 │ Scientific             │
+                 │ Interpretation         │
+                 └────────────────────────┘
