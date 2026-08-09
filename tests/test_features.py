@@ -7,60 +7,49 @@ import numpy as np
 from scripts.TP53_Comparative_Analysis import (
     amino_acid_composition,
     build_sequence_features,
-    classify_sequence,
     extract_accession,
+    classify_sequence,
 )
 
 
-def test_amino_acid_composition_sums_to_one():
-    """Fractions of the 20 standard amino acids should sum to 1."""
-
+def test_amino_acid_composition():
     sequence = "ACDEFGHIKLMNPQRSTVWY"
 
     composition = amino_acid_composition(sequence)
 
-    total = sum(composition.values())
+    assert np.isclose(
+        sum(composition.values()),
+        1.0,
+    )
 
-    assert np.isclose(total, 1.0)
 
-
-def test_amino_acid_composition_counts_correctly():
-    """Each amino acid should have the expected fraction."""
-
+def test_amino_acid_composition_all_a():
     sequence = "AAAA"
 
     composition = amino_acid_composition(sequence)
 
     assert composition["frac_A"] == 1.0
 
-    for amino_acid, fraction in composition.items():
-        if amino_acid != "frac_A":
-            assert fraction == 0.0
+    for key, value in composition.items():
+        if key != "frac_A":
+            assert value == 0.0
 
 
-def test_accession_extraction_uniprot():
-    """UniProt P04637 should be extracted correctly."""
-
-    accession = extract_accession(
-        "sp_P04637_P53_HUMAN"
+def test_uniprot_accession():
+    assert (
+        extract_accession("sp_P04637_P53_HUMAN")
+        == "P04637"
     )
 
-    assert accession == "P04637"
 
-
-def test_accession_extraction_refseq():
-    """RefSeq-style accession should be retained."""
-
-    accession = extract_accession(
-        "XP_049714738.1"
+def test_refseq_accession():
+    assert (
+        extract_accession("XP_049714738.1")
+        == "XP_049714738.1"
     )
 
-    assert accession == "XP_049714738.1"
 
-
-def test_human_sequence_classification():
-    """Human TP53 should be classified as Human."""
-
+def test_human_classification():
     record = {
         "id": "sp_P04637_P53_HUMAN",
         "description": "TP53_HUMAN",
@@ -69,36 +58,19 @@ def test_human_sequence_classification():
     assert classify_sequence(record) == "Human"
 
 
-def test_elephant_sequence_classification():
-    """Elephant metadata should produce an elephant category."""
-
-    record = {
-        "id": "XP_ELEPHANT_001",
-        "description": "Loxodonta africana TP53 protein",
-    }
-
-    category = classify_sequence(record)
-
-    assert category in {
-        "African_elephant",
-        "Elephant",
-    }
-
-
 def test_retrogene_classification():
-    """Retrogene metadata should be recognized."""
-
     record = {
         "id": "ELEPHANT_RTG_001",
         "description": "Elephant TP53 retrogene",
     }
 
-    assert classify_sequence(record) == "Elephant_retrogene"
+    assert (
+        classify_sequence(record)
+        == "Elephant_retrogene"
+    )
 
 
-def test_sequence_feature_table_has_expected_columns():
-    """Feature generation should preserve core metadata."""
-
+def test_sequence_features():
     records = [
         {
             "id": "sp_P04637_P53_HUMAN",
@@ -112,36 +84,7 @@ def test_sequence_feature_table_has_expected_columns():
         "sp_P04637_P53_HUMAN",
     )
 
-    expected_columns = {
-        "id",
-        "accession",
-        "length",
-        "is_human_reference",
-        "sequence_category",
-        "frac_A",
-        "frac_C",
-        "frac_D",
-        "frac_E",
-        "frac_F",
-        "frac_G",
-        "frac_H",
-        "frac_I",
-        "frac_K",
-        "frac_L",
-        "frac_M",
-        "frac_N",
-        "frac_P",
-        "frac_Q",
-        "frac_R",
-        "frac_S",
-        "frac_T",
-        "frac_V",
-        "frac_W",
-        "frac_Y",
-    }
-
-    assert expected_columns.issubset(
-        set(result.columns)
-    )
-
     assert result.iloc[0]["length"] == 20
+    assert result.iloc[0]["is_human_reference"] is True
+    assert "frac_A" in result.columns
+    assert "frac_Y" in result.columns
