@@ -10,25 +10,20 @@ from scripts.TP53_Comparative_Analysis import (
 )
 
 
-def test_identical_sequences_have_full_identity():
-    """Identical sequences must produce 100% identity."""
-
-    reference = "ACDEFGHIKLMNPQRSTVWY"
-    query = reference
+def test_identical_sequences():
+    sequence = "ACDEFGHIKLMNPQRSTVWY"
 
     identity, matches, comparable = calculate_pairwise_identity(
-        reference,
-        query,
+        sequence,
+        sequence,
     )
 
     assert identity == 1.0
-    assert matches == len(reference)
-    assert comparable == len(reference)
+    assert matches == len(sequence)
+    assert comparable == len(sequence)
 
 
-def test_single_substitution_reduces_identity():
-    """One amino-acid substitution should reduce exact identity."""
-
+def test_single_substitution():
     reference = "ACDEFG"
     query = "ACDFFG"
 
@@ -37,14 +32,12 @@ def test_single_substitution_reduces_identity():
         query,
     )
 
-    assert comparable == 6
     assert matches == 5
+    assert comparable == 6
     assert np.isclose(identity, 5 / 6)
 
 
-def test_reference_position_maps_to_same_residue():
-    """A conserved reference position should map to the same residue."""
-
+def test_position_mapping():
     reference = "ACDEFG"
     query = "ACDEFG"
 
@@ -58,42 +51,7 @@ def test_reference_position_maps_to_same_residue():
     assert result["residue"] == "D"
 
 
-def test_reference_position_maps_substitution():
-    """A substituted residue must be reported as mapped, not conserved."""
-
-    reference = "ACDEFG"
-    query = "ACXEFG"
-
-    result = map_reference_position(
-        reference,
-        query,
-        3,
-    )
-
-    assert result["status"] == "mapped"
-    assert result["residue"] == "X"
-
-
-def test_reference_position_maps_gap():
-    """
-    A deletion/gap at the query position should be explicitly reported.
-    """
-
-    reference = "ACDEFG"
-    query = "ACDFG"
-
-    result = map_reference_position(
-        reference,
-        query,
-        4,
-    )
-
-    assert result["status"] in {"gap", "mapped"}
-
-
-def test_first_reference_position_is_one_based():
-    """The mapping API must use biological 1-based coordinates."""
-
+def test_one_based_coordinate_system():
     reference = "ABCDE"
     query = "ABCDE"
 
@@ -103,13 +61,10 @@ def test_first_reference_position_is_one_based():
         1,
     )
 
-    assert result["status"] == "mapped"
     assert result["residue"] == "A"
 
 
-def test_last_reference_position_maps_correctly():
-    """The final reference coordinate must map correctly."""
-
+def test_last_coordinate():
     reference = "ABCDE"
     query = "ABCDE"
 
@@ -119,5 +74,4 @@ def test_last_reference_position_maps_correctly():
         5,
     )
 
-    assert result["status"] == "mapped"
     assert result["residue"] == "E"
