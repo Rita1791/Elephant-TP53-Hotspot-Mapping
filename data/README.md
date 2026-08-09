@@ -1,17 +1,16 @@
 # 🧬 Research Data
 
 This directory contains the biological sequence resources,
-reference metadata, and processed comparative datasets used
-in the TP53 comparative genomics analysis.
+processed comparative datasets, structured TP53 research
+data, and provenance information supporting the project.
 
-The data architecture follows a simple principle:
+The data architecture separates:
 
-> **Raw biological resources are separated from derived
-> computational datasets.**
+> **Raw biological resources → Processed datasets → Structured research database**
 
 ---
 
-## 📂 Data Architecture
+# 📂 Data Architecture
 
 ```text
 data/
@@ -29,7 +28,15 @@ data/
 │   ├── human_tp53.fasta
 │   └── provenance.txt
 │
-└── processed/
-    ├── human_elephant_tp53_pair.fasta
-    ├── human_elephant_tp53_pair_2seq.fasta
-    └── human_elephant_tp53_retrogene_comparison.fasta
+├── processed/
+│   ├── TP53_all_sequences.fasta
+│   ├── TP53_clean.fasta
+│   ├── human_elephant_tp53_pair.fasta
+│   └── human_elephant_tp53_retrogene_comparison.fasta
+│
+├── Database/
+│   ├── tp53_elephant_database.csv
+│   ├── tp53_elephant_database.json
+│   └── README.md
+│
+└── README.md
