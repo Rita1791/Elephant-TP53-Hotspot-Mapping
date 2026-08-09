@@ -2,25 +2,41 @@
 
 <p align="center">
 
-<b>Dataset sources, accession information, retrieval records, and analytical use</b>
+<b>Dataset sources • Accession records • Retrieval information • Analytical use</b>
+
+</p>
+
+<p align="center">
+
+🧬 Human TP53 &nbsp; • &nbsp;
+🐘 Elephant Genomic Resources &nbsp; • &nbsp;
+🔎 Similarity Analysis &nbsp; • &nbsp;
+📦 Derived Data &nbsp; • &nbsp;
+🔬 Computational Traceability
 
 </p>
 
 ---
 
-## 🔎 Purpose
+## 🎯 1. Purpose
 
-This document records the provenance of the primary sequence resources used in
-the **Comparative In-Silico Analysis of TP53 Mutation Between Humans and
-Elephants** project.
+This document records the provenance of the primary biological sequence
+resources used in the research project:
 
-The objective is to maintain traceability between:
+> **Comparative In-Silico Analysis of TP53 Mutation Between Humans and
+> Elephants**
+
+The purpose is to maintain a transparent connection between:
 
 ```text
-External Biological Resource
+PUBLIC BIOLOGICAL RESOURCE
           ↓
-Retrieved Dataset
+RETRIEVED DATASET
           ↓
-Local Repository File
+LOCAL SOURCE FILE
           ↓
-Computational Analysis
+PROCESSED DATA
+          ↓
+COMPUTATIONAL ANALYSIS
+          ↓
+RESEARCH OUTPUT
