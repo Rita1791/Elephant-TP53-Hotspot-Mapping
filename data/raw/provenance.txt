@@ -1,5 +1,5 @@
-DATA PROVENANCE
-===============
+DATA PROVENANCE LOG
+===================
 
 Project:
 Comparative In-Silico Analysis of TP53 Mutation Hotspots
@@ -13,91 +13,272 @@ MSc Bioinformatics
 
 
 ------------------------------------------------------------
-1. HUMAN TP53
+1. HUMAN TP53 PROTEIN
 ------------------------------------------------------------
+
+Dataset:
+Human TP53 canonical protein
 
 Database:
 UniProt
 
-Accession:
+UniProt Accession:
 P04637
 
 Species:
 Homo sapiens
 
-Sequence type:
-Canonical protein
+Sequence Type:
+Canonical protein FASTA
 
-File:
-data/raw/human_tp53.fasta
-
-Retrieval method:
+Retrieval Method:
 UniProt → Sequence → FASTA
 
-Retrieval date:
+Download Date:
 2025-11-08
 
+Repository File:
+data/raw/human_tp53.fasta
+
+Source:
+https://www.uniprot.org/uniprotkb/P04637
+
 Purpose:
-Reference human TP53 sequence for comparative alignment
-and mutation-hotspot mapping.
+Used as the human TP53 reference sequence for comparative
+sequence analysis, alignment, and mutation-hotspot mapping.
 
 
 ------------------------------------------------------------
-2. ELEPHANT GENOMIC RESOURCE
+2. ASIAN ELEPHANT REFERENCE ASSEMBLY
 ------------------------------------------------------------
+
+Dataset:
+Asian Elephant reference genome
 
 Database:
-NCBI
+NCBI Assembly / RefSeq
+
+Assembly Accession:
+GCF_024166365.1
 
 Assembly:
-[VERIFY ACCESSION]
+mEleMax1 primary haplotype
 
 Species:
 Elephas maximus indicus
 
-Assembly name:
-mEleMax1 primary haplotype
+Reference Genome:
+GCF_024166365.1_mEleMax1_primary_haplotype_genomic.fna
 
-Retrieval date:
-2025-11-10
+Repository Status:
+Not committed to GitHub because of large file size.
 
 Purpose:
-Reference genomic resource used for identification and
-characterisation of elephant TP53 sequences.
+Used as the genomic reference resource for identifying and
+characterising elephant TP53-related sequences.
 
 
 ------------------------------------------------------------
-3. ELEPHANT TP53 SEQUENCES
+3. ASIAN ELEPHANT PROTEOME
 ------------------------------------------------------------
 
-Canonical TP53:
+Dataset:
+Asian Elephant protein dataset
+
+Source:
+NCBI
+
+Assembly:
+GCF_024166365.1
+
+Species:
+Elephas maximus indicus
+
+Sequence Type:
+Protein FASTA
+
+Local Source File:
+elephant_proteome.fasta
+
+Approximate File Size:
+41 MB
+
+Repository Status:
+Not committed to GitHub due to file size.
+
+Purpose:
+Used as the target protein database for BLAST analysis.
+
+The dataset was used to identify candidate elephant TP53
+sequences and related TP53 retrogene-derived sequences.
+
+Reproducibility:
+The source assembly accession and associated NCBI metadata
+are retained in this repository so that the corresponding
+reference resources can be independently retrieved.
+
+
+------------------------------------------------------------
+4. ELEPHANT TP53 CANONICAL SEQUENCE
+------------------------------------------------------------
+
+Dataset:
+Elephant TP53 canonical sequence
+
+Species:
+Elephas maximus indicus
+
+Repository File:
 data/raw/elephant_tp53_canonical.fasta
 
-RTG9:
+Purpose:
+Used for comparative alignment and mapping of human TP53
+mutation hotspots onto the canonical elephant TP53 sequence.
+
+
+------------------------------------------------------------
+5. ELEPHANT TP53 RTG9
+------------------------------------------------------------
+
+Dataset:
+Elephant TP53 RTG9 sequence
+
+Repository File:
 data/raw/elephant_tp53_RTG9.fasta
 
-RTG9 translated sequence:
+Purpose:
+Used for comparative analysis of TP53 retrogene-derived
+sequence variation.
+
+
+------------------------------------------------------------
+6. ELEPHANT TP53 RTG9 TRANSLATION
+------------------------------------------------------------
+
+Dataset:
+Translated elephant TP53 RTG9 sequence
+
+Repository File:
 data/raw/elephant_tp53_RTG9_translate.fasta
 
-
-------------------------------------------------------------
-4. DERIVED COMPARATIVE DATASETS
-------------------------------------------------------------
-
-Human + canonical elephant TP53:
-data/processed/human_elephant_tp53_pair.fasta
-
-Human + canonical elephant + RTG9:
-data/processed/human_elephant_tp53_retrogene_comparison.fasta
+Purpose:
+Used for protein-level comparative sequence analysis.
 
 
 ------------------------------------------------------------
-5. DATA PROVENANCE PRINCIPLE
+7. AFRICAN ELEPHANT TP53 SEQUENCES
 ------------------------------------------------------------
 
-Raw database-derived resources are retained separately
-from processed comparative datasets.
+Repository File:
+data/raw/african_tp53_hits.fasta
 
-Large reference genomes are not committed to the repository.
-Their accession identifiers and retrieval metadata are
-retained to support reproducibility.
+Purpose:
+Contains TP53 candidate sequences identified during the
+comparative sequence-retrieval workflow.
+
+
+------------------------------------------------------------
+8. ASIAN ELEPHANT TP53 SEQUENCES
+------------------------------------------------------------
+
+Repository File:
+data/raw/asian_tp53_hits.fasta
+
+Purpose:
+Contains TP53 candidate sequences identified during the
+comparative sequence-retrieval workflow.
+
+
+------------------------------------------------------------
+9. ASSEMBLY METADATA
+------------------------------------------------------------
+
+Repository File:
+data/raw/elephant_assembly_data_report.jsonl
+
+Purpose:
+Retains assembly-related metadata associated with the
+NCBI reference resource.
+
+
+------------------------------------------------------------
+10. NCBI DATASET METADATA
+------------------------------------------------------------
+
+Directory:
+data/raw/ncbi_dataset/
+
+Files:
+- data_summary.tsv
+- dataset_catalog.json
+
+Purpose:
+Retains metadata associated with the retrieved NCBI dataset.
+
+
+------------------------------------------------------------
+11. BLAST INPUT
+------------------------------------------------------------
+
+Directory:
+data/raw/Blast/
+
+File:
+elephant_TP53_canonical.fasta
+
+Purpose:
+Sequence resource associated with the BLAST-based comparative
+identification workflow.
+
+
+------------------------------------------------------------
+12. DERIVED COMPARATIVE DATASETS
+------------------------------------------------------------
+
+Derived datasets are stored separately from raw resources.
+
+Directory:
+data/processed/
+
+Files:
+
+human_elephant_tp53_pair.fasta
+    Human TP53 + canonical elephant TP53
+
+human_elephant_tp53_pair_2seq.fasta
+    Two-sequence comparative dataset used during analysis
+
+human_elephant_tp53_retrogene_comparison.fasta
+    Human TP53 + canonical elephant TP53 + elephant TP53 RTG9
+
+
+------------------------------------------------------------
+13. DATA ORGANISATION PRINCIPLE
+------------------------------------------------------------
+
+Raw database-derived resources are retained separately from
+processed comparative datasets.
+
+Raw:
+data/raw/
+
+Processed:
+data/processed/
+
+Large reference resources are intentionally excluded from
+the Git repository when their size makes repository storage
+inappropriate.
+
+Accession identifiers, metadata, provenance information, and
+retrieval details are retained to support reproducibility.
+
+
+------------------------------------------------------------
+14. REPRODUCIBILITY NOTE
+------------------------------------------------------------
+
+Researchers reproducing this analysis should retrieve the
+corresponding reference resources using the documented
+database accession identifiers and verify sequence versions,
+retrieval dates, and analysis parameters before reproducing
+downstream results.
