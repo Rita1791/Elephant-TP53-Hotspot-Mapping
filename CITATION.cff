@@ -1,16 +1,24 @@
 cff-version: 1.2.0
 
-title: "Comparative In-Silico Analysis of TP53 Mutation Hotspots Between Humans and Elephants"
+message: >-
+  If you use this repository, its computational workflows, research software,
+  figures, or derived research resources, please cite this repository and the
+  associated published research.
 
-message: "If you use this repository, methodology, figures, or research framework, please cite the associated published work."
+title: >-
+  Elephant TP53 Hotspot Mapping: Comparative In-Silico Analysis of TP53
+  Mutation Hotspots Between Humans and Elephants
 
 type: software
 
 authors:
   - family-names: Rawat
     given-names: Ritika Rajendra
+    email: ritikarvl2627@gmail.com
+
   - family-names: Nadar
     given-names: Sermarani
+
   - family-names: Uppal
     given-names: Gursimran Kaur
 
@@ -18,18 +26,69 @@ date-released: 2026-03-01
 
 repository-code: "https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping"
 
-url: "https://doi.org/10.25215/9141002199"
+url: "https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping"
 
 license: MIT
 
 keywords:
   - TP53
   - comparative genomics
-  - cancer biology
-  - evolutionary bioinformatics
-  - elephant
-  - Peto's paradox
-  - mutation hotspots
-  - bioinformatics
-  - cancer research
   - computational biology
+  - cancer biology
+  - cancer genomics
+  - evolutionary bioinformatics
+  - elephant genomics
+  - mutation hotspots
+  - Peto's paradox
+  - bioinformatics
+  - sequence analysis
+  - phylogenetics
+  - reproducible research
+  - research software
+
+abstract: >-
+  This repository contains the computational research infrastructure for a
+  comparative in-silico investigation of TP53 mutation-associated hotspots
+  across humans and elephants. The project integrates publicly available
+  sequence resources, sequence preprocessing, similarity-based sequence
+  identification, multiple sequence alignment, mutation-associated residue
+  mapping, evolutionary analysis, feature extraction, exploratory
+  machine-learning analysis, scientific visualization, and the EleProtect
+  interactive research application. The repository is structured to support
+  transparent provenance, reproducibility, computational auditability, and
+  responsible interpretation of comparative genomics results.
+
+repository-artifact: "https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping"
+
+preferred-citation:
+  type: article
+
+  title: >-
+    COMPARATIVE IN-SILICO MAPPING OF TP53 MUTATION HOTSPOTS IN ELEPHANTS:
+    A RESPONSIBLE BIOINFORMATICS INNOVATION CONTRIBUTING TO CANCER RESEARCH
+
+  authors:
+    - family-names: Rawat
+      given-names: Ritika Rajendra
+
+    - family-names: Nadar
+      given-names: Sermarani
+
+    - family-names: Uppal
+      given-names: Gursimran Kaur
+
+  year: 2026
+
+  month: 3
+
+  publisher:
+    name: "RED'SHINE Publication"
+
+  pages: 123-138
+
+  doi: "10.25215/9141002199"
+
+  url: "https://doi.org/10.25215/9141002199"
+
+  collection-title: >-
+    Ideathon on Vikshit Bharat: Ideas, Innovation and Impact
