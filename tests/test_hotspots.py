@@ -62,7 +62,7 @@ def test_hotspot_mapping_contains_all_hotspots():
         assert f"{label}_status" in result.columns
         assert f"{label}_conserved" in result.columns
 
-        assert row[f"{label}_conserved"] is True
+        assert bool(row[f"{label}_conserved"]) is True
 
 
 def test_human_reference_is_excluded_from_comparative_summary():
