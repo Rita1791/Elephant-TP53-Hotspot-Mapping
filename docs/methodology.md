@@ -2,52 +2,102 @@
 
 <p align="center">
 
-<b>Comparative computational framework for TP53 sequence analysis</b>
+<b>Comparative in-silico framework for TP53 sequence analysis between humans and elephants</b>
+
+</p>
+
+<p align="center">
+
+🧬 Sequence Analysis &nbsp; • &nbsp;
+🔎 Similarity Analysis &nbsp; • &nbsp;
+🧪 Multiple Sequence Alignment &nbsp; • &nbsp;
+📍 Hotspot Mapping &nbsp; • &nbsp;
+🌳 Phylogenetics &nbsp; • &nbsp;
+🤖 Feature Analysis
 
 </p>
 
 ---
 
-## 🧭 1. Study Design
+## 🎯 1. Study Objective
 
-This project uses a comparative in-silico framework to investigate TP53 sequence
-characteristics between humans and elephants.
+The **Elephant TP53 Hotspot Mapping** project uses a comparative
+bioinformatics framework to investigate TP53-related sequence characteristics
+between humans and elephants.
 
-The analytical workflow combines:
+The analysis focuses on:
 
-- sequence retrieval;
-- sequence preprocessing;
-- similarity-based sequence identification;
-- multiple sequence alignment;
-- conservation and divergence analysis;
-- TP53 mutation-associated position mapping;
-- phylogenetic analysis;
-- sequence-derived feature extraction; and
-- exploratory computational modelling.
+- identification of TP53-related elephant sequences;
+- comparison of human and elephant TP53 sequences;
+- sequence conservation and divergence;
+- mapping of human TP53 mutation-associated positions;
+- evolutionary relationships among analysed sequences;
+- extraction of sequence-derived features; and
+- exploratory computational prioritization.
 
-The overall workflow is:
+The overall objective is to identify **comparative sequence patterns that may
+provide candidates for further biological investigation**.
+
+The analysis is computational and does not independently establish experimental
+mechanisms.
+
+---
+
+# 🧭 2. Overall Computational Workflow
+
+The project follows the workflow:
 
 ```text
-Reference Selection
-        ↓
-Sequence Retrieval
-        ↓
-Preprocessing
-        ↓
-Similarity Analysis
-        ↓
-Multiple Sequence Alignment
-        ↓
-Conservation / Divergence Analysis
-        ↓
-Hotspot Mapping
-        ↓
-Phylogenetic Analysis
-        ↓
-Feature Extraction
-        ↓
-Exploratory Analysis
-        ↓
-Visualization
-        ↓
-Interpretation
+                    REFERENCE DATA
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Sequence Retrieval  │
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Data Preprocessing  │
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Similarity Analysis │
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Sequence Selection  │
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Multiple Sequence   │
+              │ Alignment           │
+              └──────────┬──────────┘
+                         │
+              ┌──────────┴──────────┐
+              ▼                     ▼
+     ┌─────────────────┐   ┌─────────────────┐
+     │ Hotspot Mapping │   │ Phylogenetic    │
+     │                 │   │ Analysis        │
+     └────────┬────────┘   └────────┬────────┘
+              │                     │
+              └──────────┬──────────┘
+                         ▼
+              ┌─────────────────────┐
+              │ Feature Extraction  │
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Exploratory         │
+              │ Computational       │
+              │ Modelling           │
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Visualization &     │
+              │ Interpretation      │
+              └─────────────────────┘
