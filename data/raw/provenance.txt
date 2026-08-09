@@ -1,46 +1,103 @@
-DATA PROVENANCE LOG
-Project: Elephant TP53 Comparative Analysis
-Researcher: Ritika Rawat
-Degree: MSc Bioinformatics
+DATA PROVENANCE
+===============
 
-=========================================
-HUMAN DATA
-=========================================
-Dataset name: Human TP53 protein (canonical)
-Database: UniProt
-UniProt ID: P04637
-Species: Homo sapiens
-Sequence type: Protein FASTA (.fasta)
-Download method: UniProt → Sequence → FASTA (canonical)
-Download date: <08-11-2025>
-Local file: data/raw/human_tp53.fasta
-Source URL: https://www.uniprot.org/uniprotkb/P04637/entry
+Project:
+Comparative In-Silico Analysis of TP53 Mutation Hotspots
+Between Humans and Elephants
 
-Notes:
-- Used as query for BLAST search in elephant proteome
-- Reference for alignment and hotspot residue mapping
+Researcher:
+Ritika Rajendra Rawat
 
-=========================================
-ELEPHANT DATA
-=========================================
-Dataset name: Asian Elephant Proteome
-Database: NCBI Assembly
-Assembly Accession: GCA_024166365.1   (mEleMax1 primary haplotype)
-Species: Elephas maximus indicus
-Sequence type: Protein FASTA (all proteins)
-Download method: NCBI → Proteins → FASTA download
-Download date: <10-11-2025>
-Local file: data/raw/elephant_proteome.fasta
-Source URL: https://www.ncbi.nlm.nih.gov/assembly/13211691
+Degree:
+MSc Bioinformatics
 
-Notes:
-- Used as target database for BLAST to extract TP53 gene copies
-- Source for identifying functional retrogenes
 
-=========================================
-Future Entries (To be filled later)
-=========================================
-- Elephant TP53 retrogenes (identified via BLAST)
-- Domain annotations (InterPro/Pfam)
-- Structural models (PDB from SWISS-MODEL/AlphaFold)
-- Scoring results (functional prioritization)
+------------------------------------------------------------
+1. HUMAN TP53
+------------------------------------------------------------
+
+Database:
+UniProt
+
+Accession:
+P04637
+
+Species:
+Homo sapiens
+
+Sequence type:
+Canonical protein
+
+File:
+data/raw/human_tp53.fasta
+
+Retrieval method:
+UniProt → Sequence → FASTA
+
+Retrieval date:
+2025-11-08
+
+Purpose:
+Reference human TP53 sequence for comparative alignment
+and mutation-hotspot mapping.
+
+
+------------------------------------------------------------
+2. ELEPHANT GENOMIC RESOURCE
+------------------------------------------------------------
+
+Database:
+NCBI
+
+Assembly:
+[VERIFY ACCESSION]
+
+Species:
+Elephas maximus indicus
+
+Assembly name:
+mEleMax1 primary haplotype
+
+Retrieval date:
+2025-11-10
+
+Purpose:
+Reference genomic resource used for identification and
+characterisation of elephant TP53 sequences.
+
+
+------------------------------------------------------------
+3. ELEPHANT TP53 SEQUENCES
+------------------------------------------------------------
+
+Canonical TP53:
+data/raw/elephant_tp53_canonical.fasta
+
+RTG9:
+data/raw/elephant_tp53_RTG9.fasta
+
+RTG9 translated sequence:
+data/raw/elephant_tp53_RTG9_translate.fasta
+
+
+------------------------------------------------------------
+4. DERIVED COMPARATIVE DATASETS
+------------------------------------------------------------
+
+Human + canonical elephant TP53:
+data/processed/human_elephant_tp53_pair.fasta
+
+Human + canonical elephant + RTG9:
+data/processed/human_elephant_tp53_retrogene_comparison.fasta
+
+
+------------------------------------------------------------
+5. DATA PROVENANCE PRINCIPLE
+------------------------------------------------------------
+
+Raw database-derived resources are retained separately
+from processed comparative datasets.
+
+Large reference genomes are not committed to the repository.
+Their accession identifiers and retrieval metadata are
+retained to support reproducibility.
