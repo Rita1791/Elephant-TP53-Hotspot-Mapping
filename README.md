@@ -771,6 +771,8 @@ This research was developed within the postgraduate academic and research contex
 
 **University of Mumbai**
 
+This Research was also Presented at Inter College Level **Srijna Competition** 
+
 The project represents a computational research direction connecting:
 
 ```text
@@ -876,7 +878,7 @@ This project represents an effort to build an **open, inspectable, and reproduci
 
 ---
 
-# 🔗 Connect With the Researcher
+# 🔗 Connect With the Ritika Rawat
 
 ## 💻 GitHub
 
@@ -1055,6 +1057,7 @@ Experimental Validation
 | 📧 **Email** | [ritika.rawat27@outlook.com](mailto:ritika.rawat27@outlook.com) |
 | 📜 **License** | [MIT License](LICENSE) |
 | 🧾 **Citation File** | [CITATION.cff](CITATION.cff) |
+| 🧾   **Poster** | [docs/Srijna_Poster.pdf] (docs/Srijna_Poster.pdf) |
 
 ---
 
