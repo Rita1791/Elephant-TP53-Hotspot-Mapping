@@ -1,77 +1,54 @@
-# 📓 Computational Notebooks
+# 🧬 Research Notebooks
 
-This directory contains the interactive computational notebooks
-associated with the Elephant TP53 comparative research project.
+This directory contains computational notebooks supporting the comparative
+TP53 research workflow and the development of the EleProtect analytical
+framework.
 
-The notebooks provide an inspectable record of selected
-computational analyses and support exploration of the sequence,
-comparative, and EleProtect-related components of the project.
+The notebooks are organized to separate:
 
----
-
-## 🧬 Notebook Overview
-
-| Notebook | Purpose |
-|---|---|
-| `TP53_AI_Pipeline.ipynb` | Computational TP53 analysis workflow |
-| `EleProtect_ML_Analysis.ipynb` | Machine-learning analysis associated with the EleProtect component |
+- 🔬 Comparative sequence analysis
+- 🧬 TP53 feature analysis
+- 🤖 Computational prioritization
+- 🧠 Exploratory deep-learning architecture
 
 ---
 
-# 🔬 `TP53_AI_Pipeline.ipynb`
+## 📓 Notebook Overview
 
-This notebook contains the computational workflow associated
-with the TP53 analysis pipeline.
-
-The notebook should be interpreted together with:
-
-- `data/raw/`
-- `data/processed/`
-- `data/Database/`
-- `scripts/`
-- `Results/`
-- `figures/`
-
-The exact analytical procedures, parameters, and outputs are
-defined by the executable notebook cells.
+| Notebook | Purpose | Research Role |
+|---|---|---|
+| `TP53_Comparative_Analysis.ipynb` | Comparative analysis of human and elephant TP53-related sequences | 🔬 Primary comparative analysis |
+| `EleProtect_Feature_Prioritization.ipynb` | Feature-level computational prioritization associated with the EleProtect framework | 🧬 Exploratory computational analysis |
+| `TP53_Deep_Learning_Architecture_and_Analysis.ipynb` | Exploratory deep-learning architecture and analytical framework | 🤖 Future computational modelling |
 
 ---
 
-# 🐘 `EleProtect_ML_Analysis.ipynb`
+## 🔬 1. TP53 Comparative Analysis
 
-This notebook contains computational analysis associated with
-the EleProtect research/application component.
+### `TP53_Comparative_Analysis.ipynb`
 
-Its outputs should be interpreted in the context of the
-underlying TP53 research dataset and the EleProtect prototype.
+This notebook contains the primary computational workflow for comparing
+human TP53 with elephant TP53-related sequences.
 
----
+The analysis focuses on:
 
-# 🔄 Relationship to the Repository
+- Sequence preprocessing
+- Protein sequence validation
+- Human TP53 reference identification
+- Pairwise sequence comparison
+- Alignment-aware residue mapping
+- TP53 hotspot analysis
+- Sequence-level feature extraction
+- Comparative visualization
 
-The computational workflow is organised conceptually as:
+### Canonical TP53 hotspot positions
+
+The analysis considers the following established TP53 hotspot positions:
 
 ```text
-Public Biological Resources
-          │
-          ▼
-       data/raw/
-          │
-          ▼
-     Data Processing
-          │
-          ▼
-    data/processed/
-          │
-          ▼
-    Structured Dataset
-     data/Database/
-          │
-          ▼
-       Notebooks
-          │
-          ▼
-        Results
-          │
-          ▼
-       Figures
+R175
+G245
+R248
+R249
+R273
+R282
