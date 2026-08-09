@@ -1,47 +1,62 @@
-# 🧬 Research Notebooks
+# 🧬 TP53 Computational Analysis Notebooks
 
-This directory contains the computational notebooks supporting the
-**Elephant TP53 Hotspot Mapping** research project.
+This directory contains the computational notebooks and supporting scripts used in the **Comparative In-Silico Analysis of TP53 Mutation Between Humans and Elephants** project.
 
-The notebooks document the comparative analysis, exploratory machine-learning
-work, and computational framework associated with the study.
+The notebooks document the computational workflow from sequence-level comparative analysis through exploratory machine-learning and deep-learning representation.
 
 ---
 
-## 📓 Notebook Overview
+## 🔬 Research Context
 
-| Notebook | Purpose | Role |
-|---|---|---|
-| `TP53_Comparative_Analysis.ipynb` | Comparative analysis of human and elephant TP53 sequences | 🔬 Primary Research Analysis |
-| `EleProtect_ML_Analysis.ipynb` | Exploratory machine-learning analysis of sequence-derived features | 🤖 Exploratory Analysis |
-| `TP53_AI_Pipeline.ipynb` | Exploratory AI/deep-learning framework for TP53 sequence analysis | 🧠 Methodological Prototype |
+TP53 is a conserved tumour-suppressor gene involved in genome integrity, DNA-damage response, cell-cycle regulation, apoptosis, and cancer biology.
+
+This project investigates TP53 sequence conservation and divergence between humans and elephants, with particular interest in the computational characterization of TP53 sequences and mutation-associated regions.
+
+The computational framework combines:
+
+- comparative protein-sequence analysis;
+- sequence alignment;
+- evolutionary conservation analysis;
+- TP53 hotspot mapping;
+- exploratory machine learning;
+- feature prioritization;
+- deep-learning representation;
+- reproducible computational workflows.
+
+> **Scientific scope:** The analyses in this repository are computational and exploratory. Sequence conservation or similarity is not, by itself, evidence of equivalent biological function, cancer resistance, or clinical protection.
 
 ---
 
-## 🔬 TP53 Comparative Analysis
+# 📂 Notebook Contents
 
-`TP53_Comparative_Analysis.ipynb` contains the primary computational
-analysis of TP53-related protein sequences.
+| File | Purpose |
+|---|---|
+| `TP53_Comparative_Analysis.ipynb` | Comparative analysis of human and elephant TP53 sequences |
+| `EleProtect_Feature_Prioritization.py` | Feature-prioritization workflow associated with the EleProtect analysis |
+| `TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb` | Exploratory deep-learning representation and predictive-model architecture |
+| `requirements.txt` | Reproducible Python environment specification |
 
-The workflow includes:
+---
 
-- sequence quality control;
-- reference sequence identification;
-- protein sequence preprocessing;
-- pairwise sequence alignment;
-- sequence identity analysis;
-- alignment-aware residue mapping;
-- canonical TP53 hotspot mapping;
-- comparative sequence characterization;
-- visualization;
-- reproducible result generation.
+# 🧬 1. TP53 Comparative Analysis
 
-### Canonical human TP53 hotspot positions
+### `TP53_Comparative_Analysis.ipynb`
+
+This notebook forms the core comparative sequence-analysis component of the project.
+
+The workflow focuses on:
+
+1. loading TP53 protein sequences;
+2. validating sequence inputs;
+3. comparing human and elephant TP53 sequences;
+4. examining sequence-level conservation;
+5. identifying divergent residues;
+6. supporting downstream hotspot interpretation;
+7. exporting reproducible computational results.
+
+### Input Data
+
+The notebook uses processed sequence data from:
 
 ```text
-R175
-G245
-R248
-R249
-R273
-R282
+data/processed/
