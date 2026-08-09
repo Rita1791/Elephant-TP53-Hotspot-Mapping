@@ -28,6 +28,25 @@
 
 ---
 
+# 🔑 Key Findings
+
+The comparative analysis provides a sequence-level view of TP53 conservation and variation between human TP53 and elephant TP53-related sequences.
+
+### Main computational observations
+
+- 🎯 Human TP53 mutation-associated hotspots were mapped onto aligned elephant TP53-related sequences.
+- 🧬 Conserved and divergent residues were identified across the analysed sequences.
+- 🐘 Canonical elephant TP53 and TP53-related sequences showed distinct sequence-level characteristics.
+- 🌳 Phylogenetic analysis provided evolutionary context for the analysed TP53-related sequences.
+- 📊 Sequence-derived features enabled exploratory computational prioritization.
+- 💻 The workflow was organized into a reproducible research repository and extended into the EleProtect v2.0 research application.
+
+### Important interpretation
+
+These observations represent computational sequence-level evidence and hypothesis-generating results. They should not be interpreted as experimental proof of a molecular mechanism underlying elephant cancer resistance.
+
+---
+
 # 📑 Research Navigation
 
 - [🔎 Research at a Glance](#-research-at-a-glance)
