@@ -4,11 +4,9 @@
 
 <p align="center">
 
+### 🧬 Human TP53 &nbsp; ↔ &nbsp; 🐘 Elephant TP53
+
 **Comparative Genomics · Cancer Biology · Evolutionary Bioinformatics · Computational Biology**
-
-<br><br>
-
-🧬 **Human TP53** &nbsp; ↔ &nbsp; 🐘 **Elephant TP53**
 
 </p>
 
@@ -24,519 +22,252 @@
 
 ---
 
-# 🔎 Research at a Glance
+# 🔬 Research at a Glance
 
-**Elephant TP53 Hotspot Mapping** is a comparative bioinformatics research
-project investigating the **evolutionary conservation and sequence-level
-variation of major human TP53 mutation-associated hotspots across elephant
-TP53-related sequences**.
+**Elephant TP53 Hotspot Mapping** is an open computational research repository investigating the **evolutionary conservation and sequence-level variation of major human TP53 mutation-associated hotspots across elephant TP53-related sequences**.
 
-The project was developed in the context of **evolutionary cancer biology**
-and the biological question commonly associated with **Peto's paradox**:
-cancer incidence does not simply increase proportionally with body size,
-number of cells, and lifespan across species.
+The project combines:
 
-Elephants provide an important comparative system for investigating this
-question because of their large body size and long lifespan. This project
-focuses on **TP53**, a major tumour-suppressor gene involved in genomic
-stability, DNA-damage response, cell-cycle regulation, apoptosis, and cellular
-stress responses.
+- 🧬 Comparative genomics
+- 🧪 Cancer biology
+- 🌳 Evolutionary bioinformatics
+- 🔎 Protein sequence analysis
+- 🧬 Multiple sequence alignment
+- 🎯 Mutation-hotspot mapping
+- 🌳 Phylogenetic analysis
+- 📊 Sequence-derived feature analysis
+- 🤖 Exploratory machine learning
+- 💻 Research software development
+- ♻️ Reproducible computational research
 
-Rather than assuming that one gene or one sequence feature explains elephant
-cancer resistance, this research uses comparative sequence analysis to
-investigate whether **human TP53 mutation-associated hotspot residues are
-conserved, substituted, or otherwise variable across elephant TP53-related
-sequences**.
+The research is motivated by the evolutionary cancer-biology question associated with **Peto's paradox**: why cancer incidence does not simply scale with body size, cell number and lifespan across species.
 
-The principal hotspot positions examined are:
-
-> **R175 · G245 · R248 · R249 · R273 · R282**
-
-The research combines biological sequence resources, similarity-based sequence
-identification, protein sequence alignment, residue-level hotspot mapping,
-conservation analysis, comparison of canonical and TP53-related sequences,
-phylogenetic analysis, and exploratory computational prioritization.
-
-The repository also contains **EleProtect v2.0**, an interactive Streamlit
-research application developed around selected computational components of
-the project.
+Rather than assuming that TP53 alone explains elephant cancer resistance, this project uses **comparative sequence analysis to investigate evolutionary patterns that may contribute to future hypotheses about tumour-suppressor evolution**.
 
 ---
 
-# 🧭 Research Navigation
+# 🎯 The Scientific Question
 
-| Section | Description |
-|---|---|
-| [🔬 Research Overview](#-research-overview) | Scientific problem and project scope |
-| [🧠 Biological Rationale](#-biological-rationale) | Why TP53 and elephants |
-| [🎯 Aim & Objectives](#-aim--objectives) | Research goals |
-| [🧬 TP53 Hotspot Framework](#-tp53-hotspot-framework) | Human TP53 positions investigated |
-| [🔬 Computational Methodology](#-computational-methodology) | Overall analytical pipeline |
-| [🗂️ Data Sources](#️-data-sources) | Biological databases and datasets |
-| [📊 Research Components](#-research-components) | Major computational analyses |
-| [📓 Research Notebooks](#-research-notebooks) | Interactive computational workflows |
-| [🐍 Analysis Scripts](#-analysis-scripts) | Reusable code |
-| [📊 Research Outputs](#-research-outputs) | Results and figures |
-| [💻 EleProtect v2.0](#-eleprotect-v20) | Interactive research application |
-| [📁 Repository Structure](#-repository-structure) | Project organization |
-| [♻️ Reproducibility](#️-reproducibility) | Reproducible research framework |
-| [⚠️ Interpretation & Limitations](#️-interpretation--limitations) | Scientific boundaries |
-| [📚 Research Publication](#-research-publication) | Published research |
-| [📄 Research Square](#-research-square) | Broader TP53 research |
-| [🌍 ECCB 2026](#-eccb-2026--poster-presentation) | Conference achievement |
-| [🎓 Academic Context](#-academic-context) | University and department |
-| [🏆 Researcher Achievement](#-researcher-achievement) | Research achievements |
-| [🙏 Acknowledgements](#-acknowledgements) | Authors and institutional acknowledgement |
-| [👩‍🔬 About the Researcher](#-about-the-researcher) | Researcher profile |
-| [🔗 Researcher Profiles](#-researcher-profiles--contact) | LinkedIn, ResearchGate, GitHub and email |
-| [📖 Citation](#-citation) | Citation information |
-| [📜 License](#-license) | Repository license |
-| [🧭 Start Here](#-start-here) | Recommended repository navigation |
+> **How conserved are recurrent human TP53 mutation-associated hotspots across elephant TP53-related sequences, and what sequence-level patterns emerge when canonical elephant TP53 and TP53-related sequences are compared?**
+
+The principal human TP53 hotspot positions investigated are:
+
+| Hotspot | Human TP53 Position | Research Context |
+|---|---:|---|
+| **R175** | 175 | Structural / mutation-associated hotspot |
+| **G245** | 245 | Mutation-associated hotspot |
+| **R248** | 248 | DNA-binding hotspot |
+| **R249** | 249 | Mutation-associated hotspot |
+| **R273** | 273 | DNA-binding hotspot |
+| **R282** | 282 | Structural hotspot |
+
+These positions provide defined reference coordinates for cross-species residue-level comparison following sequence alignment.
 
 ---
 
-# 🔬 Research Overview
-
-## The Scientific Question
-
-The central research question is:
-
-> **How conserved are recurrent human TP53 mutation-associated hotspots across
-> elephant TP53-related sequences, and what sequence-level patterns emerge
-> when canonical elephant TP53 and TP53-related sequences are compared?**
-
-The project connects:
-
-```text
-Human Cancer Genomics
-        │
-        ▼
-TP53 Mutation Hotspots
-        │
-        ▼
-Comparative Genomics
-        │
-        ▼
-Elephant TP53-Related Sequences
-        │
-        ▼
-Evolutionary Conservation
-        │
-        ▼
-Cancer Evolution Biology
-````
-
-The study is designed as a **comparative and hypothesis-generating
-computational analysis**.
-
-The purpose is to identify evolutionary sequence-level patterns that may
-support future structural, functional, and experimental investigation.
-
-The research does **not** assume that TP53 sequence conservation alone
-explains elephant cancer resistance or provides a complete explanation of
-Peto's paradox.
-
----
-
-# 🧠 Biological Rationale
+# 🧠 Why This Research?
 
 ## Why TP53?
 
-**TP53** encodes the tumour-suppressor protein p53, a major regulator of
-cellular responses to genomic stress.
+**TP53** encodes the tumour-suppressor protein p53, a central regulator of cellular responses to genomic stress.
 
-TP53 is involved in:
+TP53 participates in:
 
-* DNA-damage response
-* Cell-cycle regulation
-* Apoptosis
-* Cellular senescence
-* Genomic stability
-* Transcriptional regulation
+- DNA-damage response
+- Cell-cycle regulation
+- Apoptosis
+- Cellular senescence
+- Genomic stability
+- Transcriptional regulation
 
-Recurrent TP53 mutations occur at specific amino-acid positions in human
-cancers. These positions provide defined coordinates for residue-level
-cross-species comparison.
+Recurrent TP53 mutations occur at specific amino-acid positions in human cancers. These mutation-associated positions provide a defined framework for investigating evolutionary conservation and divergence across species.
 
 ---
 
-## Why Elephants?
+## 🐘 Why Elephants?
 
-Elephants represent an important comparative system in evolutionary cancer
-biology because they combine:
+Elephants provide an important comparative system in evolutionary cancer biology because they combine:
 
 ```text
 Large body size
-       +
+      +
 Long lifespan
-       +
+      +
 Large number of cells
-       ↓
+      ↓
 A major evolutionary cancer-biology question
-```
 
-This relationship is commonly discussed in the context of **Peto's paradox**.
+This relationship is commonly discussed in the context of Peto's paradox.
 
-The project therefore investigates elephant TP53-related sequences as a
-comparative system for examining conservation and variation at
-human cancer-associated TP53 positions.
+The objective of this project is not to claim that elephant cancer resistance is explained by TP53 sequence conservation alone.
 
-The goal is not to reduce elephant cancer biology to a single gene, but to
-identify sequence-level patterns that can contribute to broader evolutionary
-cancer research.
+Instead, the study asks whether sequence-level patterns surrounding human cancer-associated TP53 hotspots can provide useful evolutionary observations and hypotheses for subsequent structural, functional and experimental investigation.
 
----
+🧬 Research Framework
 
-# 🎯 Aim & Objectives
+The project follows the overall research logic:
 
-## Aim
-
-To investigate the evolutionary conservation and sequence-level variation of
-major human TP53 mutation-associated hotspots across elephant TP53-related
-sequences using comparative in-silico bioinformatics approaches.
-
-## Objectives
-
-* Identify recurrent human TP53 mutation-associated hotspots.
-* Retrieve human and elephant TP53-related sequence resources.
-* Identify TP53-related elephant sequences using similarity-based analysis.
-* Curate sequences for comparative analysis.
-* Perform protein-level multiple sequence alignment.
-* Map human TP53 hotspots onto elephant sequences.
-* Evaluate conservation and amino-acid variation at corresponding positions.
-* Compare canonical elephant TP53 with TP53-related sequences.
-* Examine evolutionary relationships among analysed sequences.
-* Develop an exploratory computational prioritization framework.
-* Investigate sequence-derived computational and machine-learning approaches.
-* Preserve the analysis as a transparent and reproducible research workflow.
-* Develop an interactive research interface through **EleProtect v2.0**.
-
----
-
-# 🧬 TP53 Hotspot Framework
-
-The comparative framework focuses on six major human TP53
-mutation-associated positions:
-
-| Hotspot  | Human TP53 Position | Comparative Purpose                    |
-| -------- | ------------------: | -------------------------------------- |
-| **R175** |                 175 | Mutation-associated structural hotspot |
-| **G245** |                 245 | Mutation-associated hotspot            |
-| **R248** |                 248 | DNA-binding hotspot                    |
-| **R249** |                 249 | Mutation-associated hotspot            |
-| **R273** |                 273 | DNA-binding hotspot                    |
-| **R282** |                 282 | Structural hotspot                     |
-
-These positions provide defined reference coordinates for residue-level
-comparative mapping following sequence alignment.
-
----
-
-# 🔬 Computational Methodology
-
-The overall computational workflow follows:
-
-```text
-Human TP53 Reference
-        │
-        ▼
-Human TP53 Mutation Hotspots
-        │
-        ▼
-Elephant Protein Resources
-        │
-        ▼
-Similarity-Based Sequence Identification
-        │
-        ▼
-Candidate TP53-Related Sequences
-        │
-        ▼
-Sequence Curation
-        │
-        ▼
-Multiple Sequence Alignment
-        │
-        ▼
-Hotspot Position Mapping
-        │
-        ▼
-Conservation / Variation Analysis
-        │
-        ▼
-Canonical vs TP53-Related Comparison
-        │
-        ▼
-Phylogenetic Analysis
-        │
-        ▼
-Computational Prioritization
-        │
-        ▼
-Exploratory Computational / ML Analysis
-        │
-        ▼
-Research Interpretation
-```
-
-The detailed methodological description is maintained separately so that
-the main README remains focused on the research overview.
-
-👉 **Detailed methodology:**
-[`docs/methodology.md`](docs/methodology.md)
-
-👉 **Data provenance:**
-[`docs/provenance.md`](docs/provenance.md)
-
-👉 **Reproducibility:**
-[`docs/reproducibility.md`](docs/reproducibility.md)
-
-👉 **Interpretation and limitations:**
-[`docs/interpretation_and_limitations.md`](docs/interpretation_and_limitations.md)
-
-👉 **Research proposal:**
-[`docs/Research_Proposal.pdf`](docs/Research_Proposal.pdf)
-
----
-
-# 🗂️ Data Sources
-
-The project uses publicly available biological sequence resources.
-
-## Human TP53
-
-| Field             | Information                 |
-| ----------------- | --------------------------- |
-| Species           | *Homo sapiens*              |
-| Gene              | **TP53**                    |
-| UniProt accession | **P04637**                  |
-| Sequence type     | Canonical protein           |
-| Local resource    | `data/raw/human_tp53.fasta` |
-| Source            | UniProt                     |
-
-🔗 **UniProt TP53 P04637**
-[https://www.uniprot.org/uniprotkb/P04637/entry](https://www.uniprot.org/uniprotkb/P04637/entry)
-
----
-
-## Asian Elephant Genomic Resource
-
-| Field           | Information                       |
-| --------------- | --------------------------------- |
-| Species         | *Elephas maximus*                 |
-| Assembly        | **GCA_024166365.1**               |
-| Assembly        | mEleMax1 primary haplotype        |
-| Source          | NCBI Assembly                     |
-| Analytical role | Elephant genomic/protein resource |
-
-🔗 **NCBI Assembly**
-[https://www.ncbi.nlm.nih.gov/assembly/13211691](https://www.ncbi.nlm.nih.gov/assembly/13211691)
-
----
-
-## Elephant Proteome
-
-The project uses a large elephant protein FASTA resource for
-similarity-based identification of TP53-related sequences.
-
-The complete elephant proteome is approximately **41 MB** and is therefore
-not duplicated unnecessarily throughout the repository.
-
-The source, accession, download information and analytical role are preserved
-in the project provenance documentation.
-
-👉 [`docs/provenance.md`](docs/provenance.md)
-
----
-
-# 📊 Research Components
-
-## 1. 🔎 Similarity-Based Sequence Identification
-
-Human TP53 is used as a reference for identifying TP53-related sequences in
-the elephant protein resource.
-
-The conceptual workflow is:
-
-```text
 Human TP53
-    ↓
-Similarity Search
-    ↓
-Elephant Proteome
-    ↓
-Candidate TP53-Related Proteins
-    ↓
-Sequence Inspection
-    ↓
-Curated Comparative Dataset
-```
+    │
+    ▼
+Human Cancer-Associated Hotspots
+    │
+    ▼
+Elephant Protein Resources
+    │
+    ▼
+Similarity-Based Sequence Identification
+    │
+    ▼
+Candidate TP53-Related Sequences
+    │
+    ▼
+Sequence Curation
+    │
+    ▼
+Multiple Sequence Alignment
+    │
+    ▼
+Hotspot Position Mapping
+    │
+    ▼
+Conservation & Amino-Acid Variation
+    │
+    ▼
+Canonical vs TP53-Related Comparison
+    │
+    ▼
+Phylogenetic Analysis
+    │
+    ▼
+Sequence-Derived Feature Analysis
+    │
+    ▼
+Exploratory Computational Prioritization
+    │
+    ▼
+Biological Interpretation
+🎯 Aim & Objectives
+Aim
 
-Relevant resources:
+To investigate the evolutionary conservation and sequence-level variation of major human TP53 mutation-associated hotspots across elephant TP53-related sequences using comparative in-silico bioinformatics approaches.
 
-👉 [`data/raw/Blast/`](data/raw/Blast/)
+Objectives
+Identify recurrent human TP53 mutation-associated hotspots.
+Retrieve human and elephant TP53-related sequence resources.
+Identify TP53-related elephant sequences using similarity-based analysis.
+Curate sequences for comparative analysis.
+Perform protein-level multiple sequence alignment.
+Map human TP53 hotspots onto elephant sequences.
+Evaluate conservation and amino-acid variation.
+Compare canonical elephant TP53 with TP53-related sequences.
+Examine evolutionary relationships among analysed sequences.
+Develop exploratory sequence-derived computational prioritization.
+Investigate exploratory machine-learning approaches.
+Preserve the computational workflow as a transparent and reproducible research resource.
+Develop EleProtect v2.0, an interactive research application associated with the analysis.
+📊 What Was Analysed?
 
----
+The repository contains computational work covering:
 
-## 2. 🧬 Multiple Sequence Alignment
+1. 🔎 Sequence Identification
 
-Protein-level multiple sequence alignment establishes residue-level
-correspondence between human TP53 and selected elephant TP53-related
-sequences.
+Human TP53 is used as a reference to identify TP53-related sequences within elephant protein resources.
 
-Tools used include:
+2. 🧬 Multiple Sequence Alignment
 
-* **MAFFT**
-* **Jalview**
+Protein sequences are aligned to establish residue-level correspondence between human TP53 and elephant TP53-related sequences.
 
-Alignment outputs are maintained under:
+Primary tools include:
 
-👉 [`results/MSA/`](results/MSA/)
+MAFFT
+Jalview
+3. 🎯 Hotspot Mapping
 
-👉 [`results/MSA_1and2/`](results/MSA_1and2/)
+Human TP53 mutation-associated positions are mapped onto aligned elephant sequences.
 
-👉 [`results/MSA_3/`](results/MSA_3/)
-
----
-
-## 3. 🎯 TP53 Hotspot Mapping
-
-Human TP53 mutation-associated hotspot positions are mapped onto aligned
-elephant sequences.
-
-The conceptual process is:
-
-```text
 Human TP53 hotspot
         ↓
-Reference position
+Reference residue position
         ↓
-Aligned position
+Alignment-aware position
         ↓
-Corresponding elephant residue
+Elephant corresponding residue
         ↓
 Conservation / substitution
         ↓
 Comparative interpretation
-```
+4. 📈 Conservation Analysis
 
----
+The analysis examines conservation and amino-acid variation at positions corresponding to human TP53 hotspots.
 
-## 4. 📊 Conservation Analysis
+5. 🐘 TP53-Related Sequence Comparison
 
-The project evaluates whether hotspot-associated residues are conserved or
-divergent across the analysed sequences.
+Canonical elephant TP53 and TP53-related / retrogene-derived sequences are compared to investigate sequence-level variation.
 
-The interpretation follows:
+6. 🌳 Phylogenetic Analysis
 
-```text
-Observed conservation
-        ↓
-Evidence consistent with evolutionary constraint
-        ↓
-Biological hypothesis
-```
+Phylogenetic analysis provides evolutionary context for the analysed sequences.
 
-Observed sequence conservation is not treated as direct proof of biological
-function.
+7. 🤖 Exploratory Computational / ML Analysis
 
----
+Sequence-derived features are used in exploratory computational prioritization and machine-learning workflows.
 
-## 5. 🐘 Canonical TP53 vs TP53-Related Sequences
+These analyses are exploratory and are not presented as clinically validated prediction models.
 
-A component of the project compares canonical elephant TP53 with
-TP53-related retrogene-derived sequences.
+📁 Repository Navigation
+Research Component	Location
+🧬 Raw biological data	data/raw/
+🗂️ Processed data	data/processed/
+🔎 Sequence identification	data/raw/Blast/
+📓 Main comparative analysis	notebooks/TP53_Comparative_Analysis.ipynb
+📈 Feature prioritization	notebooks/EleProtect_Feature_Prioritization.ipynb
+🤖 Predictive modelling	notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb
+🐍 Reusable analysis scripts	scripts/
+🧬 MSA results	results/MSA/
+🧬 Additional MSA results	results/MSA_1and2/
+🧬 Three-sequence MSA	results/MSA_3/
+🌳 Phylogeny	results/phylogeny/
+📊 MEGA outputs	results/MEGA/
+🤖 ML outputs	results/ML/
+🖼️ Research figures	figures/
+📖 Methodology	docs/methodology.md
+🧾 Data provenance	docs/provenance.md
+♻️ Reproducibility	docs/reproducibility.md
+⚠️ Interpretation & limitations	docs/interpretation_and_limitations.md
+📋 Research proposal	docs/Research_Proposal.pdf
+💻 EleProtect application	EleProtect_App/
+📓 Main Research Notebooks
+TP53_Comparative_Analysis.ipynb
 
-This enables investigation of sequence-level variation and hotspot-associated
-differences among TP53-related sequence categories.
+Primary computational workflow for the comparative TP53 analysis.
 
----
+👉 Open notebook
 
-## 6. 🌳 Phylogenetic Analysis
-
-Phylogenetic analysis provides evolutionary context for the analysed
-sequences.
-
-Relevant outputs:
-
-👉 [`results/phylogeny/`](results/phylogeny/)
-
-👉 [`results/MEGA/`](results/MEGA/)
-
----
-
-## 7. 📈 Computational Prioritization
-
-The project includes exploratory feature-based computational prioritization.
-
-The framework integrates sequence-derived observations such as similarity,
-conservation and mutation relevance to organize candidates for further
-investigation.
-
-This prioritization is **research-oriented and exploratory** and should not
-be interpreted as a clinical score or validated biological prediction.
-
-👉 [`notebooks/EleProtect_Feature_Prioritization.ipynb`](notebooks/EleProtect_Feature_Prioritization.ipynb)
-
----
-
-## 8. 🤖 Exploratory Machine Learning
-
-The project contains exploratory computational and machine-learning analyses
-based on sequence-derived features.
-
-👉 [`results/ML/`](results/ML/)
-
-👉 [`notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb`](notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb)
-
-These analyses are exploratory and should be interpreted in the context of
-the available dataset, feature representation, validation strategy and
-external validation requirements.
-
----
-
-# 📓 Research Notebooks
-
-The major computational notebooks are:
-
-## `TP53_Comparative_Analysis.ipynb`
-
-Primary comparative TP53 sequence and hotspot analysis.
-
-👉 [`notebooks/TP53_Comparative_Analysis.ipynb`](notebooks/TP53_Comparative_Analysis.ipynb)
-
----
-
-## `EleProtect_Feature_Prioritization.ipynb`
+EleProtect_Feature_Prioritization.ipynb
 
 Feature extraction and exploratory computational prioritization.
 
-👉 [`notebooks/EleProtect_Feature_Prioritization.ipynb`](notebooks/EleProtect_Feature_Prioritization.ipynb)
+👉 Open notebook
 
----
+TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb
 
-## `TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb`
+Exploratory computational and predictive-modelling workflow.
 
-Exploratory predictive modelling and deep-learning workflow.
+👉 Open notebook
 
-👉 [`notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb`](notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb)
+🐍 Reusable Computational Code
 
----
+Reusable implementations are maintained under:
 
-# 🐍 Analysis Scripts
+👉 scripts/
 
-Reusable computational implementations are maintained separately from the
-interactive notebooks.
+The main comparative implementation is:
 
-👉 [`scripts/`](scripts/)
+👉 scripts/TP53_Comparative_Analysis.py
 
-The principal comparative analysis implementation is:
+The repository separates:
 
-👉 [`scripts/TP53_Comparative_Analysis.py`](scripts/TP53_Comparative_Analysis.py)
-
-The separation follows:
-
-```text
 scripts/
     ↓
 Reusable computational implementation
@@ -544,220 +275,90 @@ Reusable computational implementation
 notebooks/
     ↓
 Interactive analysis, exploration and interpretation
-```
 
----
+This separation helps distinguish exploratory research from reusable computational components.
 
-# 📊 Research Outputs
+📊 Research Outputs
 
-The repository preserves computational outputs generated during the
-analysis.
+The repository preserves computational outputs generated during the study.
 
-## Multiple Sequence Alignments
+🧬 Multiple Sequence Alignment
 
-👉 [`results/MSA/`](results/MSA/)
+results/MSA/
 
-👉 [`results/MSA_1and2/`](results/MSA_1and2/)
+results/MSA_1and2/
 
-👉 [`results/MSA_3/`](results/MSA_3/)
+results/MSA_3/
 
-## Phylogenetic Analysis
+🌳 Phylogenetic Analysis
 
-👉 [`results/phylogeny/`](results/phylogeny/)
+results/phylogeny/
 
-👉 [`results/MEGA/`](results/MEGA/)
+results/MEGA/
 
-## Machine-Learning / Computational Outputs
+🤖 Computational / ML Outputs
 
-👉 [`results/ML/`](results/ML/)
+results/ML/
 
-## Research Figures
+🖼️ Figures
 
-👉 [`figures/`](figures/)
+figures/
 
-The figures provide visual representations of selected computational
-analyses, sequence relationships, alignments, hotspot mapping and
-prioritization outputs.
+📋 Results Documentation
 
----
+results/README.md
 
-# 💻 EleProtect v2.0
+♻️ Reproducibility
 
-## Interactive Research Application
+The repository is structured to preserve a traceable relationship between:
 
-**EleProtect v2.0** is the research-software component associated with this
-project.
-
-It provides a Streamlit-based interface for selected sequence-analysis and
-exploratory computational-prioritization workflows.
-
-### Features
-
-* 🧬 DNA or protein sequence input
-* 🔎 Sequence processing
-* 🎯 TP53-oriented analysis
-* 📊 Feature extraction
-* 🤖 Exploratory ML scoring
-* 📁 CSV export
-* 🌐 Interactive Streamlit interface
-
-### Application Directory
-
-👉 [`EleProtect_App/`](EleProtect_App/)
-
-### Application Documentation
-
-👉 [`EleProtect_App/README.md`](EleProtect_App/README.md)
-
-### Local Execution
-
-```bash
-cd EleProtect_App
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-EleProtect is a **research prototype** and is not intended to function as a
-clinical diagnostic, prognostic or therapeutic decision-support system.
-
----
-
-# 📁 Repository Structure
-
-```text
-Elephant-TP53-Hotspot-Mapping/
-│
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── Database/
-│
-├── notebooks/
-│   ├── TP53_Comparative_Analysis.ipynb
-│   ├── EleProtect_Feature_Prioritization.ipynb
-│   └── TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb
-│
-├── scripts/
-│
-├── results/
-│   ├── MSA/
-│   ├── MSA_1and2/
-│   ├── MSA_3/
-│   ├── MEGA/
-│   ├── ML/
-│   └── phylogeny/
-│
-├── figures/
-│
-├── docs/
-│   ├── README.md
-│   ├── methodology.md
-│   ├── provenance.md
-│   ├── reproducibility.md
-│   ├── interpretation_and_limitations.md
-│   └── Research_Proposal.pdf
-│
-├── manuscript/
-│
-├── EleProtect_App/
-│
-├── CITATION.cff
-├── LICENSE
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
----
-
-# 🧭 Where to Find Each Part of the Research
-
-| Interested in                      | Repository location                                                                                                                                    |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 🧬 Raw biological data             | [`data/raw/`](data/raw/)                                                                                                                               |
-| 🗂️ Processed datasets             | [`data/processed/`](data/processed/)                                                                                                                   |
-| 🔎 BLAST / sequence identification | [`data/raw/Blast/`](data/raw/Blast/)                                                                                                                   |
-| 🧬 Comparative TP53 analysis       | [`notebooks/TP53_Comparative_Analysis.ipynb`](notebooks/TP53_Comparative_Analysis.ipynb)                                                               |
-| 📈 Feature prioritization          | [`notebooks/EleProtect_Feature_Prioritization.ipynb`](notebooks/EleProtect_Feature_Prioritization.ipynb)                                               |
-| 🤖 Predictive modelling            | [`notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb`](notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb) |
-| 🐍 Reusable code                   | [`scripts/`](scripts/)                                                                                                                                 |
-| 🧬 Alignment results               | [`results/MSA/`](results/MSA/)                                                                                                                         |
-| 🌳 Phylogenetic results            | [`results/phylogeny/`](results/phylogeny/)                                                                                                             |
-| 📊 MEGA analysis                   | [`results/MEGA/`](results/MEGA/)                                                                                                                       |
-| 🤖 ML outputs                      | [`results/ML/`](results/ML/)                                                                                                                           |
-| 🖼️ Figures                        | [`figures/`](figures/)                                                                                                                                 |
-| 📖 Methodology                     | [`docs/methodology.md`](docs/methodology.md)                                                                                                           |
-| 🧾 Provenance                      | [`docs/provenance.md`](docs/provenance.md)                                                                                                             |
-| ♻️ Reproducibility                 | [`docs/reproducibility.md`](docs/reproducibility.md)                                                                                                   |
-| ⚠️ Limitations                     | [`docs/interpretation_and_limitations.md`](docs/interpretation_and_limitations.md)                                                                     |
-| 📋 Research proposal               | [`docs/Research_Proposal.pdf`](docs/Research_Proposal.pdf)                                                                                             |
-| 💻 EleProtect                      | [`EleProtect_App/`](EleProtect_App/)                                                                                                                   |
-
----
-
-# ♻️ Reproducibility
-
-The repository follows a traceable computational research structure:
-
-```text
 Biological Source
-       ↓
+      ↓
 Data Provenance
-       ↓
+      ↓
 Raw Data
-       ↓
+      ↓
 Processing
-       ↓
-Computational Analysis
-       ↓
+      ↓
+Analysis
+      ↓
 Results
-       ↓
+      ↓
 Figures
-       ↓
-Scientific Interpretation
-```
+      ↓
+Interpretation
 
-The detailed reproducibility framework is available at:
+Detailed documentation:
 
-👉 [`docs/reproducibility.md`](docs/reproducibility.md)
+docs/methodology.md
+docs/provenance.md
+docs/reproducibility.md
+docs/interpretation_and_limitations.md
+⚠️ Scientific Scope & Limitations
 
-The detailed methodology is available at:
-
-👉 [`docs/methodology.md`](docs/methodology.md)
-
-The data provenance record is available at:
-
-👉 [`docs/provenance.md`](docs/provenance.md)
-
----
-
-# ⚠️ Interpretation & Limitations
-
-This repository contains computational research and should be interpreted
-within the scope of the available sequence-level evidence.
+This repository contains computational research and should be interpreted within the scope of the available sequence-level evidence.
 
 The analysis can provide evidence concerning:
 
-* sequence conservation;
-* amino-acid variation;
-* sequence similarity;
-* TP53-related sequence relationships;
-* phylogenetic context; and
-* computational prioritization.
+sequence similarity
+sequence conservation
+amino-acid variation
+TP53-related sequence relationships
+phylogenetic context
+computational prioritization
 
-The computational analysis does **not independently establish**:
+The analysis does not independently establish:
 
-* the complete molecular basis of elephant cancer resistance;
-* a complete mechanistic explanation of Peto's paradox;
-* functional activity of individual TP53-related retrogenes;
-* clinical cancer risk;
-* therapeutic response;
-* diagnostic utility; or
-* experimentally validated biological mechanisms.
+the complete molecular basis of elephant cancer resistance;
+a complete mechanistic explanation of Peto's paradox;
+functional activity of individual TP53-related retrogenes;
+clinical cancer risk;
+therapeutic response;
+diagnostic utility; or
+experimentally validated biological mechanisms.
 
-The appropriate research progression is:
+The intended scientific progression is:
 
-```text
 Computational Observation
         ↓
 Evolutionary Interpretation
@@ -767,321 +368,318 @@ Hypothesis Generation
 Structural / Functional Investigation
         ↓
 Experimental Validation
-```
 
-Detailed discussion is available at:
+For the detailed discussion:
 
-👉 [`docs/interpretation_and_limitations.md`](docs/interpretation_and_limitations.md)
+👉 docs/interpretation_and_limitations.md
 
----
+💻 EleProtect v2.0
+Interactive Research Application
 
-# 📚 Research Publication
+EleProtect v2.0 is the software component associated with this research project.
 
-## *Comparative In-Silico Mapping of TP53 Mutation Hotspots in Elephants: A Responsible Bioinformatics Innovation Contributing to Cancer Research*
+It provides a Streamlit-based interface for selected sequence-analysis and exploratory computational-prioritization workflows.
 
-### Authors
+Features
+🧬 DNA / protein sequence input
+🔎 Sequence processing
+🎯 TP53-oriented analysis
+📊 Feature extraction
+🤖 Exploratory ML scoring
+📁 CSV export
+🌐 Interactive Streamlit interface
+Application
 
-**Ritika Rajendra Rawat**
-**Sermarani Nadar**
-**Gursimran Kaur Uppal**
+👉 EleProtect_App/
 
-### Academic Affiliation
+👉 EleProtect_App/README.md
 
-**Department of Bioinformatics**
-**Guru Nanak Khalsa College of Arts, Commerce and Science**
-**University of Mumbai**
+Local execution
+cd EleProtect_App
+pip install -r requirements.txt
+streamlit run app.py
 
-### Publication
+Important: EleProtect is a research prototype and is not intended to function as a clinical diagnostic, prognostic, or therapeutic decision-support system.
 
-**2026**
+📚 Associated Research Publication
+Comparative In-Silico Mapping of TP53 Mutation Hotspots in Elephants: A Responsible Bioinformatics Innovation Contributing to Cancer Research
+Authors
 
-### DOI
+Ritika Rajendra Rawat
+Sermarani Nadar
+Gursimran Kaur Uppal
 
-[https://doi.org/10.25215/9141002199](https://doi.org/10.25215/9141002199)
+Academic Affiliation
 
----
+Department of Bioinformatics
+Guru Nanak Khalsa College of Arts, Commerce and Science
+University of Mumbai
 
-### ResearchGate
+Publication
 
-[https://www.researchgate.net/profile/Ritika-Rawat-10](https://www.researchgate.net/profile/Ritika-Rawat-10)
+2026
 
-This publication represents the focused research direction underlying the
-human–elephant TP53 comparative analysis documented in this repository.
+DOI
 
-This work represents an extension of the research trajectory from:
+10.25215/9141002199
 
-```text
-Human TP53 ↔ Elephant TP53
-```
+ResearchGate
 
-toward:
+View the research profile
 
-```text
-TP53 Hotspot Conservation Across Mammalian Species
-```
+📄 Research Square
 
----
+The broader TP53 research direction is available through Research Square:
 
-# 🌍 ECCB 2026 — Poster Presentation
+Research Square DOI:
+10.21203/rs.3.rs-9299199/v1
 
-## European Conference on Computational Biology
+The broader research direction extends the human–elephant comparison toward investigation of TP53 hotspot conservation and functional constraint across mammals.
 
-The broader TP53 research programme has been accepted for **poster
-presentation at ECCB 2026**.
+🌍 ECCB 2026 — Poster Presentation
+European Conference on Computational Biology
 
-### Poster Title
+The broader TP53 research programme has been accepted for poster presentation at ECCB 2026.
 
-> **Evolutionary Conservation and Functional Constraint of TP53 Mutation
-> Hotspots Across Mammalian Species**
+Poster
 
-### Conference
+Evolutionary Conservation and Functional Constraint of TP53 Mutation Hotspots Across Mammalian Species
 
-**ECCB 2026 — European Conference on Computational Biology**
+Conference
 
-### Location
+ECCB 2026 — European Conference on Computational Biology
 
-**Geneva, Switzerland**
+Location
 
-### Dates
+📍 Geneva, Switzerland
 
-**31 August – 4 September 2026**
+Dates
 
-### Presentation
+📅 31 August – 4 September 2026
 
-**Poster Presentation**
+Presentation Format
 
-🔗 **ECCB 2026**
+🎓 Poster Presentation
 
-[https://eccb2026.org/](https://eccb2026.org/)
+🔗 ECCB 2026 Conference
 
-### Connection to This Research
+🔗 How ECCB Connects to This Repository
 
-The ECCB research represents an extension of the research direction documented
-in this repository.
+The ECCB work represents a broader continuation of the research direction developed through this project.
 
-The progression is:
-
-```text
 Human TP53 Mutation Hotspots
-          ↓
+            ↓
 Human–Elephant Comparative Analysis
-          ↓
+            ↓
 TP53 Conservation & Variation
-          ↓
+            ↓
 Canonical / TP53-Related Sequence Comparison
-          ↓
+            ↓
 Published Research
-          ↓
+            ↓
 Broader Mammalian TP53 Analysis
-          ↓
+            ↓
 Research Square
-          ↓
+            ↓
 ECCB 2026 Poster Presentation
-```
 
-The ECCB presentation therefore represents the broader continuation of the
-research into **evolutionary conservation and functional constraint of TP53
-mutation-associated hotspots across mammals**.
+This repository therefore represents one component of a continuing research trajectory in comparative genomics, evolutionary cancer biology and computational analysis of TP53.
 
----
+🎓 Academic Context
 
-# 🏆 Researcher Achievement
+This research was developed within the postgraduate academic and research context of:
 
-## Ritika Rajendra Rawat
+Department of Bioinformatics
 
-**MSc Bioinformatics**
+Guru Nanak Khalsa College of Arts, Commerce and Science
 
-The project represents a postgraduate computational research direction
-connecting comparative genomics, cancer biology and evolutionary
-bioinformatics.
+University of Mumbai
 
-### 🏆 ECCB 2026 Poster Presentation
+The project represents a computational research direction developed through postgraduate training in Bioinformatics, connecting:
 
-The broader TP53 research:
+bioinformatics → comparative genomics → cancer biology → evolutionary analysis → research software
 
-> **Evolutionary Conservation and Functional Constraint of TP53 Mutation
-> Hotspots Across Mammalian Species**
+🏆 Researcher Profile
+👩‍🔬 Ritika Rajendra Rawat
 
-has been accepted for poster presentation at the **European Conference on
-Computational Biology (ECCB 2026)** in Geneva, Switzerland.
+MSc Bioinformatics
 
-### 📚 Published Research
+Computational biology researcher working at the intersection of:
 
-Author/co-author of the associated research publication:
+🧬 Computational Genomics
+🧬 Comparative Genomics
+🧪 Cancer Bioinformatics
+🌳 Evolutionary Bioinformatics
+🧬 Sequence Analysis
+🤖 Machine Learning for Biological Data
+💻 Research Software
+♻️ Reproducible Computational Research
+Research Direction
 
-> *Comparative In-Silico Mapping of TP53 Mutation Hotspots in Elephants:
-> A Responsible Bioinformatics Innovation Contributing to Cancer Research*
+My research interests focus on applying computational approaches to biological and evolutionary questions, particularly:
 
-### 📄 Research Square
+How can sequence-level computational evidence reveal evolutionary constraints relevant to cancer biology?
 
-The research has been extended to a broader mammalian TP53 conservation
-framework available through Research Square.
+This project represents an effort to build an open, inspectable and reproducible computational research framework rather than treating computational results as isolated findings.
 
-### 💻 Research Software
+🏅 Research Highlights
+Achievement	Details
+🎓 Academic	MSc Bioinformatics
+📚 Publication	Co-authored published TP53 comparative research
+🌍 ECCB 2026	Accepted poster presentation
+🧬 Research	Comparative TP53 hotspot analysis
+💻 Software	Developer of EleProtect v2.0
+♻️ Open Research	Reproducible GitHub research repository
+📄 Research Square	Broader mammalian TP53 research
+🔗 Researcher & Contact
+💼 LinkedIn
 
-Developer of **EleProtect v2.0**, an interactive Streamlit-based research
-application associated with the TP53 comparative analysis.
+Ritika Rawat
 
-### ♻️ Open Computational Research
+👉 linkedin.com/in/ritika-rawat-551107219
 
-Maintainer of this GitHub repository containing:
+🔬 ResearchGate
 
-* Research documentation
-* Biological data provenance
-* Computational notebooks
-* Analysis scripts
-* Alignment outputs
-* Phylogenetic outputs
-* Machine-learning outputs
-* Research figures
-* Reproducibility documentation
-* Interactive research software
+Ritika Rawat
 
----
+👉 ResearchGate Profile
 
-# 🎓 Academic Context
+💻 GitHub
 
-## Department of Bioinformatics
+Rita1791
 
-### Guru Nanak Khalsa College
+👉 github.com/Rita1791
 
-### University of Mumbai
+📧 Academic / Research Email
 
-This research was developed within the postgraduate academic and research
-context of **Bioinformatics at Guru Nanak Khalsa College, University of
-Mumbai**.
+ritika.rawat27@outlook.com
 
-The academic environment provided the research and computational biology
-context for development of the project.
+For:
 
-The associated research publication lists the authors with the Department of
-Bioinformatics, Guru Nanak Khalsa College, University of Mumbai.
+academic collaboration
+research discussions
+computational biology projects
+PhD-related academic communication
+research enquiries
+🙏 Acknowledgements
 
----
+The project acknowledges the academic and research environment provided by:
 
-# 🙏 Acknowledgements
+Department of Bioinformatics
 
-The research acknowledges the academic environment and research training
-provided by:
+Guru Nanak Khalsa College of Arts, Commerce and Science
+University of Mumbai
 
-### Department of Bioinformatics
+The project also acknowledges the publicly available biological resources and computational tools that supported the analysis, including:
 
-**Guru Nanak Khalsa College**
-**University of Mumbai**
+NCBI
+UniProt
+BLAST
+MAFFT
+Jalview
+MEGA
+Python
+Google Colab
+scikit-learn
+Streamlit
+👥 Authors & Contributors
+Ritika Rajendra Rawat
 
-The project also acknowledges the publicly available biological databases,
-sequence resources and computational tools that supported the research,
-including:
+Primary researcher / author
 
-* **NCBI**
-* **UniProt**
-* **BLAST**
-* **MAFFT**
-* **Jalview**
-* **MEGA**
-* **Python**
-* **Google Colab**
-* **scikit-learn**
-* **Streamlit**
+Contributed to the computational research framework, comparative analysis, sequence analysis, research development and associated research outputs.
 
----
+Sermarani Nadar
 
-## 👥 Research Authors & Contributors
+Co-author
 
-### Ritika Rajendra Rawat
+Co-author of the associated published research on comparative TP53 hotspot mapping in elephants.
 
-**Primary researcher / author**
+Gursimran Kaur Uppal
 
-Contributed to the computational research framework, comparative analysis,
-sequence analysis, research development and associated research outputs.
+Co-author
 
-### Sermarani Nadar
+Co-author of the associated published research on comparative TP53 hotspot mapping in elephants.
 
-**Co-author**
+Authorship and contribution should ultimately be interpreted according to the formal contribution statement associated with the publication.
 
-Co-author of the associated published research on comparative TP53 hotspot
-mapping in elephants.
+🗂️ Data Resources
+Human TP53
+Species: Homo sapiens
+Gene: TP53
+UniProt accession: P04637
+Sequence type: Canonical protein
 
-### Gursimran Kaur Uppal
+👉 UniProt P04637 — TP53
 
-**Co-author**
+Elephant Genomic Resource
+Species: Elephas maximus
+Assembly: GCA_024166365.1
+Assembly name: mEleMax1 primary haplotype
+Source: NCBI Assembly
 
-Co-author of the associated published research on comparative TP53 hotspot
-mapping in elephants.
+👉 NCBI Assembly
 
-The exact contribution structure should be interpreted according to the
-authorship and contribution statements of the associated publication.
+Detailed provenance:
 
----
+👉 docs/provenance.md
 
-# 👩‍🔬 About the Researcher
+🧭 Recommended Path for a Researcher / PI
 
-## Ritika Rajendra Rawat
+If you are reviewing this repository for the first time:
 
-**MSc Bioinformatics**
+01 — Understand the research
 
-### Research Interests
+Read this README.
 
-* 🧬 Computational Genomics
-* 🧬 Comparative Genomics
-* 🧬 Cancer Bioinformatics
-* 🌳 Evolutionary Bioinformatics
-* 🧪 Sequence Analysis
-* 🧬 Computational Biology
-* 🤖 Machine Learning for Biological Data
-* 💻 Research Software
-* ♻️ Reproducible Computational Research
+02 — Inspect the methodology
 
-The research direction focuses on applying computational approaches to
-evolutionary questions in cancer biology, particularly sequence conservation,
-tumour-suppressor genes and comparative genomics.
+👉 docs/methodology.md
 
----
+03 — Verify data provenance
 
-# 🔗 Researcher Profiles & Contact
+👉 docs/provenance.md
 
-## 💼 LinkedIn
+04 — Inspect reproducibility
 
-**Ritika Rawat**
+👉 docs/reproducibility.md
 
-[https://in.linkedin.com/in/ritika-rawat-551107219](https://in.linkedin.com/in/ritika-rawat-551107219)
+05 — Open the main analysis
 
----
+👉 notebooks/TP53_Comparative_Analysis.ipynb
 
-## 🔬 ResearchGate
+06 — Inspect computational outputs
 
-**Ritika Rawat**
+👉 results/
 
-[https://www.researchgate.net/profile/Ritika-Rawat-10](https://www.researchgate.net/profile/Ritika-Rawat-10)
+07 — Examine figures
 
----
+👉 figures/
 
-## 💻 GitHub
+08 — Examine exploratory prioritization
 
-**Rita1791**
+👉 notebooks/EleProtect_Feature_Prioritization.ipynb
 
-[https://github.com/Rita1791](https://github.com/Rita1791)
+09 — Explore the research application
 
----
+👉 EleProtect_App/
 
-## 📧 Research / Academic Email
+10 — Read the limitations
 
-**[ritika.rawat27@outlook.com](mailto:ritika.rawat27@outlook.com)**
+👉 docs/interpretation_and_limitations.md
 
-For academic discussions, research collaboration and enquiries regarding this
-project.
+11 — Explore associated research
 
----
+📚 Published Research
 
-# 📖 Citation
+📄 Research Square
 
-If you use this repository, its methodology, computational framework, figures,
-research software or associated research framework, please cite the associated
-published work.
+🌍 ECCB 2026
 
-### Published Research
+📖 Citation
 
-```text
+If you use this repository, its methodology, computational framework, figures, research software, or associated research framework, please cite the associated publication.
+
 Rawat, R. R., Nadar, S., & Uppal, G. K. (2026).
 
 Comparative In-Silico Mapping of TP53 Mutation Hotspots in Elephants:
@@ -1091,151 +689,73 @@ Ideathon on Vikshit Bharat: Ideas, Innovation and Impact.
 Chapter 11, pp. 123–138.
 
 DOI: 10.25215/9141002199
-```
 
-Machine-readable citation information is available in:
+Machine-readable citation information:
 
-👉 [`CITATION.cff`](CITATION.cff)
+👉 CITATION.cff
 
----
+📜 License
 
-# 📜 License
+This repository is released under the MIT License.
 
-This repository is released under the **MIT License**.
+👉 LICENSE
 
-👉 [`LICENSE`](LICENSE)
-
----
-
-# 🌐 External Research Links
-
-| Resource                    | Link                                                                                                                                                                                                                                                                                                                                                                                               |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 💻 GitHub Repository        | [https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping](https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping)                                                                                                                                                                                                                                                                             |
-| 📚 Published Research       | [https://doi.org/10.25215/9141002199](https://doi.org/10.25215/9141002199)                                                                                                                                                                                                                                                                                                                         |
-| 🔬 ResearchGate Publication | [https://www.researchgate.net/publication/403581357_COMPARATIVE_IN-SILICO_MAPPING_OF_TP53_MUTATION_HOTSPOTS_IN_ELEPHANTS_A_RESPONSIBLE_BIOINFORMATICS_INNOVATION_CONTRIBUTING_TO_CANCER_RESEARCH](https://www.researchgate.net/publication/403581357_COMPARATIVE_IN-SILICO_MAPPING_OF_TP53_MUTATION_HOTSPOTS_IN_ELEPHANTS_A_RESPONSIBLE_BIOINFORMATICS_INNOVATION_CONTRIBUTING_TO_CANCER_RESEARCH) |
-| 📄 Research Square          | [https://doi.org/10.21203/rs.3.rs-9299199/v1](https://doi.org/10.21203/rs.3.rs-9299199/v1)                                                                                                                                                                                                                                                                                                         |
-| 👩‍🔬 ResearchGate Profile  | [https://www.researchgate.net/profile/Ritika-Rawat-10](https://www.researchgate.net/profile/Ritika-Rawat-10)                                                                                                                                                                                                                                                                                       |
-| 💼 LinkedIn                 | [https://in.linkedin.com/in/ritika-rawat-551107219](https://in.linkedin.com/in/ritika-rawat-551107219)                                                                                                                                                                                                                                                                                             |
-| 🌍 ECCB 2026                | [https://eccb2026.org/](https://eccb2026.org/)                                                                                                                                                                                                                                                                                                                                                     |
-| 🧬 UniProt TP53             | [https://www.uniprot.org/uniprotkb/P04637/entry](https://www.uniprot.org/uniprotkb/P04637/entry)                                                                                                                                                                                                                                                                                                   |
-| 🐘 NCBI Elephant Assembly   | [https://www.ncbi.nlm.nih.gov/assembly/13211691](https://www.ncbi.nlm.nih.gov/assembly/13211691)                                                                                                                                                                                                                                                                                                   |
-
----
-
-# 🧭 Start Here
-
-If you are visiting this repository for the first time:
-
-### 1️⃣ Understand the Research
-
-Read this README to understand the scientific question, rationale and
-overall research framework.
-
-### 2️⃣ Understand the Methodology
-
-👉 [`docs/methodology.md`](docs/methodology.md)
-
-### 3️⃣ Verify Data Provenance
-
-👉 [`docs/provenance.md`](docs/provenance.md)
-
-### 4️⃣ Inspect the Main Comparative Analysis
-
-👉 [`notebooks/TP53_Comparative_Analysis.ipynb`](notebooks/TP53_Comparative_Analysis.ipynb)
-
-### 5️⃣ Examine Feature Prioritization
-
-👉 [`notebooks/EleProtect_Feature_Prioritization.ipynb`](notebooks/EleProtect_Feature_Prioritization.ipynb)
-
-### 6️⃣ Examine Predictive Modelling
-
-👉 [`notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb`](notebooks/TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb)
-
-### 7️⃣ Inspect the Results
-
-👉 [`results/`](results/)
-
-### 8️⃣ Inspect the Figures
-
-👉 [`figures/`](figures/)
-
-### 9️⃣ Review Reproducibility
-
-👉 [`docs/reproducibility.md`](docs/reproducibility.md)
-
-### 🔟 Review Interpretation and Limitations
-
-👉 [`docs/interpretation_and_limitations.md`](docs/interpretation_and_limitations.md)
-
-### 1️⃣1️⃣ Explore EleProtect
-
-👉 [`EleProtect_App/`](EleProtect_App/)
-
-### 1️⃣2️⃣ Explore the Associated Research
-
-📚 **Published Research:**
-[https://doi.org/10.25215/9141002199](https://doi.org/10.25215/9141002199)
-
-📄 **Research Square:**
-[https://doi.org/10.21203/rs.3.rs-9299199/v1](https://doi.org/10.21203/rs.3.rs-9299199/v1)
-
-🌍 **ECCB 2026:**
-[https://eccb2026.org/](https://eccb2026.org/)
-
----
-
-# 🧬 Research Perspective
+🔗 External Research Links
+Resource	Link
+💻 GitHub Repository	Elephant-TP53-Hotspot-Mapping
+📚 Published Research	DOI: 10.25215/9141002199
+📄 Research Square	DOI: 10.21203/rs.3.rs-9299199/v1
+🔬 ResearchGate Profile	Ritika Rawat
+💼 LinkedIn	Ritika Rawat
+📧 Email	ritika.rawat27@outlook.com
+🌍 ECCB 2026	European Conference on Computational Biology
+🧬 UniProt TP53	P04637
+🐘 NCBI Elephant Assembly	GCA_024166365.1
+🌐 Research Perspective
 
 This project brings together:
 
-```text
-Cancer Biology
-      +
-Comparative Genomics
-      +
-Evolutionary Biology
-      +
-Bioinformatics
-      +
-Sequence Analysis
-      +
-Computational Modelling
-      +
-Research Software
-      +
-Reproducible Research
-```
+        🧬 Comparative Genomics
+                  +
+        🧪 Cancer Biology
+                  +
+        🌳 Evolutionary Biology
+                  +
+        💻 Bioinformatics
+                  +
+        📊 Sequence Analysis
+                  +
+        🤖 Computational Modelling
+                  +
+        🧰 Research Software
+                  +
+        ♻️ Reproducible Research
 
-The central research principle is:
+The central principle of this repository is:
 
-> **Use computational evidence to identify evolutionary patterns, preserve
-> the analytical path behind those observations, and translate computational
-> findings into hypotheses that can ultimately be investigated through
-> structural, functional and experimental research.**
-
----
+Use computational evidence to identify evolutionary patterns, preserve the analytical path behind those observations, and translate computational findings into hypotheses that can ultimately be investigated through structural, functional and experimental research.
 
 <p align="center">
+🧬 Human TP53 ↔ Elephant TP53 🐘
 
-## 🧬 Human TP53 ↔ Elephant TP53 🐘
+Comparative Genomics · Evolutionary Cancer Biology · Computational Biology
 
-**Comparative Genomics · Evolutionary Cancer Biology · Computational Biology**
+<br>
 
-<br><br>
-
-📚 **Published Research**   ·  
-📄 **Research Square**   ·  
-🌍 **ECCB 2026 Poster Presentation**   ·  
-💻 **EleProtect v2.0**
-
-<br><br>
-
-**Ritika Rajendra Rawat · MSc Bioinformatics**
+📚 Published Research   ·  
+📄 Research Square   ·  
+🌍 ECCB 2026 Poster Presentation   ·  
+💻 EleProtect v2.0
 
 <br><br>
 
-<a href="https://github.com/Rita1791">GitHub</a> · <a href="https://in.linkedin.com/in/ritika-rawat-551107219">LinkedIn</a> · <a href="https://www.researchgate.net/profile/Ritika-Rawat-10">ResearchGate</a>
+Ritika Rajendra Rawat · MSc Bioinformatics
 
-</p>
-```
+<br><br>
+
+<a href="https://github.com/Rita1791">GitHub</a> ·
+<a href="https://in.linkedin.com/in/ritika-rawat-551107219">LinkedIn</a> ·
+<a href="https://www.researchgate.net/profile/Ritika-Rawat-10">ResearchGate</a> ·
+<a href="mailto:ritika.rawat27@outlook.com">Email</a>
+
+</p> ```
