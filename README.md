@@ -1,36 +1,26 @@
-<div align="center">
+# 🧬 Elephant TP53 Hotspot Mapping
 
-# 🧬 Comparative In-Silico Analysis of TP53 Mutation Hotspots Between Humans and Elephants
-
-### Exploring evolutionary conservation, retrogene variation, and TP53 mutation hotspots in the context of Peto's paradox
+## Comparative In-Silico Analysis of TP53 Mutation Hotspots Between Humans and Elephants
 
 <p align="center">
 
-<img src="https://img.shields.io/badge/Research-Comparative%20Genomics-6A1B9A?style=for-the-badge">
-
-<img src="https://img.shields.io/badge/Cancer%20Biology-TP53-B71C1C?style=for-the-badge">
-
-<img src="https://img.shields.io/badge/Bioinformatics-Computational%20Biology-00599C?style=for-the-badge">
-
-<img src="https://img.shields.io/badge/Research%20Status-Completed-2E7D32?style=for-the-badge">
-
-<img src="https://img.shields.io/badge/Publication-2026-0A7EA4?style=for-the-badge">
-
-<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
+<b>Comparative Genomics • Cancer Biology • Evolutionary Bioinformatics • Reproducible Research Software</b>
 
 </p>
 
+<p align="center">
+
+🧬 Human TP53 &nbsp; ↔ &nbsp; 🐘 Elephant TP53  
 <br>
+🔎 Hotspot Mapping &nbsp; • &nbsp; 🧪 Sequence Analysis &nbsp; • &nbsp; 🌳 Evolutionary Context  
+<br>
+🤖 Exploratory Computational Modelling &nbsp; • &nbsp; 💻 EleProtect
 
-### 🐘 Human TP53 ↔ Elephant TP53
-
-**Comparative genomics • Cancer biology • Evolutionary bioinformatics**
-
-</div>
+</p>
 
 ---
 
-# 📑 Research Navigation
+## 📑 Research Navigation
 
 - [🔎 Research at a Glance](#-research-at-a-glance)
 - [📄 Abstract](#-abstract)
@@ -57,45 +47,99 @@
 # 🔎 Research at a Glance
 
 | Category | Details |
-|----------|---------|
+|---|---|
 | 🧬 **Research Area** | Comparative Genomics • Cancer Biology • Evolutionary Bioinformatics |
 | 🧬 **Primary Gene** | **TP53 / p53** |
-| 🐘 **Comparative System** | Human • African Elephant • Asian Elephant |
+| 🐘 **Comparative System** | Human • Elephant |
 | 🎯 **Focal Hotspots** | R175 • G245 • R248 • R249 • R273 • R282 |
-| 🔬 **Approach** | Protein-level multiple sequence alignment • hotspot mapping • conservation analysis |
-| 🧪 **Core Tools** | NCBI • UniProt • MAFFT • Jalview • MEGA • Python • Google Colab |
-| 📊 **Research Status** | ✅ Completed |
+| 🔬 **Core Analysis** | Protein sequence comparison • Multiple sequence alignment • Hotspot mapping • Conservation analysis |
+| 🧪 **Computational Framework** | Sequence analysis • Similarity analysis • Alignment • Phylogenetics • Feature analysis |
+| 🤖 **Exploratory Component** | Sequence-derived feature analysis and machine-learning ranking |
+| 📊 **Research Status** | ✅ Completed research project |
 | 📚 **Publication Status** | ✅ Published |
-| 🐘 **Companion Application** | EleProtect |
-| 🎓 **Academic Context** | Postgraduate Bioinformatics Research |
+| 🐘 **Companion Research Software** | **EleProtect v2.0** |
+| 🎓 **Research Context** | Postgraduate Bioinformatics Research |
+
+> **Scientific positioning:** This repository is a computational research
+> framework for comparative TP53 sequence analysis and hypothesis generation.
+> It is not a clinically validated cancer prediction system.
 
 ---
 
 # 📄 Abstract
 
-This research presents a comparative in-silico analysis of **TP53 mutation hotspots** in humans and elephants, with particular emphasis on sequence conservation and variation across canonical and retrogene-derived elephant TP53 sequences.
+This research presents a comparative in-silico analysis of **TP53 mutation
+hotspots** between humans and elephants, with emphasis on sequence conservation,
+variation, and comparative analysis of canonical and TP53-related elephant
+sequences.
 
-The study was motivated by the evolutionary question underlying **Peto's paradox**: despite their large body size and long lifespan, elephants do not exhibit cancer incidence proportional to the number of cells or years at risk.
+The study was motivated by the evolutionary question associated with
+**Peto's paradox**, which concerns the lack of a simple proportional
+relationship between body size, lifespan, cell number, and cancer incidence
+across species.
 
-Major human TP53 mutation hotspots were mapped against elephant TP53 protein sequences to investigate whether residues frequently altered in human cancer show conservation across elephant lineages and whether corresponding retrogene sequences display distinct patterns of variation.
+Recurrent human TP53 mutation-associated positions were examined within a
+comparative sequence framework to investigate whether corresponding residues
+show conservation or variation in elephant TP53-related sequences.
 
-The analysis integrates publicly available biological sequence resources with established computational biology workflows, including multiple sequence alignment, hotspot mapping, conservation assessment, and comparative sequence analysis.
+The computational workflow integrates publicly available biological resources,
+sequence preprocessing, similarity-based sequence identification, protein-level
+sequence alignment, mutation-associated hotspot mapping, conservation analysis,
+phylogenetic analysis, sequence-derived feature analysis, and exploratory
+computational modelling.
 
-The project demonstrates how transparent comparative genomics can be used to investigate evolutionary constraints surrounding tumour-suppressor genes and generate hypotheses for future experimental research.
+The resulting framework provides a reproducible computational basis for
+examining evolutionary patterns surrounding TP53 and for generating hypotheses
+that can be investigated through future structural, functional, comparative,
+and experimental studies.
 
 ---
 
 # 🧠 Biological Rationale
 
-**TP53** encodes the tumour-suppressor protein p53, a central regulator of genomic stability, DNA-damage response, cell-cycle control, senescence, and apoptosis.
+## Why TP53?
 
-Recurrent mutations in TP53 occur at functionally important positions in human cancers. These recurrent hotspots provide a useful framework for investigating whether evolutionarily conserved residues remain constrained across species.
+**TP53** encodes the tumour-suppressor protein p53, a major regulator of
+cellular responses to genomic stress.
 
-Elephants represent a particularly interesting comparative system because of their large body size and relatively long lifespan.
+TP53 is involved in processes including:
 
-The relationship between body size, lifespan, cell number, and cancer incidence is not proportional in the way that simple scaling arguments would predict. This evolutionary observation is commonly discussed in the context of **Peto's paradox**.
+- DNA-damage response;
+- cell-cycle regulation;
+- apoptosis;
+- cellular senescence;
+- genomic stability; and
+- transcriptional regulation.
 
-Rather than assuming that sequence conservation directly explains cancer resistance, this study uses comparative computational analysis to identify patterns of conservation and divergence that may inform future functional and experimental investigation.
+Recurrent TP53 mutations occur at specific positions in human cancers. These
+mutation-associated hotspots provide a useful coordinate system for comparative
+sequence analysis.
+
+---
+
+## Why elephants?
+
+Elephants provide an important comparative system for evolutionary cancer
+biology because they possess:
+
+- large body size;
+- long lifespan; and
+- substantially more cells than humans.
+
+Simple predictions based only on cell number and time at risk would suggest a
+greater cancer burden in large, long-lived organisms.
+
+The apparent lack of a straightforward scaling relationship is commonly
+discussed in the context of **Peto's paradox**.
+
+This project does **not** assume that TP53 sequence conservation alone explains
+elephant cancer biology.
+
+Instead, the computational question is narrower:
+
+> **Do human TP53 mutation-associated positions exhibit conservation or
+> sequence variation within elephant TP53-related sequences, and what
+> comparative patterns can be identified for future investigation?**
 
 ---
 
@@ -103,69 +147,85 @@ Rather than assuming that sequence conservation directly explains cancer resista
 
 ## Aim
 
-To investigate the evolutionary conservation and sequence-level variation of major human TP53 mutation hotspots across elephant TP53 sequences using comparative in-silico bioinformatics approaches.
+To investigate the evolutionary conservation and sequence-level variation of
+human TP53 mutation-associated hotspots across elephant TP53-related sequences
+using comparative in-silico bioinformatics approaches.
 
 ## Objectives
 
-- 🧬 Identify recurrent human TP53 cancer mutation hotspots.
-- 🗂️ Retrieve human and elephant TP53 sequences from publicly available biological databases.
-- 🔬 Perform protein-level multiple sequence alignment.
-- 🎯 Map human TP53 mutation hotspots onto elephant TP53 sequences.
-- 📊 Evaluate conservation and amino-acid variation at corresponding positions.
-- 🐘 Compare canonical elephant TP53 sequences with TP53 retrogene-derived sequences.
-- 🧪 Explore sequence-level patterns relevant to evolutionary cancer biology.
-- ♻️ Establish a transparent computational framework that can be inspected and extended.
+- 🧬 Identify recurrent human TP53 mutation-associated hotspots.
+- 🗂️ Retrieve and curate human and elephant TP53-related sequence resources.
+- 🔎 Identify TP53-related elephant sequences using similarity-based analysis.
+- 🧪 Perform protein-level sequence comparison and multiple sequence alignment.
+- 🎯 Map human TP53 mutation-associated positions onto comparative sequences.
+- 📊 Examine conservation and amino-acid variation at corresponding positions.
+- 🐘 Compare canonical elephant TP53 with TP53-related retrogene sequence
+  resources where applicable.
+- 🌳 Establish an evolutionary context using phylogenetic analysis.
+- 🤖 Explore sequence-derived features using computational modelling.
+- ♻️ Maintain a transparent and reproducible research workflow.
 
 ---
 
 # 🗂️ Data Sources
 
-The study uses publicly accessible biological sequence and annotation resources.
+The project uses publicly available biological sequence resources.
 
-| Resource | Purpose |
-|----------|---------|
-| 🧬 **NCBI** | Sequence retrieval and biological database resources |
-| 🧬 **UniProt** | Protein sequence and annotation resources |
-| 🧬 **Human TP53 mutation data** | Identification of recurrent mutation hotspots |
-| 🐘 **Elephant TP53 sequences** | Comparative sequence analysis |
-| 🧬 **Elephant TP53 retrogenes** | Assessment of sequence-level variation |
+## Human TP53
 
-### Data Principle
+| Field | Information |
+|---|---|
+| Species | *Homo sapiens* |
+| Gene | **TP53** |
+| Database | UniProt |
+| Accession | **P04637** |
+| Sequence | Canonical protein |
+| Local resource | `data/raw/human_tp53.fasta` |
 
-The project is based on **publicly accessible biological data** and does not require patient-identifiable genomic information.
+Source:
+
+**UniProt — TP53 P04637**
+
+https://www.uniprot.org/uniprotkb/P04637/entry
 
 ---
 
-# 🔬 Computational Methodology
+## Elephant Genomic Resource
 
-The overall computational workflow can be represented as:
+The principal elephant genomic resource documented for the project is:
+
+| Field | Information |
+|---|---|
+| Species | *Elephas maximus* |
+| Database | NCBI Assembly |
+| Assembly | **GCA_024166365.1** |
+| Assembly name | **mEleMax1 primary haplotype** |
+| Role | Source for elephant TP53-related sequence identification |
+
+Source:
+
+**NCBI Assembly — GCA_024166365.1**
+
+https://www.ncbi.nlm.nih.gov/assembly/13211691
+
+---
+
+## Large External Proteome
+
+The original analysis used the corresponding elephant proteome, which was
+approximately **41 MB**.
+
+The complete proteome is not duplicated in this repository.
+
+Instead, the repository preserves:
 
 ```text
-Human TP53 Mutation Hotspots
-            │
-            ▼
-     Sequence Retrieval
-            │
-            ▼
-      Data Preprocessing
-            │
-            ▼
- Human–Elephant TP53 Comparison
-            │
-            ▼
- Multiple Sequence Alignment
-            │
-            ▼
-     Hotspot Position Mapping
-            │
-            ▼
- Conservation & Variation Analysis
-            │
-            ▼
- Canonical vs Retrogene Comparison
-            │
-            ▼
-  Descriptive Hotspot Prioritisation
-            │
-            ▼
-     Biological Interpretation
+Assembly accession
+       ↓
+Data provenance
+       ↓
+Derived TP53-related sequences
+       ↓
+Computational analysis
+       ↓
+Results
