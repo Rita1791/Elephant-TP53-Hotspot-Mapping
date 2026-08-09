@@ -1,22 +1,40 @@
-# Reproducibility
+# 🔁 Reproducibility
 
-## 1. Purpose
+<p align="center">
 
-This document describes how the computational components of the project are organized to support traceability and reproducibility.
+<b>Computational reproducibility framework for the Elephant TP53 Hotspot Mapping project</b>
 
-The repository separates source datasets, processed data, computational workflows, generated results, and curated figures.
+</p>
+
+<p align="center">
+
+🧬 Data Provenance &nbsp; • &nbsp;
+💻 Computational Environment &nbsp; • &nbsp;
+🔎 Analysis Traceability &nbsp; • &nbsp;
+📊 Result Verification &nbsp; • &nbsp;
+🔬 Scientific Transparency
+
+</p>
 
 ---
 
-# 2. Repository Workflow
+## 🎯 1. Purpose
 
-The project follows the general structure:
+This document describes how the computational analyses in the
+**Elephant TP53 Hotspot Mapping** repository can be inspected, reconstructed,
+and reproduced.
+
+The repository is structured to maintain a clear relationship between:
 
 ```text
-data/
-   ↓
-notebooks/ + scripts/
-   ↓
-results/
-   ↓
-figures/
+SOURCE DATA
+    ↓
+PROCESSED DATA
+    ↓
+COMPUTATIONAL ANALYSIS
+    ↓
+RESULTS
+    ↓
+FIGURES
+    ↓
+SCIENTIFIC INTERPRETATION
