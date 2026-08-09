@@ -618,67 +618,151 @@ Assembly: GCA_024166365.1
 Assembly name: mEleMax1 primary haplotype
 Source: NCBI Assembly
 
-👉 NCBI Assembly
+👉 [NCBI Assembly](https://www.ncbi.nlm.nih.gov/assembly/13211691)
 
-Detailed provenance:
+**Detailed provenance:**  
+👉 [`docs/provenance.md`](docs/provenance.md)
 
-👉 docs/provenance.md
+---
 
-🧭 Recommended Path for a Researcher / PI
+# 🧭 Recommended Path for a Researcher / PI
 
-If you are reviewing this repository for the first time:
+If you are reviewing this repository for the first time, the following path provides a quick overview of the research, methodology, computational implementation, results, and associated research outputs.
 
-01 — Understand the research
+### 01 — 🔬 Understand the Research
 
-Read this README.
+Start with this README to understand the scientific question, biological rationale, research objectives, and overall computational framework.
 
-02 — Inspect the methodology
+### 02 — 🧪 Inspect the Methodology
 
-👉 docs/methodology.md
+Review the detailed computational methodology:
 
-03 — Verify data provenance
+👉 [`docs/methodology.md`](docs/methodology.md)
 
-👉 docs/provenance.md
+### 03 — 🧾 Verify Data Provenance
 
-04 — Inspect reproducibility
+Review the sequence sources, accession information, and provenance of the biological data:
 
-👉 docs/reproducibility.md
+👉 [`docs/provenance.md`](docs/provenance.md)
 
-05 — Open the main analysis
+### 04 — ♻️ Inspect Reproducibility
 
-👉 notebooks/TP53_Comparative_Analysis.ipynb
+Review how the computational workflow is organized for reproducibility:
 
-06 — Inspect computational outputs
+👉 [`docs/reproducibility.md`](docs/reproducibility.md)
 
-👉 results/
+### 05 — 📓 Open the Main Analysis
 
-07 — Examine figures
+Explore the primary comparative TP53 analysis:
 
-👉 figures/
+👉 [`notebooks/TP53_Comparative_Analysis.ipynb`](notebooks/TP53_Comparative_Analysis.ipynb)
 
-08 — Examine exploratory prioritization
+### 06 — 📊 Inspect Computational Outputs
 
-👉 notebooks/EleProtect_Feature_Prioritization.ipynb
+Explore the generated computational results:
 
-09 — Explore the research application
+👉 [`results/`](results/)
 
-👉 EleProtect_App/
+### 07 — 🖼️ Examine Research Figures
 
-10 — Read the limitations
+View the research visualizations and analytical figures:
 
-👉 docs/interpretation_and_limitations.md
+👉 [`figures/`](figures/)
 
-11 — Explore associated research
+### 08 — 🤖 Explore Computational Prioritization
 
-📚 Published Research
+Review the exploratory sequence-feature prioritization workflow:
 
-📄 Research Square
+👉 [`notebooks/EleProtect_Feature_Prioritization.ipynb`](notebooks/EleProtect_Feature_Prioritization.ipynb)
 
-🌍 ECCB 2026
+### 09 — 💻 Explore the Research Application
 
-📖 Citation
+Explore the interactive EleProtect research application:
+
+👉 [`EleProtect_App/`](EleProtect_App/)
+
+### 10 — ⚠️ Read the Scientific Limitations
+
+Review the interpretation boundaries and limitations of the computational findings:
+
+👉 [`docs/interpretation_and_limitations.md`](docs/interpretation_and_limitations.md)
+
+### 11 — 📚 Explore the Associated Research
+
+**Published Research:**  
+👉 [DOI: 10.25215/9141002199](https://doi.org/10.25215/9141002199)
+
+**Research Square:**  
+👉 [DOI: 10.21203/rs.3.rs-9299199/v1](https://doi.org/10.21203/rs.3.rs-9299199/v1)
+
+**ECCB 2026:**  
+👉 [European Conference on Computational Biology](https://eccb2026.org/)
+
+---
+
+# 📖 Citation
 
 If you use this repository, its methodology, computational framework, figures, research software, or associated research framework, please cite the associated publication.
+
+### Associated Publication
+
+> **Rawat, R. R., Nadar, S., & Uppal, G. K. (2026).**  
+> *Comparative In-Silico Mapping of TP53 Mutation Hotspots in Elephants: A Responsible Bioinformatics Innovation Contributing to Cancer Research.*  
+> *Ideathon on Vikshit Bharat: Ideas, Innovation and Impact.*  
+> Chapter 11, pp. 123–138.  
+>
+> **DOI:** [10.25215/9141002199](https://doi.org/10.25215/9141002199)
+
+### Machine-Readable Citation
+
+👉 [`CITATION.cff`](CITATION.cff)
+
+---
+
+# 📜 License
+
+This repository is released under the **MIT License**.
+
+👉 [`LICENSE`](LICENSE)
+
+---
+
+# 🔗 External Research Links
+
+| Resource | Link |
+|---|---|
+| 💻 **GitHub Repository** | [Elephant-TP53-Hotspot-Mapping](https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping) |
+| 📚 **Published Research** | [DOI: 10.25215/9141002199](https://doi.org/10.25215/9141002199) |
+| 📄 **Research Square** | [DOI: 10.21203/rs.3.rs-9299199/v1](https://doi.org/10.21203/rs.3.rs-9299199/v1) |
+| 🔬 **ResearchGate Profile** | [Ritika Rawat](https://www.researchgate.net/profile/Ritika-Rawat-10) |
+| 💼 **LinkedIn** | [Ritika Rawat](https://in.linkedin.com/in/ritika-rawat-551107219) |
+| 📧 **Email** | [ritika.rawat27@outlook.com](mailto:ritika.rawat27@outlook.com) |
+| 🌍 **ECCB 2026** | [European Conference on Computational Biology](https://eccb2026.org/) |
+| 🧬 **UniProt TP53** | [P04637 — TP53](https://www.uniprot.org/uniprotkb/P04637/entry) |
+| 🐘 **NCBI Elephant Assembly** | [GCA_024166365.1](https://www.ncbi.nlm.nih.gov/assembly/13211691) |
+
+---
+
+# 🌐 Research Perspective
+
+This project brings together:
+
+```text
+        🧬 Comparative Genomics
+                  +
+        🧪 Cancer Biology
+                  +
+        🌳 Evolutionary Biology
+                  +
+        💻 Bioinformatics
+                  +
+        📊 Sequence Analysis
+                  +
+        🤖 Computational Modelling
+                  +
+        🧰 Research Software
+                  +
+        ♻️ Reproducible Researchor associated research framework, please cite the associated publication.
 
 Rawat, R. R., Nadar, S., & Uppal, G. K. (2026).
 
