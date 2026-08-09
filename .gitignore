@@ -3,9 +3,11 @@
 # Git Ignore Configuration
 # ============================================================
 
+
 # ------------------------------------------------------------
 # Python
 # ------------------------------------------------------------
+
 __pycache__/
 *.py[cod]
 *$py.class
@@ -14,9 +16,11 @@ __pycache__/
 *.egg-info/
 *.pyd
 
+
 # ------------------------------------------------------------
-# Virtual environments
+# Virtual Environments
 # ------------------------------------------------------------
+
 .venv/
 venv/
 env/
@@ -24,14 +28,18 @@ ENV/
 env.bak/
 venv.bak/
 
+
 # ------------------------------------------------------------
 # Jupyter Notebook
 # ------------------------------------------------------------
+
 .ipynb_checkpoints/
 
+
 # ------------------------------------------------------------
-# Python testing / coverage
+# Python Testing / Coverage
 # ------------------------------------------------------------
+
 .pytest_cache/
 .coverage
 .coverage.*
@@ -39,17 +47,21 @@ htmlcov/
 .tox/
 .nox/
 
+
 # ------------------------------------------------------------
-# Python tooling
+# Python Tooling
 # ------------------------------------------------------------
+
 .mypy_cache/
 .dmypy.json
 dmypy.json
 .ruff_cache/
 
+
 # ------------------------------------------------------------
 # Operating System
 # ------------------------------------------------------------
+
 .DS_Store
 .DS_Store?
 ._*
@@ -59,18 +71,22 @@ ehthumbs.db
 Thumbs.db
 desktop.ini
 
+
 # ------------------------------------------------------------
 # IDE / Editors
 # ------------------------------------------------------------
+
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
+
 # ------------------------------------------------------------
-# Temporary files
+# Temporary Files
 # ------------------------------------------------------------
+
 *.tmp
 *.temp
 *.bak
@@ -78,65 +94,129 @@ desktop.ini
 *.old
 *.log
 
+
 # ------------------------------------------------------------
-# Local configuration / secrets
+# Local Configuration / Secrets
 # ------------------------------------------------------------
+
 .env
 .env.*
 !.env.example
 
+
 # ------------------------------------------------------------
 # Node / JavaScript
-# Used only if EleProtect contains a Node-based component
 # ------------------------------------------------------------
+
+# Used only if a Node-based component is introduced.
+
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+
 # ------------------------------------------------------------
-# Build / distribution directories
+# Build / Distribution Directories
 # ------------------------------------------------------------
+
 dist/
 build/
 out/
 
-# ------------------------------------------------------------
-# Streamlit / local application cache
-# ------------------------------------------------------------
-.streamlit/secrets.toml
 
 # ------------------------------------------------------------
-# Local database files
+# Streamlit / Local Application Secrets
 # ------------------------------------------------------------
+
+.streamlit/secrets.toml
+
+
+# ------------------------------------------------------------
+# Local Database Files
+# ------------------------------------------------------------
+
 *.db
 *.sqlite
 *.sqlite3
 
-# ------------------------------------------------------------
-# Temporary scientific analysis outputs
-# ------------------------------------------------------------
-*.pickle
-*.pkl
-*.joblib
 
 # ------------------------------------------------------------
-# Local generated exports
+# Temporary / Serialized Python Artifacts
 # ------------------------------------------------------------
+
+*.pickle
+*.pkl
+
+
+# ------------------------------------------------------------
+# Local Generated Spreadsheet Exports
+# ------------------------------------------------------------
+
 *.xlsx~
 *.csv~
 *.tsv~
 
+
 # ------------------------------------------------------------
-# Project-specific note:
-# Do NOT ignore:
+# Project-Specific Research Data Policy
+# ------------------------------------------------------------
+
+# IMPORTANT:
+# Do NOT globally ignore the following directories:
+#
 # data/
-# Results/
+# results/
 # figures/
 # notebooks/
 # scripts/
+# docs/
+# EleProtect_App/
 #
-# These directories may contain important research artifacts.
-# Only exclude individual large/intermediate files when necessary.
+# These directories contain intentional research artifacts,
+# computational outputs, documentation, or application resources.
+#
+# Large external datasets should be excluded individually rather
+# than by globally ignoring an entire scientific data format.
+
+
+# ------------------------------------------------------------
+# Model Artifact Policy
+# ------------------------------------------------------------
+
+# .joblib files are intentionally NOT ignored.
+#
+# The repository contains tracked model artifacts under:
+#
+# EleProtect_App/models/
+#
+# Examples:
+#   eleprotect_model.joblib
+#   feature_columns.joblib
+#   scaler.joblib
+#
+# These files are part of the reproducible application workflow.
+
+
+# ------------------------------------------------------------
+# Large External Reference Data
+# ------------------------------------------------------------
+
+# Do NOT add a blanket rule such as:
+#
+# *.fasta
+# *.fa
+# *.faa
+# *.fna
+#
+# because this repository intentionally contains curated sequence
+# files required for the research workflow.
+#
+# Large external datasets should instead be excluded by their
+# specific filename/path when necessary.
+
+
+# ------------------------------------------------------------
+# End of File
 # ------------------------------------------------------------
