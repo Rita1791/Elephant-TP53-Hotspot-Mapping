@@ -1,0 +1,30 @@
+CLUSTAL O(1.2.4) multiple sequence alignment
+
+
+Human_TP53                  MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGP	60
+Elephant_P53_Canonical      MEEKQSDPSMEPPLSQQTFSDLEKLLPENELMPEIPQVM-KD---LNDDEMTWFTEDSGP	56
+                            *** *****:******:***** ******:::  :*.   .*     **   ***** **
+
+Human_TP53                  DEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAK	120
+Elephant_P53_Canonical      SEAPRLPEAAP-VA-----PTPAAPAP-STWPLSSSVPSQKTYSQ-SAFRLGFLHSGTAK	108
+                            .****:***** **     ********  :*************.   .************
+
+Human_TP53                  SVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHE	180
+Elephant_P53_Canonical      SVSCNYSPALHFNF-KLAKTCPVQLWVDSTPPPGTRVRAMAIYKKSQHMTETVRRCPHHE	167
+                            **:*.*****:  * :****************************:******.********
+
+Human_TP53                  RCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNS	240
+Elephant_P53_Canonical      RCSDSDGLAPPQHLQRVEGNLRVEYLDNDNTFRHSVVVPYEPPEVGSDMTTLHYNYMCTS	227
+                            ************** ************: ******************* **:******.*
+
+Human_TP53                  SCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENLRKKGEPHHELP	300
+Elephant_P53_Canonical      SCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCTCPGRDRRTEEENLRKKGDPHHELP	287
+                            ***********************************:*****************:******
+
+Human_TP53                  PGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPG	360
+Elephant_P53_Canonical      Q-STKRALPTNTSSSTQPKKKPLDGEYFTLQIRGGDRFELERELNEALELKDAQAGKEPG	346
+                              *******.***** ****************** :***: *******************
+
+Human_TP53                  GSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD	393
+Elephant_P53_Canonical      GSSAHS-SLKSKKGQSTSRHRKLMYKTQGPDND	378
+                            ** ***  ************:***:**:***.*
