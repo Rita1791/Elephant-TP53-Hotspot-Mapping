@@ -1,22 +1,32 @@
 # 🧬 Research Data
 
-This directory contains the biological sequence resources,
-processed comparative datasets, structured TP53 research
-data, and provenance information supporting the project.
+This directory contains the biological sequence resources, processed datasets,
+and derived reference tables used throughout the **Elephant TP53 Hotspot Mapping**
+research project.
 
-The data architecture separates:
-
-> **Raw biological resources → Processed datasets → Structured research database**
-
----
-
-# 📂 Data Architecture
+The data organization follows a simple computational-research principle:
 
 ```text
+PUBLIC BIOLOGICAL RESOURCES
+          │
+          ▼
+       raw/
+          │
+          ▼
+    preprocessing
+          │
+          ▼
+    processed/
+          │
+          ▼
+ comparative analysis
+          │
+          ▼
+     results/
+
 data/
 │
 ├── raw/
-│   │
 │   ├── Blast/
 │   ├── ncbi_dataset/
 │   ├── african_tp53_hits.fasta
@@ -34,9 +44,48 @@ data/
 │   ├── human_elephant_tp53_pair.fasta
 │   └── human_elephant_tp53_retrogene_comparison.fasta
 │
-├── Database/
-│   ├── tp53_elephant_database.csv
-│   ├── tp53_elephant_database.json
-│   └── README.md
-│
-└── README.md
+└── Database/
+    ├── README.md
+    ├── tp53_elephant_database.csv
+    └── tp53_elephant_database.json
+
+                    PUBLIC DATABASES
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │     raw/        │
+                 │                 │
+                 │ NCBI / BLAST /  │
+                 │ sequence files  │
+                 └────────┬────────┘
+                          │
+                          ▼
+                  sequence curation
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │   processed/    │
+                 │                 │
+                 │ cleaned / paired│
+                 │ comparative     │
+                 │ sequences       │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 comparative analysis
+                          │
+             ┌────────────┼────────────┐
+             ▼            ▼            ▼
+           MSA        Hotspot       Similarity
+                      Mapping        Analysis
+             │            │            │
+             └────────────┼────────────┘
+                          ▼
+                       results/
+                          │
+                          ▼
+                    Interpretation
+                          │
+                          ▼
+                  Research Outputs
+
