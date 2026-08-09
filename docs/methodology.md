@@ -1,32 +1,53 @@
-# Methodology
+# 🧬 Methodology
 
-## 1. Overview
+<p align="center">
 
-The project **Comparative In-Silico Analysis of TP53 Mutation Between Humans and Elephants** uses a computational comparative-biology workflow to investigate sequence conservation, divergence, mutation-associated regions, and evolutionary relationships involving TP53.
+<b>Comparative computational framework for TP53 sequence analysis</b>
 
-The workflow combines publicly available sequence resources with sequence comparison, multiple sequence alignment, hotspot mapping, phylogenetic analysis, and exploratory computational feature analysis.
+</p>
 
-The overall analytical framework is:
+---
+
+## 🧭 1. Study Design
+
+This project uses a comparative in-silico framework to investigate TP53 sequence
+characteristics between humans and elephants.
+
+The analytical workflow combines:
+
+- sequence retrieval;
+- sequence preprocessing;
+- similarity-based sequence identification;
+- multiple sequence alignment;
+- conservation and divergence analysis;
+- TP53 mutation-associated position mapping;
+- phylogenetic analysis;
+- sequence-derived feature extraction; and
+- exploratory computational modelling.
+
+The overall workflow is:
 
 ```text
-Reference Sequence Selection
+Reference Selection
         ↓
-Comparative Sequence Retrieval
+Sequence Retrieval
         ↓
-Sequence Preprocessing
+Preprocessing
         ↓
-Similarity-Based Identification
+Similarity Analysis
         ↓
-Sequence Alignment
+Multiple Sequence Alignment
         ↓
-Conservation and Divergence Analysis
+Conservation / Divergence Analysis
         ↓
-TP53 Hotspot Mapping
+Hotspot Mapping
         ↓
 Phylogenetic Analysis
         ↓
 Feature Extraction
         ↓
-Exploratory Computational Analysis
+Exploratory Analysis
         ↓
-Visualization and Interpretation
+Visualization
+        ↓
+Interpretation
