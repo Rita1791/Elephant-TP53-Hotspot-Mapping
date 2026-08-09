@@ -59,4 +59,4 @@ The workflow focuses on:
 The notebook uses processed sequence data from:
 
 ```text
-data/processed/
+data/processed/TP53_clean.fasta
