@@ -1,45 +1,42 @@
 # 🧬 Research Notebooks
 
-This directory contains computational notebooks supporting the
+This directory contains the computational notebooks supporting the
 **Elephant TP53 Hotspot Mapping** research project.
 
-The notebooks document the comparative sequence-analysis workflow,
-exploratory feature analysis, and methodological deep-learning prototype
-associated with the project.
+The notebooks document the comparative analysis, exploratory machine-learning
+work, and computational framework associated with the study.
 
 ---
 
 ## 📓 Notebook Overview
 
-| Notebook | Purpose | Research Role |
+| Notebook | Purpose | Role |
 |---|---|---|
-| `TP53_Comparative_Analysis.ipynb` | Human–elephant TP53 comparative sequence analysis | 🔬 Primary analysis |
-| `EleProtect_Feature_Prioritization.ipynb` | Sequence-derived feature characterization | 🧬 Exploratory analysis |
-| `TP53_Deep_Learning_Architecture_and_Analysis.ipynb` | Exploratory TP53 sequence representation | 🤖 Methodological prototype |
+| `TP53_Comparative_Analysis.ipynb` | Comparative analysis of human and elephant TP53 sequences | 🔬 Primary Research Analysis |
+| `EleProtect_ML_Analysis.ipynb` | Exploratory machine-learning analysis of sequence-derived features | 🤖 Exploratory Analysis |
+| `TP53_AI_Pipeline.ipynb` | Exploratory AI/deep-learning framework for TP53 sequence analysis | 🧠 Methodological Prototype |
 
 ---
 
-## 🔬 1. TP53 Comparative Analysis
+## 🔬 TP53 Comparative Analysis
 
-### `TP53_Comparative_Analysis.ipynb`
+`TP53_Comparative_Analysis.ipynb` contains the primary computational
+analysis of TP53-related protein sequences.
 
-This notebook implements the primary comparative sequence-analysis
-workflow.
+The workflow includes:
 
-The analysis includes:
-
-- reference sequence identification;
 - sequence quality control;
-- sequence preprocessing;
-- global pairwise alignment;
-- sequence identity estimation;
+- reference sequence identification;
+- protein sequence preprocessing;
+- pairwise sequence alignment;
+- sequence identity analysis;
 - alignment-aware residue mapping;
-- canonical human TP53 hotspot mapping;
-- amino-acid composition analysis;
-- comparative visualization;
-- reproducible result export.
+- canonical TP53 hotspot mapping;
+- comparative sequence characterization;
+- visualization;
+- reproducible result generation.
 
-### Canonical TP53 hotspot positions
+### Canonical human TP53 hotspot positions
 
 ```text
 R175
