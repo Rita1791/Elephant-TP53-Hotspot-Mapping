@@ -31,3 +31,24 @@ nbconvert>=7.14,<8
 
 # Optional scientific visualization / analysis support
 seaborn>=0.13,<1
+
+# From the repository root:
+pip install -r notebooks/requirements.txt
+
+# For a dedicated environment:
+python -m venv tp53-env
+
+# Windows
+tp53-env\Scripts\activate
+
+# Linux / macOS
+source tp53-env/bin/activate
+
+# Then install the dependencies:
+pip install -r notebooks/requirements.txt
+
+# Register the environment as a Jupyter kernel:
+python -m ipykernel install --user --name tp53-env --display-name "TP53 Research Environment"
+
+# Launch Jupyter:
+jupyter notebook
