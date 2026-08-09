@@ -1,62 +1,116 @@
 # 🧬 TP53 Computational Analysis Notebooks
 
-This directory contains the computational notebooks and supporting scripts used in the **Comparative In-Silico Analysis of TP53 Mutation Between Humans and Elephants** project.
+## Comparative TP53 Sequence Analysis, Feature Prioritization & Exploratory Deep Learning
 
-The notebooks document the computational workflow from sequence-level comparative analysis through exploratory machine-learning and deep-learning representation.
+This directory contains the computational notebooks and supporting analysis scripts developed as part of the research project:
 
----
+> **Comparative In-Silico Analysis of TP53 Mutation Between Humans and Elephants**
 
-## 🔬 Research Context
+The computational workflow investigates TP53 sequence-level conservation, comparative molecular features, exploratory feature prioritization, and deep-learning-based sequence representation.
 
-TP53 is a conserved tumour-suppressor gene involved in genome integrity, DNA-damage response, cell-cycle regulation, apoptosis, and cancer biology.
-
-This project investigates TP53 sequence conservation and divergence between humans and elephants, with particular interest in the computational characterization of TP53 sequences and mutation-associated regions.
-
-The computational framework combines:
-
-- comparative protein-sequence analysis;
-- sequence alignment;
-- evolutionary conservation analysis;
-- TP53 hotspot mapping;
-- exploratory machine learning;
-- feature prioritization;
-- deep-learning representation;
-- reproducible computational workflows.
-
-> **Scientific scope:** The analyses in this repository are computational and exploratory. Sequence conservation or similarity is not, by itself, evidence of equivalent biological function, cancer resistance, or clinical protection.
+The notebooks are intended to provide a transparent computational record of the analyses supporting the broader research project and its associated publication.
 
 ---
 
-# 📂 Notebook Contents
+# 📖 Research Context
 
-| File | Purpose |
-|---|---|
-| `TP53_Comparative_Analysis.ipynb` | Comparative analysis of human and elephant TP53 sequences |
-| `EleProtect_Feature_Prioritization.py` | Feature-prioritization workflow associated with the EleProtect analysis |
-| `TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb` | Exploratory deep-learning representation and predictive-model architecture |
-| `requirements.txt` | Reproducible Python environment specification |
+TP53 encodes the tumour-suppressor protein p53, a central regulator of genomic integrity, DNA-damage response, cell-cycle control, apoptosis, and cellular stress responses.
+
+TP53 is also one of the most extensively studied genes in cancer biology because recurrent mutations within the human TP53 protein are associated with tumour development and altered protein function.
+
+Elephants provide an interesting comparative system because elephants possess a substantially expanded TP53-related genomic repertoire compared with humans.
+
+This project therefore investigates TP53-related sequence information from humans and elephants using a comparative bioinformatics framework.
+
+The objective is not to assume that sequence conservation directly explains cancer resistance.
+
+Instead, the analysis establishes a computational framework for examining:
+
+- TP53 sequence conservation;
+- sequence divergence;
+- mutation-associated residues;
+- TP53-related elephant sequences;
+- comparative molecular features;
+- candidate regions for further investigation;
+- computational representations suitable for downstream analysis.
 
 ---
 
-# 🧬 1. TP53 Comparative Analysis
+# 🎯 Research Objectives
 
-### `TP53_Comparative_Analysis.ipynb`
+The computational work is structured around the following objectives:
 
-This notebook forms the core comparative sequence-analysis component of the project.
+### Objective 1 — Comparative Sequence Analysis
 
-The workflow focuses on:
+Compare human TP53 and elephant TP53 protein sequences to identify conserved and divergent amino-acid positions.
 
-1. loading TP53 protein sequences;
-2. validating sequence inputs;
-3. comparing human and elephant TP53 sequences;
-4. examining sequence-level conservation;
-5. identifying divergent residues;
-6. supporting downstream hotspot interpretation;
-7. exporting reproducible computational results.
+### Objective 2 — Mutation Hotspot Mapping
 
-### Input Data
+Investigate the correspondence between human TP53 mutation-associated residues and their positions within comparative TP53 sequences.
 
-The notebook uses processed sequence data from:
+### Objective 3 — TP53-Related Sequence Characterization
+
+Characterize canonical elephant TP53 sequences and additional TP53-related sequences identified during the computational analysis.
+
+### Objective 4 — Feature Prioritization
+
+Explore computationally derived sequence features that may be useful for prioritizing biologically interesting regions.
+
+### Objective 5 — Exploratory Representation Learning
+
+Develop a deep-learning architecture capable of generating numerical representations of TP53 protein sequences.
+
+### Objective 6 — Reproducible Computational Research
+
+Maintain a traceable workflow connecting input sequences, computational analysis, derived features, figures, and research interpretation.
+
+---
+
+# 📂 Contents of This Directory
+
+| File | Type | Purpose |
+|---|---|---|
+| `TP53_Comparative_Analysis.ipynb` | Jupyter Notebook | Core comparative analysis of human and elephant TP53 sequences |
+| `EleProtect_Feature_Prioritization.py` | Python Script | Computational feature-prioritization workflow associated with the EleProtect analysis |
+| `TP53_Deep_Learning_Architecture_and_Predictive_Modelling.ipynb` | Jupyter Notebook | Exploratory deep-learning sequence representation and predictive-model architecture |
+| `requirements.txt` | Environment File | Python dependencies required for computational analysis |
+| `README.md` | Documentation | Description of the computational workflow and reproducibility instructions |
+
+---
+
+# 🧬 Computational Workflow
+
+The overall computational framework can be represented as:
 
 ```text
-data/processed/TP53_clean.fasta
+Biological Question
+        │
+        ▼
+Reference Sequence Collection
+        │
+        ▼
+Human–Elephant TP53 Comparison
+        │
+        ▼
+Sequence Processing & Quality Control
+        │
+        ▼
+Comparative Sequence Analysis
+        │
+        ▼
+Mutation Hotspot Mapping
+        │
+        ▼
+Feature Characterization
+        │
+        ▼
+EleProtect Feature Prioritization
+        │
+        ▼
+Deep-Learning Sequence Representation
+        │
+        ▼
+Exploratory Latent-Space Analysis
+        │
+        ▼
+Future Validated Predictive Modelling
