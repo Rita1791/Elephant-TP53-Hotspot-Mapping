@@ -1,15 +1,11 @@
 # 🧬 Research Notebooks
 
 This directory contains computational notebooks supporting the comparative
-TP53 research workflow and the development of the EleProtect analytical
-framework.
+TP53 research workflow and the development of exploratory computational
+frameworks associated with the Elephant TP53 Hotspot Mapping project.
 
-The notebooks are organized to separate:
-
-- 🔬 Comparative sequence analysis
-- 🧬 TP53 feature analysis
-- 🤖 Computational prioritization
-- 🧠 Exploratory deep-learning architecture
+The notebooks are organized according to their scientific purpose rather
+than as independent software applications.
 
 ---
 
@@ -18,32 +14,31 @@ The notebooks are organized to separate:
 | Notebook | Purpose | Research Role |
 |---|---|---|
 | `TP53_Comparative_Analysis.ipynb` | Comparative analysis of human and elephant TP53-related sequences | 🔬 Primary comparative analysis |
-| `EleProtect_Feature_Prioritization.ipynb` | Feature-level computational prioritization associated with the EleProtect framework | 🧬 Exploratory computational analysis |
-| `TP53_Deep_Learning_Architecture_and_Analysis.ipynb` | Exploratory deep-learning architecture and analytical framework | 🤖 Future computational modelling |
+| `EleProtect_Feature_Prioritization.ipynb` | Exploratory sequence-feature analysis associated with the EleProtect framework | 🧬 Exploratory computational analysis |
+| `TP53_Deep_Learning_Architecture_and_Analysis.ipynb` | Exploratory deep-learning architecture for TP53 sequence representation | 🤖 Methodological prototype |
 
 ---
 
-## 🔬 1. TP53 Comparative Analysis
+# 🔬 TP53 Comparative Analysis
 
 ### `TP53_Comparative_Analysis.ipynb`
 
-This notebook contains the primary computational workflow for comparing
-human TP53 with elephant TP53-related sequences.
+This is the primary computational notebook for the comparative TP53 analysis.
 
-The analysis focuses on:
+The workflow includes:
 
+- Reference-sequence identification
+- Protein sequence quality control
 - Sequence preprocessing
-- Protein sequence validation
-- Human TP53 reference identification
-- Pairwise sequence comparison
+- Pairwise sequence alignment
+- Sequence identity estimation
 - Alignment-aware residue mapping
-- TP53 hotspot analysis
-- Sequence-level feature extraction
+- Canonical human TP53 hotspot mapping
+- Sequence-derived feature extraction
 - Comparative visualization
+- Reproducible result export
 
-### Canonical TP53 hotspot positions
-
-The analysis considers the following established TP53 hotspot positions:
+The canonical human TP53 hotspot positions considered in this analysis are:
 
 ```text
 R175
