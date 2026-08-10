@@ -28,6 +28,31 @@
 
 ---
 
+## For PIs / Reviewers
+
+Start here if you are reviewing this repository for academic, PhD, or comparative genomics evaluation:
+
+1. [`docs/reviewer_summary.md`](docs/reviewer_summary.md)
+2. [`docs/relationship_to_companion_repositories.md`](docs/relationship_to_companion_repositories.md)
+3. [`docs/artifact_index.md`](docs/artifact_index.md)
+4. [`docs/methodology.md`](docs/methodology.md)
+5. [`docs/interpretation_and_limitations.md`](docs/interpretation_and_limitations.md)
+
+---
+
+## Relationship to Companion Research
+
+This repository focuses on **human-elephant TP53 hotspot mapping** and the **EleProtect v2.0 research application**.
+
+The companion repository [`TP53-Evolutionary-Conservation-Mammals`](https://github.com/Rita1791/TP53-Evolutionary-Conservation-Mammals) expands the analysis across a broader mammalian dataset with residue-level conservation statistics, mutation recurrence analysis, phylogenetic context, and manuscript-level comparative genomics outputs.
+
+| Repository | Research Scope |
+|---|---|
+| `Elephant-TP53-Hotspot-Mapping` | Focused human-elephant TP53 hotspot mapping and EleProtect application |
+| `TP53-Evolutionary-Conservation-Mammals` | Broader mammalian TP53 conservation and statistical analysis |
+
+---
+
 # 🔑 Key Findings
 
 The comparative analysis provides a sequence-level view of TP53 conservation and variation between human TP53 and elephant TP53-related sequences.
