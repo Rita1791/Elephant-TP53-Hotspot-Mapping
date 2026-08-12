@@ -27,7 +27,7 @@
 
 <br>
 
-[![Email](https://img.shields.io/badge/📧_EMAIL-CONNECT_WITH_RITIKA-EA4335?style=for-the-badge)](mailto:ritikarvl2627@gmail.com?subject=Elephant%20TP53%20Research%20Collaboration)
+[![Email](https://img.shields.io/badge/📧_EMAIL-CONNECT_WITH_RITIKA-EA4335?style=for-the-badge)](mailto:ritika.rawat27@outlook.com?subject=Elephant%20TP53%20Research%20Collaboration)
 [![LinkedIn](https://img.shields.io/badge/💼_LINKEDIN-RITIKA_RAWAT-0A66C2?style=for-the-badge)](https://in.linkedin.com/in/ritika-rawat-551107219)
 [![GitHub](https://img.shields.io/badge/💻_GITHUB-RITA1791-181717?style=for-the-badge)](https://github.com/Rita1791)
 [![ResearchGate](https://img.shields.io/badge/🔬_RESEARCHGATE-FOLLOW_RESEARCH-00CCBB?style=for-the-badge)](https://www.researchgate.net/profile/Ritika-Rawat-10)
@@ -456,7 +456,7 @@ For research collaboration, ECCB discussion, TP53 biology, PhD-related academic 
 
 <br>
 
-[![Email](https://img.shields.io/badge/📧_EMAIL-START_A_CONVERSATION-EA4335?style=for-the-badge)](mailto:ritikarvl2627@gmail.com?subject=Elephant%20TP53%20Research%20Collaboration)
+[![Email](https://img.shields.io/badge/📧_EMAIL-START_A_CONVERSATION-EA4335?style=for-the-badge)](mailto:ritika.rawat27@outlook.com?subject=Elephant%20TP53%20Research%20Collaboration)
 [![LinkedIn](https://img.shields.io/badge/💼_LINKEDIN-CONNECT_PROFESSIONALLY-0A66C2?style=for-the-badge)](https://in.linkedin.com/in/ritika-rawat-551107219)
 [![GitHub](https://img.shields.io/badge/💻_GITHUB-EXPLORE_PROJECTS-181717?style=for-the-badge)](https://github.com/Rita1791)
 [![ResearchGate](https://img.shields.io/badge/🔬_RESEARCHGATE-FOLLOW_RESEARCH-00CCBB?style=for-the-badge)](https://www.researchgate.net/profile/Ritika-Rawat-10)
