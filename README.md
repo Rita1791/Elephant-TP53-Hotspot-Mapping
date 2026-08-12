@@ -2,13 +2,19 @@
 
 <div align="center">
 
-<img src="EleProtect_App/EleProtect.png" alt="EleProtect — Elephant TP53 research emblem" width="145">
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:0B132B,45:1B4965,100:2A9D8F&amp;height=245&amp;section=header&amp;text=TP53%20%C3%97%20ELEPHANT&amp;fontSize=52&amp;fontColor=FFFFFF&amp;animation=fadeIn&amp;fontAlignY=36&amp;desc=An%20evolutionary%20lens%20on%20human%20cancer%20hotspots&amp;descAlignY=57&amp;descSize=18" alt="TP53 by Elephant — an evolutionary lens on human cancer hotspots">
 
 🐘 Elephant TP53 Hotspot Mapping 🧬
 
-Tracing human cancer-mutation hotspots through the elephant p53 sequence landscape
+Comparative in-silico analysis of human cancer-mutation hotspots across elephant TP53-related sequences
 
-Comparative genomics · Evolutionary cancer biology · Protein sequence analysis · Reproducible research
+<a href="EleProtect_App/">
+  <img src="EleProtect_App/EleProtect.png" alt="EleProtect — Elephant TP53 research emblem" width="118">
+</a>
+
+<br>
+
+Comparative Genomics · Evolutionary Cancer Biology · Protein Sequence Analysis · Research Software
 
 Ritika Rajendra Rawat · Sermarani Nadar · Gursimran Kaur Uppal · 2026
 
@@ -22,7 +28,7 @@ Ritika Rajendra Rawat · Sermarani Nadar · Gursimran Kaur Uppal · 2026
 
 <br>
 
-Six human TP53 hotspots. Fifteen non-reference sequences. One evolutionary question.
+<img src="https://readme-typing-svg.demolab.com?font=Inter&amp;weight=600&amp;size=19&amp;duration=2800&amp;pause=900&amp;color=2A9D8F&amp;center=true&amp;vCenter=true&amp;width=880&amp;lines=Six+human+TP53+hotspots+%C2%B7+Fifteen+comparative+sequences;Local+constraint+inside+a+divergent+protein+landscape;From+sequence+evidence+to+EleProtect+v2.0" alt="Project highlights">
 
 What remains conserved when the surrounding protein landscape changes?
 
@@ -34,27 +40,27 @@ What remains conserved when the surrounding protein landscape changes?
 
 ⚡ 60-Second Tour
 
-🎯 Key Results
+🎯 Explore the Evidence
 
-🧪 Research Workflow
+🧪 Follow the Workflow
 
-Understand the project
+Understand the question and signal
 
-Inspect quantitative evidence
+Inspect quantitative results
 
-Follow data to interpretation
+Trace every analytical stage
 
-🖼️ Figure Gallery
+🖼️ Open the Gallery
 
-📂 Open the Research
+📂 Browse Files & Code
 
-🤝 Connect
+🤝 Connect with Ritika
 
-Explore visual outputs
+View full-resolution evidence
 
-Jump into files and code
+Jump directly into artifacts
 
-Contact the lead researcher
+Collaborate or ask a question
 
 </div>
 
@@ -73,7 +79,7 @@ Contact the lead researcher
     <td width="50%">
       <strong>📍 Geneva, Switzerland</strong><br><br>
       📅 31 August–4 September 2026<br>
-      🎫 Poster C-G.32 · Session 3<br>
+      🎓 Poster presentation<br>
       👩‍🔬 Presenter: Ritika Rajendra Rawat
     </td>
   </tr>
@@ -752,5 +758,9 @@ Code and repository-authored materials are released under the MIT License. Exter
 ⚡ Overview · 🎯 Results · 🧪 Workflow · 🖼️ Figures · 📂 Files · 🤝 Connect · ⬆ Back to top
 
 <sub>Comparative bioinformatics research · Hypothesis-generating · Not validated for clinical use</sub>
+
+<br><br>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:0B132B,45:1B4965,100:2A9D8F&amp;height=125&amp;section=footer&amp;text=Follow%20the%20evidence.&amp;fontSize=23&amp;fontColor=FFFFFF&amp;fontAlignY=72" alt="Follow the evidence">
 
 </div>
