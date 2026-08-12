@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Elephant TP53 Hotspot Mapping</title>
+  <desc id="desc">A research banner connecting human TP53 cancer hotspots with elephant comparative genomics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.55" stop-color="#11264a"/>
+      <stop offset="1" stop-color="#173d4d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="0.5" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="elephant" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0V34" fill="none" stroke="#ffffff" stroke-opacity="0.035"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="420" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="420" rx="28" fill="url(#grid)"/>
+  <circle cx="1100" cy="72" r="180" fill="#7c3aed" opacity="0.08"/>
+  <circle cx="1010" cy="360" r="210" fill="#22d3ee" opacity="0.07"/>
+
+  <g transform="translate(62 62)">
+    <rect x="0" y="0" width="196" height="34" rx="17" fill="#ffffff" fill-opacity="0.10" stroke="#ffffff" stroke-opacity="0.18"/>
+    <circle cx="21" cy="17" r="5" fill="#34d399"/>
+    <text x="36" y="22" fill="#d9f9ee" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.2">PUBLISHED RESEARCH</text>
+
+    <text x="0" y="98" fill="#ffffff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="49" font-weight="800">Elephant TP53</text>
+    <text x="0" y="151" fill="#ffffff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="49" font-weight="800">Hotspot Mapping</text>
+    <rect x="0" y="174" width="590" height="4" rx="2" fill="url(#accent)"/>
+    <text x="0" y="215" fill="#bed2ea" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="20">Human cancer hotspots × elephant evolutionary genomics</text>
+
+    <g transform="translate(0 251)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700">
+      <g><rect width="67" height="36" rx="18" fill="#7c3aed" fill-opacity="0.30" stroke="#a78bfa"/><text x="33.5" y="23" text-anchor="middle" fill="#f5f3ff">R175</text></g>
+      <g transform="translate(79)"><rect width="67" height="36" rx="18" fill="#7c3aed" fill-opacity="0.30" stroke="#a78bfa"/><text x="33.5" y="23" text-anchor="middle" fill="#f5f3ff">G245</text></g>
+      <g transform="translate(158)"><rect width="67" height="36" rx="18" fill="#0e7490" fill-opacity="0.34" stroke="#22d3ee"/><text x="33.5" y="23" text-anchor="middle" fill="#ecfeff">R248</text></g>
+      <g transform="translate(237)"><rect width="67" height="36" rx="18" fill="#0e7490" fill-opacity="0.34" stroke="#22d3ee"/><text x="33.5" y="23" text-anchor="middle" fill="#ecfeff">R249</text></g>
+      <g transform="translate(316)"><rect width="67" height="36" rx="18" fill="#047857" fill-opacity="0.34" stroke="#34d399"/><text x="33.5" y="23" text-anchor="middle" fill="#ecfdf5">R273</text></g>
+      <g transform="translate(395)"><rect width="67" height="36" rx="18" fill="#047857" fill-opacity="0.34" stroke="#34d399"/><text x="33.5" y="23" text-anchor="middle" fill="#ecfdf5">R282</text></g>
+    </g>
+  </g>
+
+  <g transform="translate(790 54)">
+    <g opacity="0.74" filter="url(#glow)" fill="none" stroke-linecap="round">
+      <path d="M22 20 C150 62 150 124 22 166 C-106 208 -106 270 22 312" stroke="#a78bfa" stroke-width="5"/>
+      <path d="M150 20 C22 62 22 124 150 166 C278 208 278 270 150 312" stroke="#22d3ee" stroke-width="5"/>
+      <g stroke="#dbeafe" stroke-opacity="0.55" stroke-width="2">
+        <path d="M47 30H125"/><path d="M72 58H100"/><path d="M70 86H102"/><path d="M43 114H129"/>
+        <path d="M31 142H141"/><path d="M37 170H135"/><path d="M61 198H111"/><path d="M75 226H97"/>
+        <path d="M61 254H111"/><path d="M35 282H137"/><path d="M28 310H144"/>
+      </g>
+    </g>
+
+    <g transform="translate(112 104)" fill="url(#elephant)">
+      <ellipse cx="116" cy="98" rx="91" ry="67" opacity="0.96"/>
+      <circle cx="54" cy="82" r="57" opacity="0.96"/>
+      <ellipse cx="45" cy="85" rx="37" ry="48" fill="#0d1e37" opacity="0.72"/>
+      <path d="M22 88 C-3 117 5 167 42 181 C59 188 70 170 57 160 C36 143 39 117 58 101 Z"/>
+      <path d="M166 136 h23 v83 h-23zM104 145 h23 v74 h-23z"/>
+      <path d="M188 73 C221 76 235 94 230 120 C226 139 239 145 251 132 C245 170 211 173 199 145 C190 124 191 96 188 73 Z"/>
+      <circle cx="76" cy="69" r="5" fill="#06111f"/>
+      <path d="M239 133 C256 129 268 118 273 105" fill="none" stroke="#e8faff" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(742 402)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="0.7">
+    <text x="0" y="0" fill="#c4b5fd">COMPARATIVE GENOMICS</text>
+    <circle cx="194" cy="-5" r="3" fill="#22d3ee"/>
+    <text x="208" y="0" fill="#a5f3fc">ELEPROTECT v2.0</text>
+  </g>
+</svg>
