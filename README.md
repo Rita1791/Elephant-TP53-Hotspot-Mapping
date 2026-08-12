@@ -2,19 +2,11 @@
 
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:0B132B,45:1B4965,100:2A9D8F&amp;height=245&amp;section=header&amp;text=TP53%20%C3%97%20ELEPHANT&amp;fontSize=52&amp;fontColor=FFFFFF&amp;animation=fadeIn&amp;fontAlignY=36&amp;desc=An%20evolutionary%20lens%20on%20human%20cancer%20hotspots&amp;descAlignY=57&amp;descSize=18" alt="TP53 by Elephant — an evolutionary lens on human cancer hotspots">
-
 🐘 Elephant TP53 Hotspot Mapping 🧬
 
-Comparative in-silico analysis of human cancer-mutation hotspots across elephant TP53-related sequences
+The cancer-associated residues humans repeatedly mutate — and elephant TP53-related sequences often preserve
 
-<a href="EleProtect_App/">
-  <img src="EleProtect_App/EleProtect.png" alt="EleProtect — Elephant TP53 research emblem" width="118">
-</a>
-
-<br>
-
-Comparative Genomics · Evolutionary Cancer Biology · Protein Sequence Analysis · Research Software
+Comparative genomics · Evolutionary cancer biology · Protein bioinformatics · Research software
 
 Ritika Rajendra Rawat · Sermarani Nadar · Gursimran Kaur Uppal · 2026
 
@@ -28,9 +20,11 @@ Ritika Rajendra Rawat · Sermarani Nadar · Gursimran Kaur Uppal · 2026
 
 <br>
 
-<img src="https://readme-typing-svg.demolab.com?font=Inter&amp;weight=600&amp;size=19&amp;duration=2800&amp;pause=900&amp;color=2A9D8F&amp;center=true&amp;vCenter=true&amp;width=880&amp;lines=Six+human+TP53+hotspots+%C2%B7+Fifteen+comparative+sequences;Local+constraint+inside+a+divergent+protein+landscape;From+sequence+evidence+to+EleProtect+v2.0" alt="Project highlights">
+<a href="figures/Figure7_composite_scores.png">
+  <img src="figures/Figure7_composite_scores.png" alt="Human and elephant TP53 hotspot residue mapping" width="920">
+</a>
 
-What remains conserved when the surrounding protein landscape changes?
+<sub>👆 Click the hotspot map to open the full-resolution figure.</sub>
 
 </div>
 
@@ -38,52 +32,37 @@ What remains conserved when the surrounding protein landscape changes?
 
 🧭 Choose Your Route
 
-⚡ 60-Second Tour
+🌍 ECCB 2026
 
-🎯 Explore the Evidence
+🎯 Key Results
 
-🧪 Follow the Workflow
+🧪 Research Journey
 
-Understand the question and signal
+Follow the research progression
 
-Inspect quantitative results
+Explore the quantitative evidence
 
-Trace every analytical stage
+Trace how the analysis was built
 
-🖼️ Open the Gallery
+🖼️ Figure Gallery
 
-📂 Browse Files & Code
+📂 Open Files
 
-🤝 Connect with Ritika
+🤝 Connect
 
 View full-resolution evidence
 
-Jump directly into artifacts
+Jump directly into data and code
 
-Collaborate or ask a question
+Contact the lead researcher
 
 </div>
 
 <a id="eccb-2026"></a>
 
-🌍 From Elephant TP53 to ECCB 2026
+🌍 From a Published Elephant Study to ECCB 2026
 
-[!IMPORTANT]This elephant-focused project is the published foundation of a broader mammalian TP53 research programme selected for poster presentation at ECCB 2026, the 25th European Conference on Computational Biology. Ms. Ritika Rajendra Rawat is the first and presenting author.
-
-<table>
-  <tr>
-    <td width="50%">
-      <strong>🖼️ Accepted poster</strong><br><br>
-      <em>Evolutionary Conservation and Functional Constraints of TP53 Mutation Hotspots Across Mammalian Species</em>
-    </td>
-    <td width="50%">
-      <strong>📍 Geneva, Switzerland</strong><br><br>
-      📅 31 August–4 September 2026<br>
-      🎓 Poster presentation<br>
-      👩‍🔬 Presenter: Ritika Rajendra Rawat
-    </td>
-  </tr>
-</table>
+[!IMPORTANT]This human–elephant project is the published foundation of the broader mammalian TP53 programme accepted for poster presentation at ECCB 2026, the 25th European Conference on Computational Biology, in Geneva, Switzerland, from 31 August to 4 September 2026. Ms. Ritika Rajendra Rawat is the first and presenting author.
 
 <div align="center">
 
@@ -91,112 +70,239 @@ Collaborate or ask a question
 
 </div>
 
-Research-lineage boundary: ECCB 2026 presents the expanded mammalian analysis. This repository contains the earlier, focused human–elephant study and EleProtect prototype. The two datasets should not be described as independent replications.
+Conference detail
+
+Information
+
+🏛️ Event
+
+25th European Conference on Computational Biology — ECCB 2026
+
+📍 Location
+
+Geneva, Switzerland
+
+📅 Dates
+
+31 August–4 September 2026
+
+🖼️ Presentation
+
+Poster C-G.32 · Poster Session 3
+
+👩‍🔬 Presenter
+
+Ms. Ritika Rajendra Rawat · first and presenting author
+
+🧬 Poster title
+
+Evolutionary Conservation and Functional Constraints of TP53 Mutation Hotspots Across Mammalian Species
+
+Research-lineage rule: this repository contains the focused human–elephant analysis and EleProtect prototype. ECCB 2026 presents the expanded mammalian analysis. They are connected stages of one research programme—not independent replications and not interchangeable datasets.
 
 <p align="right"><a href="#top">⬆ Back to top</a></p>
 
-<a id="overview"></a>
+⚡ The Study in 30 Seconds
 
-⚡ The Research in 60 Seconds
+This project asks one focused question:
 
-Human cancers repeatedly alter a small set of functionally important TP53 residues. This project maps six of those human hotspots onto curated elephant TP53 and TP53-related protein sequences, then asks whether local residue conservation persists despite broader sequence divergence.
+How strongly are six recurrent human TP53 cancer hotspots preserved across curated elephant TP53 and TP53-related protein sequences?
+
+The committed exploratory feature table contains 16 sequence records: one human TP53 reference and fifteen non-reference sequences. The hotspot table reports 90.91–100% identity at R175, G245, R248, R249, R273 and R282. Broader identity to human TP53 is far more variable, ranging from 52.42% to 83.33% among the non-reference records.
+
+That contrast is the scientific hook: local preservation at cancer-associated residues can coexist with substantial protein-wide divergence.
 
 <table>
   <tr>
-    <td align="center" width="25%"><h2>16</h2><sub>sequence records in the<br>committed feature dataset</sub></td>
+    <td align="center" width="25%"><h2>16</h2><sub>records in the committed<br>feature dataset</sub></td>
     <td align="center" width="25%"><h2>6</h2><sub>human TP53<br>hotspots evaluated</sub></td>
-    <td align="center" width="25%"><h2>95.45%</h2><sub>mean hotspot identity in the<br>committed summary</sub></td>
+    <td align="center" width="25%"><h2>95.45%</h2><sub>mean hotspot identity<br>in the committed table</sub></td>
     <td align="center" width="25%"><h2>52.42–83.33%</h2><sub>non-reference identity<br>to human TP53</sub></td>
   </tr>
 </table>
 
-The headline
+[!NOTE]This is sequence-level, hypothesis-generating evidence. It does not prove that TP53 alone explains elephant cancer resistance, solve Peto's paradox, or establish clinical utility.
 
-All six selected hotspots were highly conserved in the committed comparison: G245, R249 and R273 reached 100%, while R175, R248 and R282 reached 90.91%.
+<a id="key-results"></a>
 
-The honest interpretation
+🎯 Key Results — Explore the Evidence
 
-This is sequence-level computational evidence consistent with evolutionary constraint. It does not prove that TP53 conservation causes elephant cancer resistance, explain Peto's paradox by itself, or establish clinical utility.
+<details open>
+<summary><strong>🧬 Result 1 — All six selected hotspots show high exact-residue identity</strong></summary>
 
-🔗 Inspect the source: results/summary.md · results/ML/TP53_hotspot_analysis.csv · docs/interpretation_and_limitations.md
+<br>
 
-<a id="question"></a>
+Human hotspot
 
-🧠 Why Elephants? Why TP53?
+Human residue
 
-Elephants combine a large body, long lifespan and enormous number of lifetime cell divisions—conditions that should increase opportunities for malignant transformation. Their cancer burden does not scale as simply as those factors predict. That tension is commonly discussed as Peto's paradox.
+Committed identity
 
-flowchart TD
-    A["🐘 Large body + long lifespan"] --> B["Many lifetime cell divisions"]
-    B --> C["Expected higher cancer burden"]
-    C --> D["Peto's paradox"]
-    D --> E["🧬 Compare TP53 sequence constraints"]
+Evidence state
 
-TP53 is not assumed to be the complete answer. It is used as a focused comparative system because p53 is central to DNA-damage responses, cell-cycle control, senescence and apoptosis—and because recurrent human cancer mutations cluster at defined residues.
+R175
+
+R
+
+90.91%
+
+🟢 Highly preserved
+
+G245
+
+G
+
+100.00%
+
+🟣 Fully preserved in the comparison
+
+R248
+
+R
+
+90.91%
+
+🟢 Highly preserved
+
+R249
+
+R
+
+100.00%
+
+🟣 Fully preserved in the comparison
+
+R273
+
+R
+
+100.00%
+
+🟣 Fully preserved in the comparison
+
+R282
+
+R
+
+90.91%
+
+🟢 Highly preserved
+
+🔗 Open the evidence: hotspot CSV · focused hotspot figure · results summary
+
+</details>
 
 <details>
-<summary><strong>🎯 Open the biological question and study objective</strong></summary>
+<summary><strong>📊 Result 2 — Local hotspot identity is stronger than global sequence similarity</strong></summary>
 
-Research question
+<br>
 
-How do canonical human TP53 cancer-mutation hotspot residues map onto curated elephant TP53 and TP53-related protein sequences?
+Mean identity across the six hotspot rows is 95.45%. Across the fifteen non-reference records in the feature table, mean protein-wide identity to human TP53 is 60.90%, with a median of 58.78%.
 
-Aim
+This is not a contradiction. Hotspot identity asks what happens at six human coordinates; global identity measures similarity across the aligned protein.
 
-To investigate sequence-level conservation and variation at major human TP53 mutation-associated hotspots across elephant TP53-related sequences using comparative in-silico bioinformatics.
+🔗 Open the evidence: feature table · identity plot · methodology
 
-Six focal positions
+</details>
 
-R175 · G245 · R248 · R249 · R273 · R282
+<details>
+<summary><strong>🏆 Result 3 — Two non-reference records lead the similarity ranking</strong></summary>
 
-The human reference is canonical TP53 protein UniProt P04637, 393 amino acids long.
+<br>
 
-🔗 Open UniProt P04637 · Read the reviewer summary
+XP_049714738.1 and XP_003416950.3 each show 83.33% identity to the human TP53 reference in the committed table. Ranking is descriptive; it does not by itself prove orthology, biochemical equivalence or functional activity.
+
+🔗 Open the evidence: top similarity table · complete features
+
+</details>
+
+<details>
+<summary><strong>🧩 Result 4 — The repository preserves two evidence layers</strong></summary>
+
+<br>
+
+Evidence layer
+
+Scope
+
+Correct use
+
+🖼️ Focused project figures
+
+Selected canonical and TP53-related examples
+
+Visual residue correspondence in the displayed comparison
+
+📊 Historical results/ML/ tables
+
+16 feature records; 15 non-reference records
+
+Quantitative exploratory results already committed
+
+🐍 Current analysis script
+
+Explicit pairwise coordinate mapping and modern outputs
+
+Reproducible implementation to run and reconcile with historical artifacts
+
+The focused figure and the broader quantitative table are related, but they do not use the same denominator. Every numerical claim should therefore link to the exact artifact that supports it.
+
+🔗 Read the evidence contract: reproducibility · artifact index
+
+</details>
+
+<details>
+<summary><strong>🐘 Result 5 — The analysis became an explorable research prototype</strong></summary>
+
+<br>
+
+EleProtect v2.0 turns the sequence-analysis workflow into a Streamlit interface for TP53-oriented preprocessing, hotspot mapping, feature extraction, exploratory ranking, visualisation and CSV export.
+
+It is research software—not a diagnostic, prognostic or treatment-selection system.
+
+🔗 Explore EleProtect: application · app guide · model code
 
 </details>
 
 <p align="right"><a href="#top">⬆ Back to top</a></p>
 
-<a id="workflow"></a>
+<a id="research-journey"></a>
 
-🧪 Research Workflow
+🧪 Research Journey
 
-flowchart TD
-    A["🧑 Human TP53 · P04637"] --> B["🐘 Elephant TP53-related sequences"]
-    B --> C["🧹 Curate + validate proteins"]
-    C --> D["🧬 Global sequence alignment"]
-    D --> E["🎯 Map six human hotspots"]
-    E --> F{"Two analytical lenses"}
-    F --> G["Local residue identity"]
-    F --> H["Global sequence features"]
-    G --> I["Conservation evidence"]
-    H --> J["Similarity + clustering"]
-    I --> K["⚖️ Responsible interpretation"]
-    J --> K
+flowchart TB
+    A["🧑 Human TP53 · P04637"] --> B["🐘 Curated elephant TP53-related proteins"]
+    B --> C["🧹 Validate and preprocess sequences"]
+    C --> D["🧬 Align proteins to the human reference"]
+    D --> E["🎯 Map six cancer-associated hotspots"]
+    E --> F["📊 Measure local and global similarity"]
+    F --> G["🌳 Add clustering and phylogenetic context"]
+    G --> H["🐘 Explore results through EleProtect"]
+    H --> I["⚖️ Interpret without causal or clinical overclaiming"]
 
-Follow the evidence into the repository
+🔎 Follow Each Stage into the Repository
 
 Stage
 
 What happens
 
-Open the artifact
+Open the file
 
 01 · 🧬
 
-Load the curated human–elephant protein dataset
+Load the analysis-ready human–elephant protein dataset
 
 TP53_clean.fasta
 
 02 · ✅
 
-Validate protein symbols, IDs and the human reference
+Validate sequence symbols, identifiers and human reference
 
 analysis script
 
 03 · 🧭
 
-Align each comparative sequence to human TP53
+Align comparative sequences to human TP53
 
 methodology
 
@@ -208,52 +314,56 @@ hotspot table
 
 05 · 📏
 
-Measure broader identity and sequence features
+Calculate sequence features and global identity
 
 feature table
 
 06 · 🤖
 
-Explore similarity-based prioritisation and clustering
+Explore descriptive feature-space clusters
 
 clustered features
 
 07 · 🌳
 
-Place the analysed sequences in phylogenetic context
+Place sequences in a phylogenetic context
 
 Newick tree
 
-08 · ⚖️
+08 · 🐘
 
-Separate computational observations from causal claims
+Expose the workflow through a research interface
+
+EleProtect app
+
+09 · ⚖️
+
+Separate observed evidence from causal claims
 
 limitations
 
 <details>
-<summary><strong>🔬 Expand the full analytical design</strong></summary>
+<summary><strong>🔬 Expand the complete analytical design</strong></summary>
 
-Retrieve human and elephant TP53-related sequence resources.
+Curate human and elephant TP53-related protein resources with source traceability.
 
-Preserve accession and source information under data/metadata/ and docs/provenance.md.
+Clean sequences and verify valid amino-acid symbols.
 
-Clean and validate protein sequences.
-
-Identify the human reference using UniProt accession P04637.
+Anchor the comparison to canonical human TP53, UniProt P04637.
 
 Perform explicit global pairwise alignment.
 
-Map one-based human TP53 coordinates through each alignment.
+Map one-based human coordinates through each alignment.
 
-Classify each mapped position as identical, substituted, gapped or unmapped.
+Classify each focal position as identical, substituted, gapped or unmapped.
 
-Exclude the human reference from comparative denominators.
+Exclude the human reference from non-reference similarity summaries.
 
 Calculate sequence features and global identity to human TP53.
 
-Explore feature-space clustering as a descriptive—not biological—classifier.
+Use clustering as a descriptive feature-space view—not a biological classifier.
 
-Preserve machine-readable tables, figures and interpretation boundaries.
+Preserve machine-readable outputs, figures and interpretation boundaries.
 
 📚 Full documentation: methodology · provenance · reproducibility
 
@@ -261,194 +371,90 @@ Preserve machine-readable tables, figures and interpretation boundaries.
 
 <p align="right"><a href="#top">⬆ Back to top</a></p>
 
-<a id="key-results"></a>
-
-🎯 Key Results — Explore the Evidence
-
-1 · Hotspot identity
-
-Human hotspot
-
-Reference residue
-
-Committed result
-
-Evidence state
-
-R175
-
-R
-
-90.91%
-
-🟢 Highly conserved
-
-G245
-
-G
-
-100.00%
-
-🟣 Fully conserved
-
-R248
-
-R
-
-90.91%
-
-🟢 Highly conserved
-
-R249
-
-R
-
-100.00%
-
-🟣 Fully conserved
-
-R273
-
-R
-
-100.00%
-
-🟣 Fully conserved
-
-R282
-
-R
-
-90.91%
-
-🟢 Highly conserved
-
-🔗 Open the machine-readable hotspot CSV
-
-2 · Global similarity tells a different story
-
-Local hotspot preservation coexists with much broader protein-level divergence.
-
-<table>
-  <tr>
-    <td align="center" width="25%"><h3>83.33%</h3><sub>highest non-reference<br>identity</sub></td>
-    <td align="center" width="25%"><h3>60.90%</h3><sub>mean non-reference<br>identity</sub></td>
-    <td align="center" width="25%"><h3>58.78%</h3><sub>median non-reference<br>identity</sub></td>
-    <td align="center" width="25%"><h3>3</h3><sub>exploratory feature<br>clusters</sub></td>
-  </tr>
-</table>
-
-Two records—XP_049714738.1 and XP_003416950.3—show the highest reported non-reference identity to human TP53 at 83.33%.
-
-🔗 Open the similarity ranking · Open clustered features
-
-3 · Understand the two evidence layers
-
-Evidence layer
-
-Scope
-
-Correct interpretation
-
-🖼️ Focused project figures
-
-Selected canonical and TP53-related examples
-
-Visual residue correspondence in the displayed comparison
-
-📊 Committed results/ML/ tables
-
-16 feature records; 15 non-reference records
-
-Historical quantitative exploratory summary
-
-🐍 Current analysis script
-
-Explicit pairwise mapping with exact status fields
-
-Reproducible implementation that generates the modern output contract when run
-
-[!NOTE]Do not treat the focused figure and the broader quantitative denominator as the same comparison. The README keeps both because they document different stages of the project.
-
-<details>
-<summary><strong>🧩 Why local conservation and global identity can differ</strong></summary>
-
-Global sequence identity measures similarity across an aligned protein. Hotspot identity asks a narrower question at six human reference coordinates. A sequence can therefore diverge substantially overall while retaining residues at locally constrained positions.
-
-That pattern supports further evolutionary and structural investigation; it does not prove shared protein function.
-
-</details>
-
-<a id="figures"></a>
+<a id="figure-gallery"></a>
 
 🖼️ Interactive Figure Gallery
 
-Click any figure to open the original, full-resolution repository image.
-
-<a href="results/ML/identity_barplot.png">
-  <img src="results/ML/identity_barplot.png" alt="Identity of elephant TP53-related sequences to human TP53" width="100%">
-</a>
-
-<p align="center"><strong>📊 Global sequence identity to human TP53</strong><br><sub>Human TP53 is the 100% reference; non-reference records span 52.42–83.33% in the committed feature dataset.</sub></p>
+Click any figure to open the original high-resolution repository image.
 
 <table>
   <tr>
     <td width="50%" align="center">
       <a href="figures/Figure7_composite_scores.png">
-        <img src="figures/Figure7_composite_scores.png" alt="Focused TP53 hotspot mapping table" width="100%">
+        <img src="figures/Figure7_composite_scores.png" alt="Human and elephant TP53 hotspot mapping" width="100%">
       </a><br>
       <strong>01 · 🎯 Focused hotspot map</strong><br>
-      <sub>Residue correspondence across selected human and elephant sequences.</sub>
+      <sub>Human, African elephant, Asian elephant and retrogene residue correspondence.</sub>
     </td>
     <td width="50%" align="center">
-      <a href="figures/Figure4_MSA.png">
-        <img src="figures/Figure4_MSA.png" alt="Multiple sequence alignment of TP53-related proteins" width="100%">
+      <a href="results/ML/identity_barplot.png">
+        <img src="results/ML/identity_barplot.png" alt="Identity of TP53-related sequences to human TP53" width="100%">
       </a><br>
-      <strong>02 · 🧬 Multiple sequence alignment</strong><br>
-      <sub>The alignment context behind residue-level comparison.</sub>
+      <strong>02 · 📊 Global sequence identity</strong><br>
+      <sub>Protein-wide similarity tells a broader, more variable story.</sub>
     </td>
   </tr>
   <tr>
+    <td width="50%" align="center">
+      <a href="figures/Figure4_MSA.png">
+        <img src="figures/Figure4_MSA.png" alt="Human and elephant TP53 multiple-sequence alignment" width="100%">
+      </a><br>
+      <strong>03 · 🧬 Alignment landscape</strong><br>
+      <sub>Sequence-level context behind hotspot mapping.</sub>
+    </td>
     <td width="50%" align="center">
       <a href="figures/Figure6_phylogenetic_tree.png">
         <img src="figures/Figure6_phylogenetic_tree.png" alt="Phylogenetic tree of analysed TP53-related sequences" width="100%">
       </a><br>
-      <strong>03 · 🌳 Phylogenetic context</strong><br>
-      <sub>Sequence relationships in the analysed dataset.</sub>
-    </td>
-    <td width="50%" align="center">
-      <a href="figures/Figure3_pipeline.png">
-        <img src="figures/Figure3_pipeline.png" alt="Elephant TP53 computational analysis pipeline" width="50%">
-      </a><br>
-      <strong>04 · ⚙️ Analysis pipeline</strong><br>
-      <sub>From sequence resources to comparative interpretation.</sub>
+      <strong>04 · 🌳 Phylogenetic context</strong><br>
+      <sub>Relationships among the analysed sequence records.</sub>
     </td>
   </tr>
 </table>
 
-<div align="center">
+<details>
+<summary><strong>⚙️ Open the preprocessing and application workflows</strong></summary>
 
-
-
-</div>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<a id="eleprotect"></a>
-
-💻 EleProtect v2.0 — Research Software
+<br>
 
 <table>
   <tr>
-    <td width="25%" align="center">
+    <td width="50%" align="center">
+      <a href="figures/Figure2_preprocessing_workflow.png">
+        <img src="figures/Figure2_preprocessing_workflow.png" alt="Sequence preprocessing workflow" width="55%">
+      </a><br>
+      <strong>Sequence preprocessing</strong>
+    </td>
+    <td width="50%" align="center">
+      <a href="figures/Figure3_pipeline.png">
+        <img src="figures/Figure3_pipeline.png" alt="EleProtect analysis pipeline" width="55%">
+      </a><br>
+      <strong>EleProtect analysis flow</strong>
+    </td>
+  </tr>
+</table>
+
+</details>
+
+<div align="center">
+
+
+
+</div>
+
+🐘 EleProtect v2.0
+
+<table>
+  <tr>
+    <td width="22%" align="center">
       <a href="EleProtect_App/">
-        <img src="EleProtect_App/EleProtect.png" alt="EleProtect v2.0" width="170">
+        <img src="EleProtect_App/EleProtect.png" alt="EleProtect v2.0 research software" width="150">
       </a>
     </td>
-    <td width="75%">
-      <h3>Sequence analysis made explorable</h3>
-      EleProtect is the Streamlit research interface associated with this project. It accepts DNA or protein sequence input, performs TP53-oriented processing and feature extraction, exposes exploratory ML ranking, and supports CSV export.<br><br>
-      <strong>Research prototype only:</strong> it is not a diagnostic, prognostic or therapeutic decision-support system.
+    <td width="78%">
+      <h3>Move from static output to interactive exploration</h3>
+      EleProtect is the Streamlit research interface associated with this project. It supports TP53-oriented sequence processing, hotspot mapping, feature extraction, exploratory ranking, visualisation and CSV export.<br><br>
+      <strong>Boundary:</strong> research prototype only; not validated for clinical decision-making.
     </td>
   </tr>
 </table>
@@ -459,23 +465,19 @@ Click any figure to open the original, full-resolution repository image.
 
 </div>
 
-cd EleProtect_App
-python -m pip install -r requirements.txt
-streamlit run app.py
-
-<a id="research-explorer"></a>
+<a id="open-the-research"></a>
 
 📂 Open the Research
 
-Pick what you need
+Pick What You Need
 
 I want to…
 
-Best starting point
+Start here
 
 Direct route
 
-⚡ Understand the project quickly
+⚡ Understand the result quickly
 
 Reviewer summary
 
@@ -487,7 +489,7 @@ Results summary
 
 results/summary.md
 
-🧪 Examine the method
+🧪 Examine the complete method
 
 Methodology
 
@@ -499,7 +501,7 @@ Provenance
 
 docs/provenance.md
 
-🧬 Inspect the analysis-ready sequences
+🧬 Inspect analysis-ready sequences
 
 Processed FASTA
 
@@ -531,7 +533,7 @@ results/phylogeny/TP53_tree.nwk
 
 🖼️ View the student poster
 
-Srijna poster
+Poster PDF
 
 docs/Srijna_Poster.pdf
 
@@ -541,35 +543,34 @@ Publication PDF
 
 manuscript/Published_Research.pdf
 
-⚠️ Check scientific boundaries
-
-Interpretation & limitations
-
-docs/interpretation_and_limitations.md
-
 ✍️ Cite the project
 
 Citation metadata
 
 CITATION.cff
 
-Repository map
+⚠️ Check limitations first
+
+Interpretation boundaries
+
+docs/interpretation_and_limitations.md
+
+Repository Map
 
 Elephant-TP53-Hotspot-Mapping/
-├── 🧬 data/             Raw, processed and metadata-backed sequence resources
+├── 🧬 data/             Curated and analysis-ready sequence resources
 ├── 🐍 scripts/          Reusable comparative-analysis implementation
-├── 📓 notebooks/        Interactive and exploratory computational work
+├── 📓 notebooks/        Interactive and exploratory analysis
 ├── 📊 results/          Alignments, feature tables, trees and summaries
-├── 🖼️ figures/          Research diagrams and visual outputs
+├── 🖼️ figures/          Research diagrams and visual evidence
 ├── 🐘 EleProtect_App/   Streamlit research prototype
-├── 📚 docs/             Methods, provenance, review guide and limitations
-├── 📘 manuscript/       Thesis and associated published research
+├── 📚 docs/             Methods, provenance, review notes and limitations
+├── 📘 manuscript/       Published research and associated material
 ├── ✅ tests/            Unit and result-contract checks
 └── ✍️ CITATION.cff      Machine-readable citation metadata
 
-<a id="reproduce"></a>
-
-♻️ Reproduce the Current Analysis
+<details>
+<summary><strong>💻 Clone and run the current analysis</strong></summary>
 
 git clone https://github.com/Rita1791/Elephant-TP53-Hotspot-Mapping.git
 cd Elephant-TP53-Hotspot-Mapping
@@ -582,35 +583,13 @@ python -m pip install -r requirements.txt
 python scripts/TP53_Comparative_Analysis.py
 pytest -q
 
-<details>
-<summary><strong>🪟 Windows activation command</strong></summary>
-
-.venv\Scripts\Activate.ps1
+[!CAUTION]The current script writes a newer output contract than the historical exploratory tables under results/ML/. Until those layers are fully reconciled, cite the exact file used for each result.
 
 </details>
 
-<details>
-<summary><strong>📦 Outputs generated by the current script</strong></summary>
+<p align="right"><a href="#top">⬆ Back to top</a></p>
 
-results/tp53_sequence_features.csv
-results/tp53_hotspot_mapping.csv
-results/tp53_hotspot_identity_summary.csv
-results/tp53_comparative_features.csv
-results/tp53_comparative_features_clustered.csv
-results/tp53_excluded_sequences.csv
-results/tp53_summary.json
-
-figures/tp53_identity_to_human.png
-figures/tp53_hotspot_conservation.png
-figures/tp53_feature_clustering.png
-
-</details>
-
-[!CAUTION]The current script writes a newer output contract than the historical exploratory tables under results/ML/. Until the regenerated outputs are committed and reconciled with the older artifacts, cite the exact file used for each numerical claim.
-
-<a id="boundaries"></a>
-
-⚖️ What the Evidence Supports
+🔍 Scientific Boundaries
 
 ✅ Supported by this repository
 
@@ -620,42 +599,59 @@ Mapping six human TP53 hotspots onto curated elephant-related sequences
 
 That TP53 alone explains elephant cancer resistance
 
-High exact residue identity at the selected positions
+High exact-residue identity at the selected positions
 
-A complete mechanistic solution to Peto's paradox
+A complete molecular solution to Peto's paradox
 
-Global identity and sequence-feature comparisons
+Protein-wide identity and sequence-feature comparisons
 
 Functional activity of every TP53-related sequence
 
-Descriptive phylogenetic and clustering context
+Descriptive clustering and phylogenetic context
 
 Clinical risk, diagnosis, prognosis or treatment response
 
-A traceable foundation for follow-up research
+A traceable foundation for broader mammalian research
 
-Experimental validation of molecular function
+Experimental validation of the proposed biological interpretation
 
 <details>
-<summary><strong>⚠️ Read the scientific and computational limitations</strong></summary>
+<summary><strong>⚠️ Read the limitations and reproducibility status</strong></summary>
 
-Results depend on sequence selection, annotation quality and alignment parameters.
+Exact amino-acid identity is not a codon-aware evolutionary model. Results depend on sequence selection, annotation quality and alignment decisions. Protein similarity does not demonstrate biochemical equivalence. Feature clusters are exploratory and are not evolutionary lineages. BLOSUM62 values are substitution scores—not pathogenicity estimates.
 
-Exact amino-acid identity is not a formal phylogenetic conservation score.
+The current implementation and historical committed tables also use different output contracts. The repository is valuable for evidence inspection and modular analysis, but it should not be advertised as a fully reconciled one-command rebuild until those layers are aligned.
 
-Sequence similarity does not demonstrate shared biochemical activity.
-
-The feature-based clusters are exploratory and are not evolutionary lineages.
-
-The BLOSUM62 values are substitution scores, not pathogenicity or clinical-impact estimates.
-
-The elephant-focused and expanded mammalian projects answer related but different questions.
-
-🔗 Full limitations · reproducibility record · companion-repository relationship
+🔗 Read: full limitations · reproducibility · project relationship
 
 </details>
 
-<a id="publication"></a>
+<details>
+<summary><strong>🧬 Understand the elephant and mammalian projects</strong></summary>
+
+Research stage
+
+Primary question
+
+Correct use
+
+🐘 Human–elephant study
+
+How do human hotspots map onto elephant TP53-related sequences?
+
+Published foundation, pairwise mapping and EleProtect
+
+🌍 Expanded mammalian study
+
+Are recurrent human hotspots unusually constrained across mammals?
+
+56-sequence conservation, cancer recurrence and phylogenetic sensitivity
+
+The mammalian repository extends the biological question. It does not retroactively change the data or results of this focused elephant project.
+
+🔗 Open the expanded mammalian repository
+
+</details>
 
 📖 Publication & Citation
 
@@ -683,7 +679,7 @@ Rawat, R. R., Nadar, S., & Uppal, G. K. (2026).Comparative In-Silico Mapping of 
 
 </details>
 
-👥 Research Team
+👩‍🔬 Research Team
 
 Researcher
 
@@ -691,27 +687,27 @@ Contribution
 
 Ritika Rajendra Rawat
 
-Primary researcher; comparative workflow, sequence analysis, research development, software and scientific communication
+Study conception, comparative workflow, sequence analysis, research software, interpretation, visualisation and scientific communication
 
 Sermarani Nadar
 
-Co-author of the associated published human–elephant TP53 research
+Scientific discussion, interpretation, critical review and co-authorship of the associated publication
 
 Gursimran Kaur Uppal
 
-Co-author of the associated published human–elephant TP53 research
+Scientific discussion, interpretation, critical review and co-authorship of the associated publication
 
-<a id="connect"></a>
+<a id="connect-with-the-researcher"></a>
 
 🤝 Connect with the Researcher
 
 <div align="center">
 
-👩‍🔬 Ritika Rajendra Rawat
+Ritika Rajendra Rawat
 
-MSc Bioinformatics · Researcher working across comparative genomics, evolutionary cancer biology, computational biology and evidence-aware genomic analysis.
+Bioinformatics researcher working across comparative genomics, evolutionary cancer biology, computational biology and evidence-aware genomic analysis.
 
-For research collaboration, TP53 discussion, PhD-related academic communication or technical questions, choose the direct route that fits your purpose:
+Interested in research collaboration, ECCB discussion, TP53 biology, PhD-related academic communication or reproducible bioinformatics? Choose the route that matches your purpose:
 
 <br>
 
@@ -735,11 +731,11 @@ Connect on LinkedIn
 
 Visit the GitHub profile
 
-🔬 Publications and research updates
+🔬 Publications and updates
 
 Follow on ResearchGate
 
-🐛 Technical question about this project
+🐛 Technical question
 
 Open a GitHub issue
 
@@ -747,7 +743,7 @@ Open a GitHub issue
 
 📜 License
 
-Code and repository-authored materials are released under the MIT License. External biological data, software and third-party resources retain their original terms.
+Code and repository-authored material are released under the MIT License. Third-party biological data and external resources retain their original terms of use.
 
 <div align="center">
 
@@ -755,12 +751,8 @@ Code and repository-authored materials are released under the MIT License. Exter
 
 🧬 The conserved residue is the evidence trail.
 
-⚡ Overview · 🎯 Results · 🧪 Workflow · 🖼️ Figures · 📂 Files · 🤝 Connect · ⬆ Back to top
+🌍 ECCB 2026 · 🎯 Results · 🧪 Journey · 🖼️ Figures · 📂 Files · 🤝 Connect · ⬆ Back to top
 
-<sub>Comparative bioinformatics research · Hypothesis-generating · Not validated for clinical use</sub>
-
-<br><br>
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:0B132B,45:1B4965,100:2A9D8F&amp;height=125&amp;section=footer&amp;text=Follow%20the%20evidence.&amp;fontSize=23&amp;fontColor=FFFFFF&amp;fontAlignY=72" alt="Follow the evidence">
+<sub>Comparative-genomics research · Hypothesis-generating · Not validated for clinical use</sub>
 
 </div>
