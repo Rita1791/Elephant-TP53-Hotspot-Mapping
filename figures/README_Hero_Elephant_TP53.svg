@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Elephant TP53 Hotspot Mapping</title>
+  <desc id="desc">A scientific hero banner showing six human TP53 cancer hotspots mapped through a glowing DNA helix toward a stylized elephant, representing comparative genomics and EleProtect v2.0.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061326"/>
+      <stop offset="0.52" stop-color="#102548"/>
+      <stop offset="1" stop-color="#073a4c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8858ff"/>
+      <stop offset="0.5" stop-color="#3ea9ff"/>
+      <stop offset="1" stop-color="#2ee6b8"/>
+    </linearGradient>
+    <linearGradient id="elephantBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="0.46" stop-color="#5fa6ff"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="ear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8479ff"/>
+      <stop offset="1" stop-color="#34d5ef"/>
+    </linearGradient>
+    <linearGradient id="helixA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9b7cff"/>
+      <stop offset="1" stop-color="#5c54c9"/>
+    </linearGradient>
+    <linearGradient id="helixB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#25d8ee"/>
+      <stop offset="1" stop-color="#0e84b8"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#43d8ff" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#43d8ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spotGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8c72ff" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#8c72ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#7aa7d9" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+
+    <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="chipGlow" x="-70%" y="-120%" width="240%" height="340%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#18d9e8" flood-opacity="0.22"/>
+    </filter>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="200%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#020817" flood-opacity="0.55"/>
+    </filter>
+    <clipPath id="cardClip"><rect width="1200" height="420" rx="28"/></clipPath>
+
+    <style>
+      .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+      .title { font-weight: 800; letter-spacing: -1.5px; }
+      .label { font-weight: 750; letter-spacing: .8px; }
+      .hotspot { cursor: pointer; transform-box: fill-box; transform-origin: center; transition: transform .22s ease, filter .22s ease; }
+      .hotspot:hover { transform: translateY(-4px) scale(1.045); filter: url(#chipGlow); }
+      .hotspot:hover rect { stroke: #67f5db; stroke-width: 1.8; fill-opacity: .34; }
+      .dna { animation: dnaFloat 5.5s ease-in-out infinite; transform-origin: 830px 200px; }
+      .elephant { animation: elephantFloat 4.8s ease-in-out infinite; transform-origin: 1030px 275px; }
+      .pulse { animation: pulse 2.2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+      .scan { animation: scan 4s ease-in-out infinite; }
+      .spark { animation: sparkle 2.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .spark.s2 { animation-delay: .8s; }
+      .spark.s3 { animation-delay: 1.55s; }
+      @keyframes dnaFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-7px) } }
+      @keyframes elephantFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+      @keyframes pulse { 0% { opacity: .8; transform: scale(.85) } 70%,100% { opacity: 0; transform: scale(2.1) } }
+      @keyframes scan { 0%,100% { transform: translateY(-70px); opacity: 0 } 18%,82% { opacity: .75 } 50% { transform: translateY(88px); opacity: .9 } }
+      @keyframes sparkle { 0%,100% { opacity:.25; transform:scale(.65) } 50% { opacity:1; transform:scale(1.15) } }
+      @media (prefers-reduced-motion: reduce) {
+        .dna,.elephant,.pulse,.scan,.spark { animation: none; }
+        .hotspot { transition: none; }
+      }
+    </style>
+  </defs>
+
+  <g clip-path="url(#cardClip)">
+    <rect width="1200" height="420" rx="28" fill="url(#bg)"/>
+    <rect width="1200" height="420" fill="url(#grid)"/>
+    <circle cx="1112" cy="47" r="190" fill="#7c4dff" opacity="0.11"/>
+    <circle cx="1040" cy="353" r="205" fill="#0bd3d0" opacity="0.10"/>
+    <circle cx="840" cy="204" r="188" fill="url(#orb)" opacity=".5"/>
+    <path d="M690 0V420" stroke="url(#accent)" stroke-opacity=".10"/>
+
+    <!-- Left: research identity -->
+    <g class="sans">
+      <g transform="translate(62 61)">
+        <rect width="220" height="36" rx="18" fill="#d9fff7" fill-opacity=".07" stroke="#b8d8ed" stroke-opacity=".25"/>
+        <circle cx="21" cy="18" r="4.8" fill="#45e7b2"/>
+        <circle class="pulse" cx="21" cy="18" r="7.2" fill="none" stroke="#45e7b2" stroke-width="1.4"/>
+        <text x="38" y="23" fill="#e4fff8" font-size="13.5" class="label">PUBLISHED RESEARCH</text>
+      </g>
+
+      <text x="62" y="155" fill="#ffffff" font-size="49" class="title">Elephant TP53</text>
+      <text x="62" y="210" fill="#ffffff" font-size="49" class="title">Hotspot Mapping</text>
+      <rect x="62" y="235" width="590" height="4" rx="2" fill="url(#accent)"/>
+      <text x="62" y="278" fill="#bdd0e9" font-size="19.5" font-weight="470">
+        <tspan>Human cancer hotspots</tspan><tspan dx="12" fill="#5eead4">×</tspan><tspan dx="12" fill="#bdd0e9">elephant evolutionary genomics</tspan>
+      </text>
+
+      <!-- Hoverable hotspot residue chips -->
+      <g id="hotspots" transform="translate(62 313)">
+        <g class="hotspot">
+          <rect width="66" height="38" rx="19" fill="#7454d5" fill-opacity=".27" stroke="#9b81ff"/>
+          <circle cx="15" cy="19" r="3" fill="#ae92ff"/>
+          <text x="26" y="24" fill="#f3efff" font-size="14" font-weight="750">R175</text>
+        </g>
+        <g class="hotspot" transform="translate(78)">
+          <rect width="66" height="38" rx="19" fill="#7454d5" fill-opacity=".22" stroke="#9b81ff"/>
+          <circle cx="15" cy="19" r="3" fill="#ae92ff"/>
+          <text x="26" y="24" fill="#f3efff" font-size="14" font-weight="750">G245</text>
+        </g>
+        <g class="hotspot" transform="translate(156)">
+          <rect width="66" height="38" rx="19" fill="#078caf" fill-opacity=".23" stroke="#20ccef"/>
+          <circle cx="15" cy="19" r="3" fill="#38dff5"/>
+          <text x="26" y="24" fill="#e6fcff" font-size="14" font-weight="750">R248</text>
+        </g>
+        <g class="hotspot" transform="translate(234)">
+          <rect width="66" height="38" rx="19" fill="#078caf" fill-opacity=".23" stroke="#20ccef"/>
+          <circle cx="15" cy="19" r="3" fill="#38dff5"/>
+          <text x="26" y="24" fill="#e6fcff" font-size="14" font-weight="750">R249</text>
+        </g>
+        <g class="hotspot" transform="translate(312)">
+          <rect width="66" height="38" rx="19" fill="#00a47f" fill-opacity=".20" stroke="#28dfb0"/>
+          <circle cx="15" cy="19" r="3" fill="#47f2c2"/>
+          <text x="26" y="24" fill="#e8fff8" font-size="14" font-weight="750">R273</text>
+        </g>
+        <g class="hotspot" transform="translate(390)">
+          <rect width="66" height="38" rx="19" fill="#00a47f" fill-opacity=".20" stroke="#28dfb0"/>
+          <circle cx="15" cy="19" r="3" fill="#47f2c2"/>
+          <text x="26" y="24" fill="#e8fff8" font-size="14" font-weight="750">R282</text>
+        </g>
+      </g>
+
+      <g transform="translate(62 384)">
+        <path d="M0 0H475" stroke="#9fc4dd" stroke-opacity=".16"/>
+        <text y="16" fill="#809ab8" font-size="11.2" class="label">
+          <tspan>COMPARATIVE ONCOLOGY</tspan><tspan dx="12" fill="#34d9d7">•</tspan><tspan dx="12">EVOLUTIONARY CONSERVATION</tspan>
+        </text>
+      </g>
+    </g>
+
+    <!-- Right: DNA-to-elephant scientific story -->
+    <g class="dna" filter="url(#softGlow)">
+      <path d="M812 64C935 106 938 151 813 207C688 263 691 309 813 364" fill="none" stroke="url(#helixA)" stroke-width="5" stroke-linecap="round"/>
+      <path d="M940 64C817 106 814 151 939 207C1064 263 1061 309 939 364" fill="none" stroke="url(#helixB)" stroke-width="5" stroke-linecap="round"/>
+      <g stroke="#b8d9ed" stroke-width="1.4" stroke-opacity=".55">
+        <path d="M832 75H920"/><path d="M854 102H899"/><path d="M860 130H893"/><path d="M833 158H920"/>
+        <path d="M821 186H931"/><path d="M835 214H918"/><path d="M851 242H902"/><path d="M864 270H889"/>
+        <path d="M849 298H904"/><path d="M827 326H925"/><path d="M815 354H937"/>
+      </g>
+      <g class="scan">
+        <rect x="808" y="199" width="139" height="2" rx="1" fill="#62f7df" opacity=".85"/>
+        <rect x="808" y="195" width="139" height="10" fill="#62f7df" opacity=".08"/>
+      </g>
+      <circle class="spark" cx="843" cy="86" r="3.3" fill="#c7b7ff"/>
+      <circle class="spark s2" cx="916" cy="147" r="3.3" fill="#54e5f5"/>
+      <circle class="spark s3" cx="852" cy="283" r="3.3" fill="#61f3cf"/>
+    </g>
+
+    <!-- Data flow nodes -->
+    <g fill="#0b1e38" stroke="#5be4dc" stroke-opacity=".75">
+      <circle cx="750" cy="108" r="5"/><circle cx="731" cy="210" r="5"/><circle cx="764" cy="311" r="5"/>
+    </g>
+    <g stroke="#5be4dc" stroke-opacity=".28" stroke-dasharray="4 6">
+      <path d="M655 108H745"/><path d="M655 210H726"/><path d="M655 311H759"/>
+    </g>
+
+    <!-- Elephant -->
+    <g class="elephant" filter="url(#shadow)">
+      <ellipse cx="1031" cy="356" rx="132" ry="14" fill="#020a17" opacity=".30"/>
+      <!-- body -->
+      <path d="M961 207C990 181 1053 180 1090 199C1127 218 1138 250 1124 291C1092 306 1039 310 984 297C950 288 936 255 949 226Z" fill="url(#elephantBody)"/>
+      <!-- rear contour -->
+      <path d="M1088 199C1115 205 1135 227 1134 254C1133 274 1125 286 1112 294" fill="none" stroke="#8dd8ff" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <!-- head -->
+      <circle cx="953" cy="231" r="54" fill="#779aff"/>
+      <!-- ear -->
+      <path d="M944 189C979 188 1003 213 1000 243C997 273 972 289 944 279C920 270 910 246 915 221C919 202 929 193 944 189Z" fill="url(#ear)" stroke="#89b7ff" stroke-width="3"/>
+      <path d="M945 203C964 205 978 221 977 240C976 257 966 268 949 271" fill="none" stroke="#c9dcff" stroke-opacity=".32" stroke-width="2"/>
+      <!-- face and trunk -->
+      <path d="M933 207C917 222 914 247 922 266C927 278 938 286 949 290C951 304 949 318 939 326C930 333 920 329 915 318C911 310 912 302 916 294" fill="#43c6ed"/>
+      <path d="M950 291C954 307 950 325 938 334C925 344 909 338 903 323" fill="none" stroke="#43c6ed" stroke-width="18" stroke-linecap="round"/>
+      <!-- forehead -->
+      <path d="M928 206C938 194 955 188 972 191" fill="none" stroke="#a9c1ff" stroke-width="6" stroke-linecap="round"/>
+      <!-- eye -->
+      <circle cx="964" cy="224" r="5.4" fill="#061326"/>
+      <circle cx="965.5" cy="222.5" r="1.4" fill="#dffbff"/>
+      <!-- legs -->
+      <path d="M1002 285V357" stroke="#63a9f5" stroke-width="25"/>
+      <path d="M1075 287V357" stroke="#28cae5" stroke-width="25"/>
+      <path d="M990 357H1018" stroke="#b1d7ff" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+      <path d="M1063 357H1091" stroke="#a0eff5" stroke-width="4" stroke-linecap="round" opacity=".65"/>
+      <!-- tail -->
+      <path d="M1119 227C1140 232 1140 255 1138 273C1136 287 1148 294 1159 285C1167 278 1172 269 1175 260" fill="none" stroke="#d9f8ff" stroke-width="5" stroke-linecap="round"/>
+      <path d="M1175 260l3 1" stroke="#d9f8ff" stroke-width="7" stroke-linecap="round"/>
+      <!-- tusk -->
+      <path d="M930 267C941 278 952 279 962 273C957 289 945 294 934 287" fill="#ecfeff" opacity=".9"/>
+      <!-- TP53 marker -->
+      <g transform="translate(1034 240)">
+        <circle r="21" fill="#0a1c35" fill-opacity=".48" stroke="#7cebdc" stroke-opacity=".65"/>
+        <circle class="pulse" r="25" fill="none" stroke="#66f3d1" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="#e9fffb" font-size="10" font-weight="800" class="sans">TP53</text>
+      </g>
+    </g>
+
+    <!-- Right footer -->
+    <g class="sans" transform="translate(740 387)">
+      <rect width="380" height="28" rx="14" fill="#07172c" fill-opacity=".70" stroke="#9ec7e3" stroke-opacity=".16"/>
+      <text x="18" y="19" fill="#bda8ff" font-size="12" class="label">COMPARATIVE GENOMICS</text>
+      <circle cx="192" cy="14" r="3" fill="#37dce7"/>
+      <text x="208" y="19" fill="#8ce8ee" font-size="12" class="label">ELEPROTECT v2.0</text>
+    </g>
+  </g>
+  <rect x=".75" y=".75" width="1198.5" height="418.5" rx="27.25" fill="none" stroke="#8bb4dd" stroke-opacity=".16" stroke-width="1.5"/>
+</svg>
