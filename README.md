@@ -1102,7 +1102,7 @@ For me, that boundary is part of the result rather than something to hide in the
 GitHub: [Rita1791](https://github.com/Rita1791)  
 LinkedIn: [Ritika Rawat](https://in.linkedin.com/in/ritika-rawat-551107219)  
 ResearchGate: [Ritika Rawat](https://www.researchgate.net/profile/Ritika-Rawat-10)  
-Email: [ritikarvl2627@gmail.com](mailto:ritikarvl2627@gmail.com)
+Email: [ritika.rawat27@outlook.com](mailto:ritika.rawat27@outlook.com)
 
 ---
 
