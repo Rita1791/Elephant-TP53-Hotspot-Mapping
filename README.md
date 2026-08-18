@@ -1118,7 +1118,7 @@ External sequence databases and biological resources retain their respective lic
 
 ### One line I would keep from this project
 
-## Strong sequence preservation is a clue — not a mechanism.
+## Strong sequence preservation is a clue , not a mechanism.
 
 The elephant comparison gave me the clue.  
 The broader evolutionary work came from asking what that clue actually meant.
